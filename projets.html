@@ -490,6 +490,31 @@
             color: #f2994a;
             text-decoration: none;
         }
+
+        /* Styles for the navigation buttons */
+        .navigation {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .navigation .nav-button {
+            display: inline-block;
+            background: linear-gradient(to right, #c43c39, #f2994a);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 0 10px;
+        }
+
+        .navigation .nav-button:hover {
+            background: linear-gradient(to right, #f2994a, #c43c39);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -499,9 +524,9 @@
     <h1>Mon Portfolio</h1>
 
     <div class="navigation">
-            <a href="index.html">Retour à l'accueil</a>
-            <a href="loisirs.html">loisirs</a>
-            <a href="cv.html">CV</a>
+            <a href="index.html" class="nav-button">Retour à l'accueil</a>
+            <a href="loisirs.html" class="nav-button">Loisirs</a>
+            <a href="cv.html" class="nav-button">CV</a>
     </div>
 
     <h2><span class="icon">🚀</span> Projets Professionnels</h2>
@@ -511,16 +536,14 @@
             <img src="images/Réseau 1.png" alt="Schéma d'architecture réseau d'un campus universitaire" class="project-image">
             <h3>Infrastructure Réseau d'un Campus</h3>
             <p>
-           Conception et déploiement d'une architecture réseau complexe pour un campus universitaire multi-sites.
-            Le projet a couvert l'optimisation de l'adressage (VLSM), la segmentation (VLANs), le routage dynamique (RIP) et la mise en place de politiques de sécurité avancées (ACL, NAT).
+           Conception et déploiement d'une architecture réseau complexe pour un campus universitaire multi-sites. Le projet a couvert l'optimisation de l'adressage (VLSM), la segmentation (VLANs), le routage dynamique (RIP) et la mise en place de politiques de sécurité avancées (ACL, NAT).
             </p>
             <div class="project-tags">
                 <span class="tag">Réseaux</span>
                 <span class="tag">Cisco Packet Tracer</span>
                 <span class="tag">VLSM</span>
                 <span class="tag">VLAN</span>
-                <span 
-                class="tag">RIP</span>
+                <span class="tag">RIP</span>
                 <span class="tag">ACL</span>
                 <span class="tag">NAT</span>
             </div>
@@ -528,7 +551,6 @@
         </div>
 
         <div class="project-card">
- 
             <img src="images/tel.png" alt="téléphone ip" class="project-image">
             <h3>Téléphonie sur IP</h3>
             <p>
@@ -540,7 +562,6 @@
                 <span class="tag">IVR</span>
                 <span class="tag">Téléphonie</span>
             </div>
-        
             <a href="https://github.com/Maxence748/telephone/tree/main" class="cta-button" target="_blank">Détails sur GitHub</a>
         </div>
         
@@ -554,8 +575,7 @@
                 <span class="tag">Linux</span>
                 <span class="tag">Debian</span>
                 <span class="tag">Apache</span>
-                <span class="tag">tag">MySQL</span>
-            
+                <span class="tag">MySQL</span>
                 <span class="tag">PHP</span>
                 <span class="tag">Déploiement</span>
             </div>
@@ -565,7 +585,6 @@
         <div class="project-card">
             <h3>Active Directory avec Samba4</h3>
             <p>
-       
                 Implémentation d'un contrôleur de domaine Active Directory sur Linux avec Samba4, permettant une gestion centralisée des utilisateurs, groupes et politiques de sécurité comme alternative robuste à Windows Server.
             </p>
             <div class="project-tags">
@@ -574,7 +593,6 @@
                 <span class="tag">Active Directory</span>
                 <span class="tag">Gestion Utilisateurs</span>
             </div>
-    
             <a href="#" class="cta-button" target="_blank">Consulter le Projet</a>
         </div>
 
@@ -609,7 +627,6 @@
                 <span class="tag">Hacking</span>
                 <span class="tag">Challenge</span>
             </div>
-        
             <a href="#" class="cta-button" id="openCTFModalButton">Voir détail</a>
         </div>
 
@@ -626,13 +643,12 @@
             Ce projet de 
             SAE2.01 a consisté à concevoir, implémenter et sécuriser une infrastructure réseau complexe pour un campus universitaire multi-sites.
             Il a abordé des aspects clés comme la planification de l'adressage IP, la segmentation du réseau, le routage dynamique, la traduction d'adresses (NAT) et la mise en place de politiques de sécurité (ACLs), ainsi que le déploiement de serveurs essentiels.
-            </p>
+        </p>
 
         <h4>Succès du Projet</h4>
         <ul>
             <li>**Plan d'Adressage Optimisé :** Mise en œuvre réussie d'un plan VLSM efficace pour quatre sites, permettant une allocation optimale des adresses IP et une gestion structurée du réseau.</li>
             <li>**Segmentation Réseau Robuste :** Configuration de 5 VLANs par site pour une isolation logique des services (administration, formations A/B, enseignants), améliorant la sécurité et la gestion du trafic.</li>
- 
             <li>**Interconnexion Fluide :** Implémentation fonctionnelle du protocole RIP assurant une communication transparente et dynamique entre tous les sites du campus.</li>
             <li>**Accès WAN Sécurisé :** Configuration réussie du NAT statique et dynamique, permettant aux utilisateurs internes d'accéder au WAN et exposant les services web internes de manière contrôlée.</li>
             <li>**Haute Disponibilité :** Mise en place d'une topologie redondante avec le protocole STP (Spanning Tree Protocol) pour prévenir les boucles et garantir la 
@@ -644,12 +660,11 @@
         <ul class="challenges">
             <li>**Complexité du Filtrage par ACL :** Bien que des ACLs aient été implémentées pour gérer les flux inter-VLAN 
             et WAN, leur configuration s'est avérée particulièrement délicate. L'affinement des règles de sécurité pour des communications complexes a nécessité une compréhension approfondie et des tests rigoureux.</li>
-            <li>**Limitations avec TFTP :** Des difficultés persistantes ont été rencontrées lors de la tentative de sauvegarde des configurations des équipements via TFTP (`copy running-config tftp`).
-            Les fichiers générés sur le serveur TFTP apparaissaient sans contenues à l'intérieur, suggérant un problème de droits d'accès ou de permissions non identifié ou non résolu dans l'environnement de simulation.</li>
+            <li>**Limitations avec TFTP :** Des difficultés persistantes ont été rencontrées lors de la tentative de sauvegarde des configurations des équipements via TFTP (`copy running-config tftp`). Les fichiers générés sur le serveur TFTP apparaissaient sans contenues à l'intérieur, suggérant un problème de droits d'accès ou de permissions non identifié ou non résolu dans l'environnement de simulation.</li>
             <li>**Affinement des règles de sécurité :** Malgré les efforts, certaines règles d'ACL n'ont pas permis le filtrage désiré pour toutes les communications complexes, indiquant la nécessité d'une compréhension plus approfondie et de tests plus rigoureux des règles de filtrage.</li>
         </ul>
 
-        <a href="https://github.com/Maxence748/Projet_Reseau_Campus" target="_blank" class="github-button">Voir le 
+        <a href="https://github.com/Maxence748/Projet_Reseau_Campus" target="_blank" class="github-button">Voir le
             Projet sur GitHub</a>
     </div>
 </div>
@@ -660,19 +675,18 @@
         <h3>Participation CTF Vannes : Détails</h3>
 
         <p>
-            Ma participation à la compétition "Capture The Flag" de Vannes a été une expérience enrichissante, me permettant de mettre en pratique et d'approfondir mes compétences en cybersécurité offensive et défensive.
-            Ce type de challenge simule des scénarios réels de sécurité informatique, où l'objectif est de trouver des "flags" (des chaînes de caractères cachées) en exploitant des vulnérabilités.
-            </p>
+            Ma participation à la compétition "Capture The Flag" de Vannes a été une expérience enrichissante, me permettant de mettre en pratique et d'approfondir mes compétences en cybersécurité offensive et défensive. Ce type de challenge simule des scénarios réels de sécurité informatique, où l'objectif est de trouver des "flags" (des chaînes de caractères cachées) en exploitant des vulnérabilités.
+        </p>
 
         <h4>Compétences Mises en Œuvre</h4>
         <ul>
             <li>**Cryptographie :** Résolution d'énigmes basées sur différents algorithmes de chiffrement (RSA, AES, chiffre de César, etc.) et identification de faiblesses cryptographiques.</li>
             <li>**Stéganographie :** Extraction d'informations cachées dans des fichiers multimédias (images, audio, vidéo) ou d'autres types de fichiers.</li>
-            <li>**Exploitation de Binaires (Pwn) :** Analyse et exploitation de 
+            <li>**Exploitation de Binaires (Pwn) :** Analyse et exploitation de
             programmes compilés pour prendre le contrôle ou obtenir des informations sensibles, notamment via des techniques de buffer overflow, format string bugs.</li>
             <li>**Web Hacking :** Identification et exploitation de vulnérabilités web courantes (SQL Injection, XSS, SSRF, LFI/RFI) sur des applications web.</li>
             <li>**Analyse Forensique :** Examen de disques, de mémoire ou de paquets réseau pour récupérer des preuves ou des informations cachées.</li>
-            <li>**Reverse Engineering :** Décompilation et analyse de 
+            <li>**Reverse Engineering :** Décompilation et analyse de
             programmes pour comprendre leur logique interne et découvrir des secrets.</li>
             <li>**Scripting :** Développement de scripts (Python, Bash) pour automatiser des tâches, déchiffrer des données ou faciliter l'exploitation.</li>
         </ul>
@@ -680,21 +694,18 @@
         <h4>Objectifs et Apprentissages</h4>
         <ul class="challenges">
             <li>**Pensée Critique et Résolution de Problèmes :** Les CTF exigent une approche méthodique et créative pour résoudre des problèmes complexes et non conventionnels.</li>
- 
             <li>**Travail d'Équipe :** Collaboration avec d'autres participants pour combiner les compétences et accélérer la résolution des défis.</li>
             <li>**Gestion du Temps et Pression :** Apprendre à travailler efficacement sous contrainte de temps pour maximiser le nombre de flags trouvés.</li>
             <li>**Veille Technologique :** Nécessité de se tenir constamment informé des nouvelles vulnérabilités et techniques d'attaque/défense.</li>
         </ul>
 
-        
             <div class="ranking-section">
             <h4>Notre Classement Final</h4>
             <div class="ranking-display">
                 <div class="team-rank">17<sup>ème</sup></div>
-                <div class="team-name">Équipe : CyberFraude2025</div>
+                <div class="team-name">Équipe CyberFraude2025</div>
             </div>
             <img src="images/image_367629.png" alt="Classement final du CTF" class="ranking-image">
-    
             </div>
 
         <div class="sponsor-section">
@@ -702,13 +713,11 @@
             <div class="sponsor-grid">
                 <img src="images/sponsor1.jpg" alt="Sponsor 1" data-full-src="images/sponsor1.jpg" />
                 <img src="images/sponsor2.jpg" alt="Sponsor 2" data-full-src="images/sponsor2.jpg" />
-            
                 <img src="images/sponsor3.jpg" alt="Sponsor 3" data-full-src="images/sponsor3.jpg" />
                 <img src="images/sponsor4.jpg" alt="Sponsor 4" data-full-src="images/sponsor4.jpg" />
                 <img src="images/sponsor5.jpg" alt="Sponsor 5" data-full-src="images/sponsor5.jpg" />
             </div>
         </div>
-        
         
             <a href="https://maxence748.github.io/mon-portfolio/ctf.html" class="github-button" style="margin-top: 3rem;">
             Aller à la page de notre classement
@@ -753,7 +762,6 @@
         const openCTFButton = document.getElementById('openCTFModalButton');
         const ctfModal = document.getElementById('ctfModal');
         const closeCTFButton = ctfModal.querySelector('.modal-close-button');
-        
         const openSecNumButton = document.getElementById('openSecNumModalButton');
         const secNumModal = document.getElementById('secNumModal');
         const closeSecNumButton = secNumModal.querySelector('.modal-close-button');
@@ -850,7 +858,6 @@
                 }
             });
         });
-
         if (closeLightboxButton) {
             closeLightboxButton.addEventListener('click', closeImageLightbox);
         }
