@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    
+
     <style>
         body {
             background-image: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d); 
@@ -101,7 +101,7 @@
             color: #D0D0D0;
             margin-bottom: 0;
         }
-        
+
         strong {
             color: #00BFFF; 
             font-weight: 700;
@@ -207,7 +207,7 @@
         footer p {
             margin: 0.5rem 0;
         }
-        
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .main-container {
@@ -296,7 +296,6 @@
 
     </div>{# /main-container #}
 
-    {# HTML pour la Lightbox (Modale) - Placé en dehors du main-container pour qu'elle couvre tout l'écran #}
     <div id="lightboxOverlay" class="lightbox-overlay">
         <span class="lightbox-close">&times;</span>
         <div class="lightbox-content">
@@ -334,9 +333,9 @@
             hobbyCardImages.forEach(image => {
                 image.addEventListener('click', function(event) {
                     event.stopPropagation();
-                    
+
                     const fullSrc = this.getAttribute('data-full-src');
-                    
+
                     if (fullSrc) {
                         lightboxImage.src = fullSrc; 
                         lightboxOverlay.classList.add('active');
