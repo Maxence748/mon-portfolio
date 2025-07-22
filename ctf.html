@@ -3,267 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CTF Vannes - Détails de participation</title>
+    <title>Classement CTF de Vannes</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #f2994a;
-            background-image: linear-gradient(to bottom, #1a1a4a, #5f2c4f, #c43c39, #f2994a);
-            background-attachment: fixed;
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
+        /* Assure que HTML et BODY occupent toute la hauteur et retire les marges par défaut */
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
         }
 
-        .page-container {
-            max-width: 900px;
-            margin: 3rem auto;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 18px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-
-        .page-container h1 {
-            font-size: 2.8rem;
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-            color: #fff;
-            text-align: center;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-            padding-bottom: 1rem;
-        }
-
-        .page-container h4 {
-            font-size: 1.8rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #ffe066;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding-bottom: 5px;
-        }
-
-        .page-container p, .page-container ul {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 1rem;
-        }
-
-        .page-container ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .page-container ul li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 0.7rem;
-        }
-
-        .page-container ul li::before {
-            content: '✓';
-            color: #66ff99;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        .page-container ul.challenges li::before {
-            content: '✗';
-            color: #ff6666;
-        }
-
-        .cta-button {
-            display: inline-block;
-            text-decoration: none;
-            background: linear-gradient(to right, #c43c39, #f2994a);
-            color: #fff;
-            padding: 12px 25px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-button:hover {
-            background: linear-gradient(to right, #f2994a, #c43c39);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .ranking-section {
-            text-align: center;
-            margin-top: 3rem;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .ranking-section h4 {
-            font-size: 1.8rem;
-            color: #ffe066;
-            margin-bottom: 1.5rem;
-            border-bottom: none;
-            padding-bottom: 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .ranking-display {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            height: 150px;
-        }
-
-        .team-rank {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #66ff99;
-            text-shadow: 0 0 15px rgba(102, 255, 153, 0.7);
-            position: absolute;
-            opacity: 0;
-            animation: fadeInTop 1.5s ease-out forwards;
-            animation-delay: 0.5s;
-        }
-
-        .team-name {
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: #fff;
-            margin-top: 4rem;
-            opacity: 0;
-            animation: fadeInBottom 1.5s ease-out forwards;
-            animation-delay: 1s;
-        }
-
-        @keyframes fadeInTop {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInBottom {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .ranking-image {
-            max-width: 100%;
-            height: auto;
-            margin-top: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .sponsor-section {
-            text-align: center;
-            margin-top: 2.5rem;
-            margin-bottom: 3rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-        }
-
-        .sponsor-section h4 {
-            font-size: 1.8rem;
-            color: #f2994a;
-            margin-bottom: 1.5rem;
-            border-bottom: none;
-            padding-bottom: 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .sponsor-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 10px;
-        }
-
-        .sponsor-grid img {
-            max-height: 80px;
-            width: auto;
-            object-fit: contain;
-            filter: grayscale(80%) brightness(120%);
-            transition: filter 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .sponsor-grid img:hover {
-            filter: grayscale(0%) brightness(100%);
-            transform: scale(1.05);
+        /* Nouveau fond cybersécurité */
+        html {
+            background-image: url('https://images.unsplash.com/photo-1617721482175-72c56a41c8a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            /* Couleur de secours si l'image ne charge pas */
+            background-color: #000; 
         }
         
-        .lightbox-overlay {
+        /* Styles pour le wrapper et le conteneur principal */
+        .scoreboard-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px 0;
+            background-color: transparent;
+        }
+
+        .scoreboard-container {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            max-width: 800px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+            position: relative; /* Ajouté pour positionner le bouton de retour */
+        }
+
+        /* --- Section Classement (Ranking Table) --- */
+        .ranking-table-section {
+            padding: 40px;
+        }
+        
+        .ranking-title {
+            font-size: 28px; /* Slightly larger for main title */
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px; /* More space below title */
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .ranking-table th {
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .ranking-table th:first-child { width: 10%; }
+        .ranking-table th:nth-child(2) { width: 70%; }
+        .ranking-table th:last-child { text-align: right; width: 20%; }
+
+        .ranking-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .ranking-table tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        .ranking-table tbody tr:hover {
+            background-color: #333;
+        }
+
+        .ranking-table td:last-child {
+            text-align: right;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .ranking-table td:first-child {
+            color: #aaa;
+        }
+
+        .ranking-table td:nth-child(2) {
+            font-weight: 500;
+        }
+
+        /* Styles pour le nom de l'équipe cliquable */
+        .team-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .team-link:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* --- Styles de la Modale (Lightbox) --- */
+        .modal-overlay {
             display: none;
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%; /* Adjusted for better responsiveness */
+            max-height: 90vh; /* Adjusted for better responsiveness */
+            overflow: auto; 
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .lightbox-content {
-            max-width: 95%;
-            max-height: 95vh;
-            object-fit: contain;
-            transition: transform 0.3s ease;
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            border: 5px solid #1a1a1a;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            object-fit: contain; 
+            object-position: center; 
         }
 
-        .close-lightbox {
+        .close-modal {
             position: absolute;
             top: 20px;
-            right: 35px;
+            right: 30px;
             color: #fff;
             font-size: 40px;
             font-weight: bold;
-            transition: 0.3s;
             cursor: pointer;
             z-index: 1001;
+            transition: color 0.2s;
         }
 
-        .close-lightbox:hover,
-        .close-lightbox:focus {
-            color: #f2994a;
-            text-decoration: none;
+        .close-modal:hover {
+            color: #e74c3c;
         }
 
-        .back-button {
+        .back-to-details {
             display: inline-block;
             text-decoration: none;
             background: rgba(255, 255, 255, 0.1);
@@ -274,160 +192,171 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            margin-top: 2rem;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 5;
         }
 
-        .back-button:hover {
+        .back-to-details:hover {
             background: linear-gradient(to right, #f2994a, #c43c39);
             border-color: #f2994a;
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-        
-        .view-scoreboard-button {
-            display: inline-block;
-            text-decoration: none;
-            background: linear-gradient(to right, #66ff99, #34a853);
-            color: #fff;
-            padding: 12px 25px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 1.5rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
 
-        .view-scoreboard-button:hover {
-            background: linear-gradient(to right, #34a853, #66ff99);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
-
-
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .page-container {
-                padding: 1rem;
-                margin: 1.5rem auto;
+            .scoreboard-container {
+                margin: 20px;
+                padding: 10px;
             }
-            .page-container h1 {
-                font-size: 2rem;
+            .ranking-table-section {
+                padding: 20px;
             }
-            .page-container h4 {
-                font-size: 1.5rem;
+            .ranking-title {
+                font-size: 22px;
             }
-            .page-container p, .page-container ul {
-                font-size: 1rem;
+            .ranking-table th, .ranking-table td {
+                padding: 10px 15px;
+                font-size: 12px;
             }
-            .cta-button, .back-button, .view-scoreboard-button {
-                padding: 10px 20px;
-                font-size: 1rem;
+            .close-modal {
+                font-size: 30px;
+                top: 10px;
+                right: 15px;
+            }
+            .back-to-details {
+                top: 15px;
+                left: 15px;
+                padding: 8px 15px;
+                font-size: 0.9em;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="page-container">
-    <a href="index.html" class="back-button">← Retour au Portfolio</a>
-    <h1>Participation CTF Vannes : Détails</h1>
+    <div class="scoreboard-wrapper">
+        <div class="scoreboard-container">
+            <a href="ctf.html" class="back-to-details">← Retour aux détails CTF</a>
+            <div class="ranking-table-section">
+                <h2 class="ranking-title">Classement des Équipes CTF Vannes</h2>
 
-    <p>
-        Ma participation à la compétition "Capture The Flag" de Vannes a été une expérience enrichissante, me permettant de mettre en pratique et d'approfondir mes compétences en cybersécurité offensive et défensive.
-        Ce type de challenge simule des scénarios réels de sécurité informatique, où l'objectif est de trouver des "flags" (des chaînes de caractères cachées) en exploitant des vulnérabilités.
-    </p>
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>Place</th>
+                            <th>Équipe</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <span class="team-link js-team-link" data-image-src="images/1place.jpg">wewe</span>
+                            </td>
+                            <td>9740</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>2</td>
+                            <td>
+                                <span class="team-link js-team-link" data-image-src="images/2place.jpg">Alt+Kids</span>
+                            </td>
+                            <td>9617</td>
+                        </tr>
 
-    <h4>Compétences Mises en Œuvre</h4>
-    <ul>
-        <li>**Cryptographie :** Résolution d'énigmes basées sur différents algorithmes de chiffrement (RSA, AES, chiffre de César, etc.) et identification de faiblesses cryptographiques.</li>
-        <li>**Stéganographie :** Extraction d'informations cachées dans des fichiers multimédias (images, audio, vidéo) ou d'autres types de fichiers.</li>
-        <li>**Exploitation de Binaires (Pwn) :** Analyse et exploitation de programmes compilés pour prendre le contrôle ou obtenir des informations sensibles, notamment via des techniques de buffer overflow, format string bugs.</li>
-        <li>**Web Hacking :** Identification et exploitation de vulnérabilités web courantes (SQL Injection, XSS, SSRF, LFI/RFI) sur des applications web.</li>
-        <li>**Analyse Forensique :** Examen de disques, de mémoire ou de paquets réseau pour récupérer des preuves ou des informations cachées.</li>
-        <li>**Reverse Engineering :** Décompilation et analyse de programmes pour comprendre leur logique interne et découvrir des secrets.</li>
-        <li>**Scripting :** Développement de scripts (Python, Bash) pour automatiser des tâches, déchiffrer des données ou faciliter l'exploitation.</li>
-    </ul>
+                        <tr>
+                            <td>3</td>
+                            <td>
+                                <span class="team-link js-team-link" data-image-src="images/3place.jpg">OnlyH4ckS</span>
+                            </td>
+                            <td>9397</td>
+                        </tr>
 
-    <h4>Objectifs et Apprentissages</h4>
-    <ul class="challenges">
-        <li>**Pensée Critique et Résolution de Problèmes :** Les CTF exigent une approche méthodique et créative pour résoudre des problèmes complexes et non conventionnels.</li>
-        <li>**Travail d'Équipe :** Collaboration avec d'autres participants pour combiner les compétences et accélérer la résolution des défis.</li>
-        <li>**Gestion du Temps et Pression :** Apprendre à travailler efficacement sous contrainte de temps pour maximiser le nombre de flags trouvés.</li>
-        <li>**Veille Technologique :** Nécessité de se tenir constamment informé des nouvelles vulnérabilités et techniques d'attaque/défense.</li>
-    </ul>
-
-    <div class="ranking-section">
-        <h4>Notre Classement Final</h4>
-        <div class="ranking-display">
-            <div class="team-rank">17<sup>ème</sup></div>
-            <div class="team-name">Équipe : CyberFraude2025</div>
+                        <tr><td>4</td><td>Qu'hack</td><td>7321</td></tr>
+                        <tr><td>5</td><td>Team XOR</td><td>6138</td></tr>
+                        <tr><td>6</td><td>HackTheByte</td><td>6107</td></tr>
+                        <tr><td>7</td><td>$B0EZ</td><td>5844</td></tr>
+                        <tr><td>8</td><td>B[i]H4J</td><td>5823</td></tr>
+                        <tr><td>9</td><td>Stormchotte</td><td>5751</td></tr>
+                        <tr><td>10</td><td>session vannes (cs douteux) (ambiance délètère)</td><td>5511</td></tr>
+                        <tr><td>11</td><td>@-Hack</td><td>5238</td></tr>
+                        <tr><td>12</td><td>Malwin</td><td>4833</td></tr>
+                        <tr><td>13</td><td>L'Hack d'Annecy</td><td>4160</td></tr>
+                        <tr><td>14</td><td>SilentShark</td><td>4112</td></tr>
+                        <tr><td>15</td><td>StarfourHack</td><td>3705</td></tr>
+                        <tr><td>16</td><td>Mon S'Hack est fait !</td><td>3641</td></tr>
+                        
+                        <tr>
+                            <td>17</td>
+                            <td>
+                                <span class="team-link js-team-link" data-image-src="images/2.png">CyberFraude2025</span>
+                            </td>
+                            <td>3485</td>
+                        </tr>
+                        
+                        <tr><td>18</td><td>Hackcess</td><td>3376</td></tr>
+                        <tr><td>19</td><td>404 Brain Not Found</td><td>3327</td></tr>
+                        <tr><td>20</td><td>LesPotsDeFleurs</td><td>3125</td></tr>
+                        <tr><td>21</td><td>Root4All</td><td>2526</td></tr>
+                        <tr><td>22</td><td>Packet Corsaire</td><td>2485</td></tr>
+                        <tr><td>23</td><td>Default</td><td>2218</td></tr>
+                        <tr><td>24</td><td>K3rnelP4nic</td><td>1398</td></tr>
+                        <tr><td>25</td><td>KOR 2</td><td>1075</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <img src="images/image_367629.png" alt="Classement final du CTF" class="ranking-image">
-        <a href="classement-ctf.html" class="view-scoreboard-button">Voir le classement complet</a>
     </div>
 
-    <div class="sponsor-section">
-        <h4>Nos Sponsors</h4>
-        <div class="sponsor-grid">
-            <img src="images/sponsor1.jpg" alt="Sponsor 1" data-full-src="images/sponsor1.jpg" />
-            <img src="images/sponsor2.jpg" alt="Sponsor 2" data-full-src="images/sponsor2.jpg" />
-            <img src="images/sponsor3.jpg" alt="Sponsor 3" data-full-src="images/sponsor3.jpg" />
-            <img src="images/sponsor4.jpg" alt="Sponsor 4" data-full-src="images/sponsor4.jpg" />
-            <img src="images/sponsor5.jpg" alt="Sponsor 5" data-full-src="images/sponsor5.jpg" />
+    <div id="team-modal" class="modal-overlay">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="Photo d'équipe">
         </div>
-    </div>
-    
-    <div id="imageLightboxModal" class="lightbox-overlay">
-        <span class="close-lightbox">&times;</span>
-        <img class="lightbox-content" id="lightbox-image-viewer" src="" alt="Image agrandie" />
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const imageLightboxModal = document.getElementById('imageLightboxModal');
-            const lightboxImageViewer = document.getElementById('lightbox-image-viewer');
-            const closeLightboxButton = imageLightboxModal.querySelector('.close-lightbox');
-            const sponsorImages = document.querySelectorAll('.sponsor-grid img');
-            
-            function openImageLightbox(src) {
-                lightboxImageViewer.src = src;
-                imageLightboxModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
+            const teamLinks = document.querySelectorAll('.js-team-link');
+            const modalOverlay = document.getElementById('team-modal');
+            const modalImage = document.getElementById('modal-image');
+            const closeModal = document.querySelector('.close-modal');
 
-            function closeImageLightbox() {
-                imageLightboxModal.style.display = 'none';
-                document.body.style.overflow = '';
-            }
-                
-            sponsorImages.forEach(img => {
-                img.addEventListener('click', (event) => {
-                    const fullSrc = img.getAttribute('data-full-src');
-                    if (fullSrc) {
-                        openImageLightbox(fullSrc);
+            teamLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    const imageUrl = this.getAttribute('data-image-src');
+                    if (imageUrl) {
+                        modalImage.src = imageUrl;
+                        modalImage.style.display = 'block'; 
+                        modalOverlay.classList.add('active');
+                        document.body.style.overflow = 'hidden';
                     }
                 });
             });
 
-            if (closeLightboxButton) {
-                closeLightboxButton.addEventListener('click', closeImageLightbox);
+            function closeTeamModal() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                modalImage.src = '';
+                modalImage.style.display = 'none';
             }
 
-            if (imageLightboxModal) {
-                imageLightboxModal.addEventListener('click', (event) => {
-                    if (event.target === imageLightboxModal) {
-                        closeImageLightbox();
-                    }
-                });
-            }
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === "Escape" && imageLightboxModal.style.display === 'flex') {
-                    closeImageLightbox();
+            closeModal.addEventListener('click', closeTeamModal);
+            modalOverlay.addEventListener('click', function(event) {
+                if (event.target === modalOverlay) {
+                    closeTeamModal();
+                }
+            });
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    closeTeamModal();
                 }
             });
         });
     </script>
-</div>
 </body>
 </html>
