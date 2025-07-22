@@ -3,56 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon CV - Maxence Boyer</title> {# Titre direct ici #}
+    <title>Mon CV - Maxence Boyer</title>
 
-    {# Inclure la même police Google Fonts pour la cohérence #}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <style>
         body {
-            /* Exactement le même dégradé que la page d'accueil et loisirs */
             background-image: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d); 
-            
-            background-attachment: fixed; /* Le fond reste fixe au défilement */
+            background-attachment: fixed;
             background-size: cover;
             background-position: center;
-            color: #E0E0E0; /* Couleur de texte principale claire */
-            font-family: 'Roboto', sans-serif; /* Police moderne */
+            color: #E0E0E0;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Empêche le défilement horizontal indésirable */
+            overflow-x: hidden;
         }
 
         .main-container {
-            max-width: 950px; /* Légèrement plus large pour plus d'impact */
-            margin: 4rem auto; /* Marge pour centrer le conteneur */
-            padding: 3rem; /* Plus de padding pour un aspect plus grand */
-            background-color: rgba(25, 40, 55, 0.85); /* Un peu moins transparent */
-            border-radius: 20px; /* Bords plus arrondis */
-            box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.5); /* Ombre plus intense */
-            backdrop-filter: blur(10px); /* Flou plus prononcé */
+            max-width: 950px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background-color: rgba(25, 40, 55, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.25); /* Bordure plus visible */
+            border: 2px solid rgba(255, 255, 255, 0.25);
             position: relative;
             z-index: 1;
         }
 
         h1 {
             text-align: center;
-            font-size: 3.2rem; /* Taille légèrement réduite */
-            color: #FFFFFF !important; /* Force le blanc */
-            font-weight: 800; /* Moins gras que 900, mais toujours fort */
+            font-size: 3.2rem;
+            color: #FFFFFF !important;
+            font-weight: 800;
             margin-bottom: 3rem;
             text-transform: uppercase;
-            letter-spacing: 4px; /* Espacement légèrement réduit */
-            background: linear-gradient(to right, #00BFFF, #8A2BE2); /* Garde le dégradé de texte */
+            letter-spacing: 4px;
+            background: linear-gradient(to right, #00BFFF, #8A2BE2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            /* Animation de lueur atténuée */
-            text-shadow: 0 0 15px rgba(0, 191, 255, 0.6), 0 0 30px rgba(0, 191, 255, 0.3); /* Ombres plus douces */
-            animation: softNeonGlow 2s ease-in-out infinite alternate; /* Nouvelle animation plus douce */
+            text-shadow: 0 0 15px rgba(0, 191, 255, 0.6), 0 0 30px rgba(0, 191, 255, 0.3);
+            animation: softNeonGlow 2s ease-in-out infinite alternate;
         }
 
         @keyframes softNeonGlow {
@@ -65,24 +61,24 @@
         }
 
         .cv-section {
-            background-color: rgba(30, 50, 70, 0.95); /* Un peu moins transparent */
-            border-radius: 15px; /* Bords plus arrondis */
-            padding: 2.5rem; /* Plus de padding */
-            margin-bottom: 2.5rem; /* Espacement entre les sections */
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); /* Ombre plus prononcée */
-            border: 1px solid rgba(0, 191, 255, 0.4); /* Bordure lumineuse */
+            background-color: rgba(30, 50, 70, 0.95);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 191, 255, 0.4);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
-            position: relative; /* Pour les pseudo-éléments ou effets */
-            overflow: hidden; /* Pour les effets d'ombre interne */
+            position: relative;
+            overflow: hidden;
         }
 
         .cv-section:hover {
-            transform: translateY(-10px) scale(1.01); /* Léger soulèvement et agrandissement au survol */
-            box-shadow: 0 15px 45px rgba(0, 191, 255, 0.8); /* Ombre encore plus lumineuse */
-            border-color: #FF6347; /* Bordure rouge-orangé au survol */
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 15px 45px rgba(0, 191, 255, 0.8);
+            border-color: #FF6347;
         }
 
-        .cv-section::before { /* Effet de lumière en coin */
+        .cv-section::before {
             content: '';
             position: absolute;
             top: -50px;
@@ -96,55 +92,54 @@
         }
 
         .cv-section:hover::before {
-            transform: scale(10); /* Agrandit l'effet de lumière au survol */
+            transform: scale(10);
         }
 
-
         .cv-section h2 {
-            color: #00BFFF; /* Cyan pour les sous-titres des sections */
-            font-size: 2.2rem; /* Taille plus grande */
-            font-weight: 900; /* Extra gras */
+            color: #00BFFF;
+            font-size: 2.2rem;
+            font-weight: 900;
             margin-top: 0;
             margin-bottom: 1.8rem;
-            border-bottom: 3px solid rgba(0, 191, 255, 0.5); /* Ligne plus épaisse et lumineuse */
+            border-bottom: 3px solid rgba(0, 191, 255, 0.5);
             padding-bottom: 0.8rem;
-            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5); /* Ombre lumineuse */
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
             position: relative;
-            z-index: 2; /* S'assure que le texte est au-dessus de l'effet before */
+            z-index: 2;
         }
 
         .cv-section p, .cv-section ul {
-            font-size: 1.1rem; /* Texte légèrement plus grand */
-            line-height: 1.8; /* Plus d'espacement pour la lisibilité */
-            color: #D5D5D5; /* Texte un peu plus clair */
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #D5D5D5;
             margin-bottom: 1.2rem;
         }
 
         .cv-section ul {
-            list-style: none; /* Supprime les puces par défaut */
+            list-style: none;
             padding-left: 0;
         }
 
         .cv-section ul li {
             position: relative;
-            padding-left: 35px; /* Plus d'espace pour la puce personnalisée */
+            padding-left: 35px;
             margin-bottom: 1rem;
             transition: color 0.2s ease-in-out;
         }
 
         .cv-section ul li:hover {
-            color: #FFFFFF; /* Texte blanc au survol du li */
+            color: #FFFFFF;
         }
 
         .cv-section ul li::before {
-            content: '✨'; /* Puce scintillante */
-            color: #FFD700; /* Couleur or pour la puce */
+            content: '✨';
+            color: #FFD700;
             position: absolute;
             left: 0;
-            font-size: 1.8rem; /* Taille de la puce plus grande */
+            font-size: 1.8rem;
             line-height: 1;
-            top: 0px; /* Ajuste la position verticale de la puce */
-            animation: pulseBullet 1.5s infinite alternate; /* Animation de pulsation */
+            top: 0px;
+            animation: pulseBullet 1.5s infinite alternate;
         }
 
         @keyframes pulseBullet {
@@ -153,19 +148,18 @@
         }
 
         .cv-section strong {
-            color: #FFD700; /* Or pour les éléments importants */
-            font-weight: 900; /* Extra gras */
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.7); /* Petite ombre lumineuse */
+            color: #FFD700;
+            font-weight: 900;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
         }
 
-        /* Styles pour le formulaire de téléchargement du CV */
         .download-section {
             background-color: rgba(30, 50, 70, 0.95);
             border-radius: 15px;
-            padding: 3rem; /* Plus de padding */
+            padding: 3rem;
             text-align: center;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-            margin-top: 3.5rem; /* Espacement avec les sections CV */
+            margin-top: 3.5rem;
             border: 1px solid rgba(0, 191, 255, 0.4);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
@@ -176,7 +170,7 @@
         }
 
         .download-section p {
-            font-size: 1.2rem; /* Texte plus grand */
+            font-size: 1.2rem;
             color: #E0E0E0;
             margin-bottom: 2rem;
             font-weight: 700;
@@ -187,8 +181,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem; /* Plus d'espacement */
-            max-width: 450px; /* Plus large */
+            gap: 1.5rem;
+            max-width: 450px;
             margin: 0 auto;
         }
 
@@ -201,15 +195,15 @@
 
         #emailForm input[type="email"] {
             width: 100%;
-            padding: 1rem 1.2rem; /* Plus de padding */
-            border: 3px solid #00BFFF; /* Bordure plus épaisse */
-            border-radius: 8px; /* Plus arrondi */
-            background-color: rgba(0, 0, 0, 0.4); /* Fond plus sombre */
+            padding: 1rem 1.2rem;
+            border: 3px solid #00BFFF;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.4);
             color: #E0E0E0;
             font-size: 1.1rem;
             outline: none;
             transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            box-shadow: inset 0 0 10px rgba(0, 191, 255, 0.3); /* Ombre interne */
+            box-shadow: inset 0 0 10px rgba(0, 191, 255, 0.3);
         }
 
         #emailForm input[type="email"]::placeholder {
@@ -217,52 +211,74 @@
         }
 
         #emailForm input[type="email"]:focus {
-            border-color: #FF6347; /* Bordure rouge-orangé au focus */
+            border-color: #FF6347;
             box-shadow: 0 0 15px rgba(255, 99, 71, 0.7), inset 0 0 10px rgba(255, 99, 71, 0.5);
-            background-color: rgba(0, 0, 0, 0.6); /* Plus sombre au focus */
+            background-color: rgba(0, 0, 0, 0.6);
         }
 
         #emailForm button[type="submit"] {
-            background-image: linear-gradient(to right, #00BFFF, #8A2BE2); /* Dégradé plus prononcé */
+            background-image: linear-gradient(to right, #00BFFF, #8A2BE2);
             color: #FFFFFF;
-            padding: 1.2rem 2.5rem; /* Plus de padding */
+            padding: 1.2rem 2.5rem;
             border: none;
-            border-radius: 8px; /* Plus arrondi */
-            font-size: 1.3rem; /* Texte plus grand */
-            font-weight: 900; /* Extra gras */
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: 900;
             cursor: pointer;
             transition: background-image 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
             box-shadow: 0 6px 20px rgba(0, 191, 255, 0.6);
-            text-transform: uppercase; /* Texte en majuscules */
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         #emailForm button[type="submit"]:hover {
-            background-image: linear-gradient(to right, #8A2BE2, #00BFFF); /* Inverse le dégradé au survol */
-            transform: translateY(-3px) scale(1.02); /* Soulèvement et léger agrandissement */
-            box-shadow: 0 8px 25px rgba(0, 191, 255, 0.8), 0 0 30px rgba(138, 43, 226, 0.7); /* Ombre double */
+            background-image: linear-gradient(to right, #8A2BE2, #00BFFF);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 191, 255, 0.8), 0 0 30px rgba(138, 43, 226, 0.7);
         }
 
         #error-message {
-            color: #FF6347 !important; /* Rouge vif pour l'erreur */
+            color: #FF6347 !important;
             font-weight: 700;
             margin-top: 1.2rem;
             font-size: 1rem;
             text-shadow: 0 0 5px rgba(255, 99, 71, 0.5);
         }
 
-        /* Styles pour le footer - cohérence avec les autres pages */
-        footer {
+        .footer-content {
             text-align: center;
-            padding: 2.5rem; /* Plus de padding */
-            margin-top: 5rem; /* Plus de marge */
+            padding: 2.5rem;
+            margin-top: 5rem;
             color: #A0A0A0; 
-            background-color: rgba(10, 20, 30, 0.75); /* Un peu moins transparent */
+            background-color: rgba(10, 20, 30, 0.75);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.95rem;
         }
-        footer p {
+        .footer-content p {
             margin: 0.6rem 0;
+        }
+
+        /* Styles for button links */
+        .button-link {
+            display: inline-block;
+            background-image: linear-gradient(to right, #00BFFF, #8A2BE2);
+            color: #FFFFFF;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-image 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.5);
+            margin: 0 10px; /* Space between buttons */
+        }
+
+        .button-link:hover {
+            background-image: linear-gradient(to right, #8A2BE2, #00BFFF);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.7);
         }
         
         /* Responsive adjustments */
@@ -272,7 +288,7 @@
                 padding: 2.5rem;
             }
             h1 {
-                font-size: 2.8rem; /* Ajustement responsive */
+                font-size: 2.8rem;
                 letter-spacing: 3px;
             }
             .cv-section h2 {
@@ -287,7 +303,7 @@
                 border-radius: 15px;
             }
             h1 {
-                font-size: 2.2rem; /* Ajustement responsive */
+                font-size: 2.2rem;
                 margin-bottom: 2rem;
                 letter-spacing: 2px;
             }
@@ -323,6 +339,10 @@
             #emailForm button[type="submit"] {
                 font-size: 1.1rem;
             }
+            .button-link {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -332,7 +352,7 @@
                 border-radius: 10px;
             }
             h1 {
-                font-size: 1.8rem; /* Ajustement responsive */
+                font-size: 1.8rem;
                 letter-spacing: 1px;
                 margin-bottom: 1.5rem;
             }
@@ -371,20 +391,23 @@
             #emailForm button[type="submit"] {
                 font-size: 1rem;
             }
+            .button-link {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+                margin: 0 5px;
+            }
         }
-
     </style>
 </head>
 <body>
 
 <div class="main-container">
 
-    <h1>Mon Curriculum Vitae</h1>
+    <h1>Mon CV</h1>
 
-    {# Ajout de la navigation pour rester cohérent #}
-    <div class="navigation" style="margin-bottom: 3rem;">
-        <a href="index.html">Retour à l'accueil</a>
-        <a href="loisirs.html">Mes Loisirs</a>
+    <div class="navigation" style="margin-bottom: 3rem; text-align: center;">
+        <a href="index.html" class="button-link">Retour à l'accueil</a>
+        <a href="loisirs.html" class="button-link">Mes Loisirs</a>
     </div>
 
     <div class="cv-section">
@@ -468,9 +491,9 @@
         <p id="error-message" style="color: red; display: none;">Veuillez entrer une adresse email valide.</p>
     </div>
 
-</div> 
+</div>
 
-<footer class="footer-content"> {# Ajout de la classe pour la cohérence des styles #}
+<footer class="footer-content">
     <p>© 2025 Maxence Boyer. Tous droits réservés.</p>
     <p>Ce site est protégé par les lois sur le droit d'auteur. Toute reproduction, représentation ou modification du site web est interdit.</p>
     <p>Les images de ce site sont protégés par creative commons.</p>
@@ -483,8 +506,7 @@
         const emailInput = document.getElementById('email');
         const errorMessage = document.getElementById('error-message');
         
-        // MODIFIÉ : Chemin vers le fichier PDF sans Twig
-        const cvPath = "documents/CV1.pdf"; // Assurez-vous que ce chemin est correct par rapport à votre cv.html
+        const cvPath = "documents/CV1.pdf";
 
         if (emailForm) {
             emailForm.addEventListener('submit', function(event) {
@@ -497,9 +519,7 @@
                     
                     const link = document.createElement('a');
                     link.href = cvPath;
-
-                    // MODIFIÉ : Nom du fichier proposé au téléchargement
-                    link.download = 'CV_Maxence_Boyer.pdf'; // Nom plus spécifique
+                    link.download = 'CV_Maxence_Boyer.pdf';
 
                     document.body.appendChild(link);
                     link.click(); 
