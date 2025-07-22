@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio</title>
     
-    {# Inclure la même police Google Fonts pour la cohérence #}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    {# Font Awesome pour les icônes de la lightbox #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* General Body and Background Styles (unchanged from last version) */
         body {
             background-color: #f2994a;
             background-image: linear-gradient(to bottom, #1a1a4a, #5f2c4f, #c43c39, #f2994a);
@@ -25,7 +22,6 @@
             overflow-x: hidden;
         }
 
-        /* Portfolio Container (unchanged) */
         .portfolio-container {
             max-width: 1300px;
             margin: 3rem auto;
@@ -34,7 +30,6 @@
             z-index: 1;
         }
 
-        /* Headings (unchanged) */
         .portfolio-container h1 {
             text-align: center;
             font-weight: 700;
@@ -73,7 +68,6 @@
             color: #f2994a;
         }
 
-        /* Projects Grid (unchanged) */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -81,7 +75,6 @@
             margin-bottom: 4rem;
         }
 
-        /* Project Card (unchanged) */
         .project-card {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
@@ -126,9 +119,9 @@
             gap: 8px;
         }
 
-        .project-card .tag {
+        .tag {
             background-color: rgba(255, 255, 255, 0.15);
-            color: #ffe066; /* Bright yellow/gold for high visibility */
+            color: #ffe066;
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -156,7 +149,6 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Project Image (for cards with images) */
         .project-image {
             width: calc(100% + 4rem);
             margin: -2rem -2rem 1.5rem -2rem;
@@ -172,7 +164,6 @@
             transform: scale(1.03);
         }
 
-        /* Responsive Adjustments (unchanged) */
         @media (max-width: 768px) {
             .portfolio-container {
                 padding: 1rem;
@@ -211,7 +202,6 @@
             }
         }
 
-        /* --- MODAL SPECIFIC STYLES --- */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -219,11 +209,10 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
-            /* Dark semi-transparent background */
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000; /* Ensure it's on top of everything */
+            z-index: 1000;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -236,28 +225,23 @@
 
         .modal-content {
             background: rgba(255, 255, 255, 0.15);
-            /* Slightly brighter glassmorphism */
             backdrop-filter: blur(15px);
             border-radius: 20px;
             padding: 2.5rem;
-            max-width: 700px; /* Wider modal content */
+            max-width: 700px;
             width: 90%;
-            /* Responsive width */
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             position: relative;
-            transform: translateY(20px); /* Start slightly below center */
+            transform: translateY(20px);
             opacity: 0;
             transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-            color: #fff; /* White text for modal content */
+            color: #fff;
             overflow-y: auto;
-            /* Enable scrolling if content is too long */
             max-height: 85vh;
-            /* Max height to fit within viewport */
         }
 
         .modal-overlay.active .modal-content {
             transform: translateY(0);
-            /* Animate to center */
             opacity: 1;
         }
 
@@ -275,7 +259,6 @@
 
         .modal-close-button:hover {
             color: #f2994a;
-            /* Hover color for close button */
         }
 
         .modal-content h3 {
@@ -291,7 +274,7 @@
             font-size: 1.5rem;
             margin-top: 1.5rem;
             margin-bottom: 0.8rem;
-            color: #ffe066; /* Yellow for subheadings */
+            color: #ffe066;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             padding-bottom: 5px;
         }
@@ -310,15 +293,13 @@
 
         .modal-content ul li {
             position: relative;
-            padding-left: 25px; /* Space for custom bullet */
+            padding-left: 25px;
             margin-bottom: 0.7rem;
         }
 
         .modal-content ul li::before {
             content: '✓';
-            /* Success bullet */
             color: #66ff99;
-            /* Green for success */
             position: absolute;
             left: 0;
             font-weight: bold;
@@ -327,18 +308,13 @@
 
         .modal-content ul.challenges li::before {
             content: '✗';
-            /* Failure bullet */
             color: #ff6666;
-            /* Red for challenges */
         }
 
         .modal-content .github-button {
             display: block;
-            /* Make it a block-level element */
             width: fit-content;
-            /* Adjust width to content */
             margin: 2rem auto 0;
-            /* Center the button */
             padding: 14px 30px;
             font-size: 1.1rem;
             font-weight: 600;
@@ -357,7 +333,6 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
-        /* --- NOUVEAUX STYLES POUR LA PAGE CTF DÉTAILS DANS LE MODAL --- */
         .sponsor-section {
             text-align: center;
             margin-top: 2.5rem;
@@ -388,18 +363,16 @@
             max-height: 80px;
             width: auto;
             object-fit: contain;
-            filter: grayscale(80%) brightness(120%); /* Rendre les logos plus "blancs" ou subtils */
+            filter: grayscale(80%) brightness(120%);
             transition: filter 0.3s ease, transform 0.3s ease;
-            cursor: pointer; /* Ajout du curseur pour indiquer qu'elles sont cliquables */
+            cursor: pointer;
         }
 
         .sponsor-grid img:hover {
             filter: grayscale(0%) brightness(100%);
-            /* Couleur originale au survol */
             transform: scale(1.05);
         }
 
-        /* Ranking Animation */
         .ranking-section {
             text-align: center;
             margin-top: 3rem;
@@ -408,7 +381,6 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             overflow: hidden;
-            /* Important pour les animations */
         }
 
         .ranking-section h4 {
@@ -427,13 +399,12 @@
             justify-content: center;
             position: relative;
             height: 150px;
-            /* Hauteur pour l'animation */
         }
 
         .team-rank {
             font-size: 3.5rem;
             font-weight: 700;
-            color: #66ff99; /* Vert éclatant */
+            color: #66ff99;
             text-shadow: 0 0 15px rgba(102, 255, 153, 0.7);
             position: absolute;
             opacity: 0;
@@ -445,7 +416,7 @@
             font-size: 1.8rem;
             font-weight: 500;
             color: #fff;
-            margin-top: 4rem; /* Pour positionner sous le rang */
+            margin-top: 4rem;
             opacity: 0;
             animation: fadeInBottom 1.5s ease-out forwards;
             animation-delay: 1s;
@@ -473,7 +444,6 @@
             }
         }
 
-        /* Image de classement */
         .ranking-image {
             max-width: 100%;
             height: auto;
@@ -482,10 +452,8 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
-        /* --- NOUVEAUX STYLES POUR LA LIGHTBOX DES SPONSORS (IMAGE) --- */
         .lightbox-overlay {
             display: none;
-            /* Caché par défaut */
             position: fixed;
             z-index: 1000;
             left: 0;
@@ -493,7 +461,6 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
-            /* Fond noir très sombre pour mettre en valeur l'image */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -501,11 +468,8 @@
 
         .lightbox-content {
             max-width: 95%;
-            /* Maximum 95% de la largeur de l'écran */
             max-height: 95vh;
-            /* Maximum 95% de la hauteur de l'écran */
             object-fit: contain;
-            /* L'image s'ajuste sans être déformée */
             transition: transform 0.3s ease;
         }
 
@@ -519,7 +483,6 @@
             transition: 0.3s;
             cursor: pointer;
             z-index: 1001;
-            /* Au-dessus de l'image */
         }
 
         .close-lightbox:hover,
@@ -555,7 +518,6 @@
                 <span class="tag">ACL</span>
                 <span class="tag">NAT</span>
             </div>
-            {# Changed this button to trigger the modal #}
             <a href="#" class="cta-button" id="openCampusModalButton">Voir détail</a>
         </div>
 
@@ -627,7 +589,6 @@
                 <span class="tag">Formation</span>
                 <span class="tag">Certification</span>
             </div>
-            {# NEW: Add button to trigger SecNumAcademy modal #}
             <a href="#" class="cta-button" id="openSecNumModalButton">Voir détail</a>
         </div>
 
@@ -643,7 +604,6 @@
                 <span class="tag">Challenge</span>
             </div>
         
-            {# Nouveau bouton pour le modal CTF #}
             <a href="#" class="cta-button" id="openCTFModalButton">Voir détail</a>
         </div>
 
@@ -651,7 +611,6 @@
 
 </div>
 
-{# --- MODAL HTML STRUCTURE pour Infrastructure Réseau --- #}
 <div id="campusNetworkModal" class="modal-overlay">
     <div class="modal-content">
         <button class="modal-close-button">&times;</button>
@@ -689,7 +648,6 @@
     </div>
 </div>
 
-{# --- NOUVEAU MODAL HTML STRUCTURE pour Participation CTF Vannes (modifié pour la "belle page") --- #}
 <div id="ctfModal" class="modal-overlay">
     <div class="modal-content">
         <button class="modal-close-button">&times;</button>
@@ -753,7 +711,6 @@
     </div>
 </div>
 
-{# --- NOUVEAU MODAL HTML STRUCTURE pour la Certification SecNumAcadémie --- #}
 <div id="secNumModal" class="modal-overlay">
     <div class="modal-content">
         <button class="modal-close-button">&times;</button>
@@ -770,14 +727,12 @@
             <li>**Aspects Juridiques et Éthiques :** Sensibilisation aux réglementations (RGPD) et à l'éthique dans le domaine de la cybersécurité.</li>
         </ul>
 
-        {# Bouton pour télécharger la certification PDF #}
         <a href="documents/Attestation secnumacadémie.pdf" target="_blank" class="cta-button" style="margin-top: 3rem; margin-bottom: 0;">
             Voir ma certification
         </a>
     </div>
 </div>
 
-{# --- LIGHTBOX HTML STRUCTURE pour les images des sponsors --- #}
 <div id="imageLightboxModal" class="lightbox-overlay" style="display: none;">
     <span class="close-lightbox">&times;</span>
     <img class="lightbox-content" id="lightbox-image-viewer" src="" alt="Image agrandie" />
@@ -785,44 +740,37 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Modal pour Campus Network
         const openCampusButton = document.getElementById('openCampusModalButton');
         const campusModal = document.getElementById('campusNetworkModal');
         const closeCampusButton = campusModal.querySelector('.modal-close-button');
 
-        // Modal pour CTF Vannes
         const openCTFButton = document.getElementById('openCTFModalButton');
         const ctfModal = document.getElementById('ctfModal');
         const closeCTFButton = ctfModal.querySelector('.modal-close-button');
         
-        // NEW: Modal pour SecNumAcadémie
         const openSecNumButton = document.getElementById('openSecNumModalButton');
         const secNumModal = document.getElementById('secNumModal');
         const closeSecNumButton = secNumModal.querySelector('.modal-close-button');
 
 
-        // Lightbox pour les images des sponsors
         const imageLightboxModal = document.getElementById('imageLightboxModal');
         const lightboxImageViewer = document.getElementById('lightbox-image-viewer');
         const closeLightboxButton = imageLightboxModal.querySelector('.close-lightbox');
         const sponsorImages = document.querySelectorAll('.sponsor-grid img');
         
-        // Fonction générique pour ouvrir un modal (utilisée pour les modals de projets)
         function openModal(modalElement) {
             modalElement.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Empêche le défilement du corps
+            document.body.style.overflow = 'hidden';
         }
 
-        // Fonction générique pour fermer un modal
         function closeModal(modalElement) {
             modalElement.classList.remove('active');
-            document.body.style.overflow = ''; // Réactive le défilement du corps
+            document.body.style.overflow = '';
         }
 
-        // Gestionnaire d'événements pour le modal Campus Network
         if (openCampusButton) {
             openCampusButton.addEventListener('click', function(e) {
-                e.preventDefault(); // Empêche le lien de recharger la page
+                e.preventDefault();
                 openModal(campusModal);
             });
         }
@@ -831,7 +779,6 @@
                 closeModal(campusModal);
             });
         }
-        // Fermer le modal en cliquant en dehors
         if (campusModal) {
             campusModal.addEventListener('click', function(e) {
                 if (e.target === campusModal) {
@@ -840,7 +787,6 @@
             });
         }
 
-        // Gestionnaire d'événements pour le modal CTF Vannes
         if (openCTFButton) {
             openCTFButton.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -852,7 +798,6 @@
                 closeModal(ctfModal);
             });
         }
-        // Fermer le modal en cliquant en dehors
         if (ctfModal) {
             ctfModal.addEventListener('click', function(e) {
                 if (e.target === ctfModal) {
@@ -861,7 +806,6 @@
             });
         }
 
-        // Gestionnaire d'événements pour le modal SecNumAcadémie
         if (openSecNumButton) {
             openSecNumButton.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -873,7 +817,6 @@
                 closeModal(secNumModal);
             });
         }
-        // Fermer le modal en cliquant en dehors
         if (secNumModal) {
             secNumModal.addEventListener('click', function(e) {
                 if (e.target === secNumModal) {
@@ -882,19 +825,17 @@
             });
         }
 
-        // Gestionnaire pour la lightbox des images de sponsors
         function openImageLightbox(src) {
             lightboxImageViewer.src = src;
             imageLightboxModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Empêche le défilement du corps
+            document.body.style.overflow = 'hidden';
         }
 
         function closeImageLightbox() {
             imageLightboxModal.style.display = 'none';
-            document.body.style.overflow = ''; // Réactive le défilement du corps
+            document.body.style.overflow = '';
         }
             
-        // Écouter les clics sur toutes les images de sponsors
         sponsorImages.forEach(img => {
             img.addEventListener('click', (event) => {
                 const fullSrc = img.getAttribute('data-full-src');
@@ -904,12 +845,10 @@
             });
         });
 
-        // Fermer la lightbox via le bouton X
         if (closeLightboxButton) {
             closeLightboxButton.addEventListener('click', closeImageLightbox);
         }
 
-        // Fermer la lightbox en cliquant sur l'overlay (l'arrière-plan noir)
         if (imageLightboxModal) {
             imageLightboxModal.addEventListener('click', (event) => {
                 if (event.target === imageLightboxModal) {
@@ -918,7 +857,6 @@
             });
         }
 
-        // Fermer la lightbox en appuyant sur la touche Échappement (ESC)
         document.addEventListener('keydown', (event) => {
             if (event.key === "Escape" && imageLightboxModal.style.display === 'flex') {
                 closeImageLightbox();
