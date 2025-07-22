@@ -134,7 +134,7 @@
             font-family: 'Montserrat', sans-serif;
         }
         
-        .eportfolio-section h3 { /* Style for individual AC headings */
+        .eportfolio-section h3 {
             color: var(--color-gold);
             font-size: 1.8rem;
             font-weight: 700;
@@ -696,7 +696,7 @@
                 if (this.dataset.fullSrc) {
                     lightboxImage.src = this.dataset.fullSrc;
                 } else {
-                    lightboxImage.src = this.src;
+                    lightboxImage.src = newImage.src;
                 }
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
