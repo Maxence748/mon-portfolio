@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Vannes - Détails de participation</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #f2994a;
+            background-image: linear-gradient(to bottom, #1a1a4a, #5f2c4f, #c43c39, #f2994a);
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .page-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .page-container h1 {
+            font-size: 2.8rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            text-align: center;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .page-container h4 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #ffe066;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .page-container p, .page-container ul {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .page-container ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .page-container ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 0.7rem;
+        }
+
+        .page-container ul li::before {
+            content: '✓';
+            color: #66ff99;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .page-container ul.challenges li::before {
+            content: '✗';
+            color: #ff6666;
+        }
+
+        .cta-button {
+            display: inline-block;
+            text-decoration: none;
+            background: linear-gradient(to right, #c43c39, #f2994a);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(to right, #f2994a, #c43c39);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .ranking-section {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .ranking-section h4 {
+            font-size: 1.8rem;
+            color: #ffe066;
+            margin-bottom: 1.5rem;
+            border-bottom: none;
+            padding-bottom: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .ranking-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 150px;
+        }
+
+        .team-rank {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #66ff99;
+            text-shadow: 0 0 15px rgba(102, 255, 153, 0.7);
+            position: absolute;
+            opacity: 0;
+            animation: fadeInTop 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        .team-name {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #fff;
+            margin-top: 4rem;
+            opacity: 0;
+            animation: fadeInBottom 1.5s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes fadeInTop {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInBottom {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .ranking-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .sponsor-section {
+            text-align: center;
+            margin-top: 2.5rem;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        .sponsor-section h4 {
+            font-size: 1.8rem;
+            color: #f2994a;
+            margin-bottom: 1.5rem;
+            border-bottom: none;
+            padding-bottom: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .sponsor-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .sponsor-grid img {
+            max-height: 80px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(80%) brightness(120%);
+            transition: filter 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sponsor-grid img:hover {
+            filter: grayscale(0%) brightness(100%);
+            transform: scale(1.05);
+        }
+        
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 95%;
+            max-height: 95vh;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close-lightbox:hover,
+        .close-lightbox:focus {
+            color: #f2994a;
+            text-decoration: none;
+        }
+
+        .back-button {
+            display: inline-block;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(to right, #f2994a, #c43c39);
+            border-color: #f2994a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .view-scoreboard-button {
+            display: inline-block;
+            text-decoration: none;
+            background: linear-gradient(to right, #66ff99, #34a853);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .view-scoreboard-button:hover {
+            background: linear-gradient(to right, #34a853, #66ff99);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+
+        @media (max-width: 768px) {
+            .page-container {
+                padding: 1rem;
+                margin: 1.5rem auto;
+            }
+            .page-container h1 {
+                font-size: 2rem;
+            }
+            .page-container h4 {
+                font-size: 1.5rem;
+            }
+            .page-container p, .page-container ul {
+                font-size: 1rem;
+            }
+            .cta-button, .back-button, .view-scoreboard-button {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page-container">
+    <a href="index.html" class="back-button">← Retour au Portfolio</a>
+    <h1>Participation CTF Vannes : Détails</h1>
+
+    <p>
+        Ma participation à la compétition "Capture The Flag" de Vannes a été une expérience enrichissante, me permettant de mettre en pratique et d'approfondir mes compétences en cybersécurité offensive et défensive.
+        Ce type de challenge simule des scénarios réels de sécurité informatique, où l'objectif est de trouver des "flags" (des chaînes de caractères cachées) en exploitant des vulnérabilités.
+    </p>
+
+    <h4>Compétences Mises en Œuvre</h4>
+    <ul>
+        <li>**Cryptographie :** Résolution d'énigmes basées sur différents algorithmes de chiffrement (RSA, AES, chiffre de César, etc.) et identification de faiblesses cryptographiques.</li>
+        <li>**Stéganographie :** Extraction d'informations cachées dans des fichiers multimédias (images, audio, vidéo) ou d'autres types de fichiers.</li>
+        <li>**Exploitation de Binaires (Pwn) :** Analyse et exploitation de programmes compilés pour prendre le contrôle ou obtenir des informations sensibles, notamment via des techniques de buffer overflow, format string bugs.</li>
+        <li>**Web Hacking :** Identification et exploitation de vulnérabilités web courantes (SQL Injection, XSS, SSRF, LFI/RFI) sur des applications web.</li>
+        <li>**Analyse Forensique :** Examen de disques, de mémoire ou de paquets réseau pour récupérer des preuves ou des informations cachées.</li>
+        <li>**Reverse Engineering :** Décompilation et analyse de programmes pour comprendre leur logique interne et découvrir des secrets.</li>
+        <li>**Scripting :** Développement de scripts (Python, Bash) pour automatiser des tâches, déchiffrer des données ou faciliter l'exploitation.</li>
+    </ul>
+
+    <h4>Objectifs et Apprentissages</h4>
+    <ul class="challenges">
+        <li>**Pensée Critique et Résolution de Problèmes :** Les CTF exigent une approche méthodique et créative pour résoudre des problèmes complexes et non conventionnels.</li>
+        <li>**Travail d'Équipe :** Collaboration avec d'autres participants pour combiner les compétences et accélérer la résolution des défis.</li>
+        <li>**Gestion du Temps et Pression :** Apprendre à travailler efficacement sous contrainte de temps pour maximiser le nombre de flags trouvés.</li>
+        <li>**Veille Technologique :** Nécessité de se tenir constamment informé des nouvelles vulnérabilités et techniques d'attaque/défense.</li>
+    </ul>
+
+    <div class="ranking-section">
+        <h4>Notre Classement Final</h4>
+        <div class="ranking-display">
+            <div class="team-rank">17<sup>ème</sup></div>
+            <div class="team-name">Équipe : CyberFraude2025</div>
+        </div>
+        <img src="images/image_367629.png" alt="Classement final du CTF" class="ranking-image">
+        <a href="classement-ctf.html" class="view-scoreboard-button">Voir le classement complet</a>
+    </div>
+
+    <div class="sponsor-section">
+        <h4>Nos Sponsors</h4>
+        <div class="sponsor-grid">
+            <img src="images/sponsor1.jpg" alt="Sponsor 1" data-full-src="images/sponsor1.jpg" />
+            <img src="images/sponsor2.jpg" alt="Sponsor 2" data-full-src="images/sponsor2.jpg" />
+            <img src="images/sponsor3.jpg" alt="Sponsor 3" data-full-src="images/sponsor3.jpg" />
+            <img src="images/sponsor4.jpg" alt="Sponsor 4" data-full-src="images/sponsor4.jpg" />
+            <img src="images/sponsor5.jpg" alt="Sponsor 5" data-full-src="images/sponsor5.jpg" />
+        </div>
+    </div>
+    
+    <div id="imageLightboxModal" class="lightbox-overlay">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-image-viewer" src="" alt="Image agrandie" />
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageLightboxModal = document.getElementById('imageLightboxModal');
+            const lightboxImageViewer = document.getElementById('lightbox-image-viewer');
+            const closeLightboxButton = imageLightboxModal.querySelector('.close-lightbox');
+            const sponsorImages = document.querySelectorAll('.sponsor-grid img');
+            
+            function openImageLightbox(src) {
+                lightboxImageViewer.src = src;
+                imageLightboxModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeImageLightbox() {
+                imageLightboxModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+                
+            sponsorImages.forEach(img => {
+                img.addEventListener('click', (event) => {
+                    const fullSrc = img.getAttribute('data-full-src');
+                    if (fullSrc) {
+                        openImageLightbox(fullSrc);
+                    }
+                });
+            });
+
+            if (closeLightboxButton) {
+                closeLightboxButton.addEventListener('click', closeImageLightbox);
+            }
+
+            if (imageLightboxModal) {
+                imageLightboxModal.addEventListener('click', (event) => {
+                    if (event.target === imageLightboxModal) {
+                        closeImageLightbox();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === "Escape" && imageLightboxModal.style.display === 'flex') {
+                    closeImageLightbox();
+                }
+            });
+        });
+    </script>
+</div>
+</body>
+</html>
