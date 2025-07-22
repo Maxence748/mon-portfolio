@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio</title>
 
-    {# Inclure la même police Google Fonts pour la cohérence #}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    {# Font Awesome pour les icônes de la lightbox #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
@@ -495,14 +493,12 @@
 
     <h1>Bienvenue sur la page de mon e-portfolio</h1>
 
-    {# Section Administrer #}
     <div class="eportfolio-section">
         <h2>Administrer</h2>
         <p>
             Consiste à gérer, configurer et superviser les infrastructures réseaux et systèmes informatiques afin d'assurer leur bon fonctionnement, leur sécurité et leur disponibilité pour les utilisateurs.
         </p>
 
-        {# AC11.02 #}
         <h3>Compétence AC11.02</h3>
         <button class="toggle-btn" data-target="details-ac1102">Architecture d'une broadboard</button>
         <div class="details" id="details-ac1102" style="display: none;">
@@ -517,7 +513,6 @@
             </div>
         </div>
 
-        {# AC11.03, AC11.05, AC11.06 #}
         <h3>Compétences AC11.03, AC11.05, AC11.06</h3>
         <button class="toggle-btn" data-target="details-ac1103-05-06">Configurer un réseau local</button>
         <div class="details" id="details-ac1103-05-06" style="display: none;">
@@ -593,14 +588,12 @@
         </div>
     </div>
 
-    {# Section Connecter #}
     <div class="eportfolio-section">
         <h2>Connecter</h2>
         <p>
             Consiste à établir, configurer et maintenir les connexions entre les équipements et réseaux pour assurer une communication efficace et fiable.
         </p>
 
-        {# AC12.01 #}
         <h3>Compétence AC12.01</h3>
         <button class="toggle-btn" data-target="details-ac1201">(Mesurer et analyser les signaux</button>
         <div class="details" id="details-ac1201" style="display: none;">
@@ -616,14 +609,12 @@
         </div>
     </div>
 
-    {# Section Communiquer #}
     <div class="eportfolio-section">
         <h2>Communiquer</h2>
         <p>
             Consiste à transmettre efficacement des informations techniques ou fonctionnelles, que ce soit à des équipes, des clients ou des partenaires, en utilisant des outils et supports adaptés.
         </p>
 
-        {# AC13.01 #}
         <h3>Compétence AC13.01</h3>
         <button class="toggle-btn" data-target="details-ac1301">Configuration et utilisation d'une machine virtuelle</button>
         <div class="details" id="details-ac1301" style="display: none;">
@@ -647,9 +638,8 @@
         </div>
     </div>
 
-</div> {# /main-container #}
+</div> 
 
-{# Lightbox overlay (à la fin du body) #}
 <div class="lightbox-overlay" id="lightbox">
     <div class="lightbox-content">
         <img id="lightbox-image" src="" alt="Agrandissement">
@@ -665,10 +655,9 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Unifier la fonction toggleContent
         document.querySelectorAll('.toggle-btn').forEach(button => {
             button.addEventListener('click', function() {
-                const targetId = this.dataset.target; // Utilise data-target
+                const targetId = this.dataset.target; 
                 const content = document.getElementById(targetId);
 
                 if (content) {
@@ -685,7 +674,6 @@
             });
         });
 
-        // Gérer la Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightbox-image');
         const lightboxCloseBtn = document.getElementById('lightbox-close-btn');
@@ -696,12 +684,10 @@
 
         document.querySelectorAll('.image-item img').forEach(image => {
             image.addEventListener('click', function() {
-                // Collecte toutes les images du même groupe (même .image-item parent)
                 const parentImageItem = this.closest('.image-item');
                 if (parentImageItem) {
                     currentImages = Array.from(parentImageItem.querySelectorAll('img'));
                 } else {
-                    // Si l'image n'est pas dans un .image-item, considère-la seule
                     currentImages = [this];
                 }
                 
@@ -710,16 +696,16 @@
                 if (this.dataset.fullSrc) {
                     lightboxImage.src = this.dataset.fullSrc;
                 } else {
-                    lightboxImage.src = this.src; // Fallback au src si data-full-src non défini
+                    lightboxImage.src = this.src;
                 }
-                lightbox.classList.add('active'); // Rend la lightbox visible
-                document.body.style.overflow = 'hidden'; // Empêche le défilement du body
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
         });
 
         lightboxCloseBtn.addEventListener('click', () => {
             lightbox.classList.remove('active');
-            document.body.style.overflow = ''; // Rétablit le défilement
+            document.body.style.overflow = '';
         });
 
         lightboxPrevBtn.addEventListener('click', () => {
