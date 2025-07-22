@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+
+    {# Inclure la même police Google Fonts pour la cohérence #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    {# Font Awesome pour les icônes de la lightbox #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-primary-dark: #1a2a6c;
+            --color-primary-middle: #b21f1f;
+            --color-primary-light: #fdbb2d;
+            --color-accent-blue: #00BFFF;
+            --color-accent-purple: #8A2BE2;
+            --color-text-light: #E0E0E0;
+            --color-text-darker: #D5D5D5;
+            --color-gold: #FFD700;
+            --color-background-card: rgba(25, 40, 55, 0.92); /* Slightly less transparent */
+            --color-background-section: rgba(30, 50, 70, 0.98); /* Almost opaque */
+            --color-footer-bg: rgba(10, 20, 30, 0.85); /* Slightly less transparent */
+        }
+
+        body {
+            background-image: linear-gradient(to bottom, var(--color-primary-dark), var(--color-primary-middle), var(--color-primary-light)); 
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            color: var(--color-text-light);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .main-container {
+            max-width: 1000px; /* Wider for more content */
+            margin: 4.5rem auto; /* More margin for visual breathing room */
+            padding: 3.5rem; /* Increased padding */
+            background-color: var(--color-background-card); 
+            border-radius: 25px; /* More rounded */
+            box-shadow: 0 20px 60px 0 rgba(0, 0, 0, 0.6); /* Deeper shadow */
+            backdrop-filter: blur(12px); /* Stronger blur */
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.35); /* More prominent border */
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease-in-out; /* Smooth transition for potential future changes */
+        }
+
+        .main-container:hover {
+            box-shadow: 0 25px 70px 0 rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3.8rem; /* Larger and more impactful */
+            color: #FFFFFF !important;
+            font-weight: 900; /* Extra bold */
+            margin-bottom: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 5px; /* More pronounced spacing */
+            background: linear-gradient(to right, var(--color-accent-blue), var(--color-accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 191, 255, 0.7), 0 0 40px rgba(0, 191, 255, 0.4);
+            animation: vibrantNeonGlow 2.5s ease-in-out infinite alternate; /* More vibrant animation */
+            font-family: 'Montserrat', sans-serif; /* A more modern, strong font for headings */
+        }
+
+        @keyframes vibrantNeonGlow {
+            from {
+                text-shadow: 0 0 15px rgba(0, 191, 255, 0.6), 0 0 30px rgba(0, 191, 255, 0.3), 0 0 45px rgba(0, 191, 255, 0.2);
+            }
+            to {
+                text-shadow: 0 0 25px rgba(0, 191, 255, 0.9), 0 0 50px rgba(0, 191, 255, 0.5), 0 0 75px rgba(0, 191, 255, 0.3);
+            }
+        }
+
+        .eportfolio-section {
+            background-color: var(--color-background-section);
+            border-radius: 20px; /* More rounded */
+            padding: 3rem; /* More generous padding */
+            margin-bottom: 3rem; /* More space between sections */
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); /* Stronger shadow */
+            border: 1px solid rgba(0, 191, 255, 0.6); /* More prominent border */
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, border-color 0.4s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .eportfolio-section:hover {
+            transform: translateY(-12px) scale(1.015); /* Stronger lift and slight scale */
+            box-shadow: 0 20px 55px rgba(0, 191, 255, 0.9); /* Even more luminous shadow */
+            border-color: var(--color-gold); /* Gold border on hover */
+        }
+
+        .eportfolio-section::before {
+            content: '';
+            position: absolute;
+            top: -70px; /* Start higher */
+            left: -70px; /* Start further left */
+            width: 140px; /* Larger light source */
+            height: 140px; /* Larger light source */
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.4) 0%, transparent 65%); /* Softer gradient */
+            border-radius: 50%;
+            transition: transform 0.6s ease-out, opacity 0.4s ease-out; /* Slower and more visible transition */
+            transform: scale(0);
+            opacity: 0;
+            z-index: 0; /* Ensure it stays behind content initially */
+        }
+
+        .eportfolio-section:hover::before {
+            transform: scale(12); /* Larger scale on hover */
+            opacity: 1;
+        }
+
+        .eportfolio-section h2 {
+            color: var(--color-accent-blue);
+            font-size: 2.6rem; /* Larger sub-title */
+            font-weight: 900;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            border-bottom: 4px solid rgba(0, 191, 255, 0.6); /* Thicker and more luminous line */
+            padding-bottom: 1rem;
+            text-shadow: 0 0 12px rgba(0, 191, 255, 0.6); /* Stronger luminous shadow */
+            position: relative;
+            z-index: 2;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .eportfolio-section h3 { /* Style for individual AC headings */
+            color: var(--color-gold);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 0.8rem;
+        }
+
+
+        .eportfolio-section p, .eportfolio-section ul {
+            font-size: 1.15rem; /* Slightly larger text */
+            line-height: 1.9; /* Increased line spacing */
+            color: var(--color-text-darker);
+            margin-bottom: 1.5rem;
+        }
+
+        .eportfolio-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .eportfolio-section ul li {
+            position: relative;
+            padding-left: 40px; /* More space for custom bullet */
+            margin-bottom: 1.2rem;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .eportfolio-section ul li:hover {
+            color: #FFFFFF;
+        }
+
+        .eportfolio-section ul li::before {
+            content: '✦'; /* More elegant star bullet */
+            color: var(--color-gold);
+            position: absolute;
+            left: 0;
+            font-size: 2rem; /* Larger and more prominent bullet */
+            line-height: 1;
+            top: -2px; /* Adjust vertical position */
+            animation: pulseBullet 1.8s infinite alternate ease-in-out; /* Slower, smoother pulse */
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.7); /* Subtle glow for the bullet */
+        }
+
+        @keyframes pulseBullet {
+            from { transform: scale(1); opacity: 0.8; text-shadow: 0 0 5px rgba(255, 215, 0, 0.6); }
+            to { transform: scale(1.15); opacity: 1; text-shadow: 0 0 10px rgba(255, 215, 0, 1); }
+        }
+
+        .eportfolio-section strong {
+            color: var(--color-gold);
+            font-weight: 900;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.8); /* More noticeable glow */
+        }
+
+        .details, .description {
+            margin-top: 1.8rem;
+            border-top: 1px solid rgba(0, 191, 255, 0.3);
+            padding-top: 1.8rem;
+            animation: fadeIn 0.6s ease-out forwards; /* Slower fade-in */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .toggle-btn {
+            background-image: linear-gradient(to right, var(--color-accent-blue), var(--color-accent-purple));
+            color: #FFFFFF;
+            padding: 1rem 2rem; /* Larger button */
+            border: none;
+            border-radius: 50px;
+            font-size: 1.05rem; /* Slightly larger text */
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-image 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5); /* Stronger initial shadow */
+            margin-top: 1.5rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .toggle-btn:hover {
+            background-image: linear-gradient(to right, var(--color-accent-purple), var(--color-accent-blue));
+            transform: translateY(-3px) scale(1.03); /* More pronounced lift and scale */
+            box-shadow: 0 9px 28px rgba(0, 191, 255, 0.8); /* More intense hover shadow */
+        }
+
+        .image-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem; /* More spacing between images */
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .image-item img {
+            max-width: 100%;
+            width: 280px; /* Slightly larger thumbnails */
+            height: 200px; /* Slightly larger thumbnails */
+            object-fit: cover;
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Deeper shadow for thumbnails */
+            border: 2px solid rgba(0, 191, 255, 0.4); /* Stronger border */
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .image-item img:hover {
+            transform: scale(1.07); /* More pronounced enlargement on hover */
+            box-shadow: 0 12px 35px rgba(0, 191, 255, 0.9); /* Brighter and deeper shadow */
+            border-color: var(--color-gold); /* Gold border on hover */
+        }
+        
+        /* Lightbox Styles */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); /* Darker overlay */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 95%; /* Slightly larger for image */
+            max-height: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 15px; /* More rounded image in lightbox */
+            box-shadow: 0 0 30px rgba(0, 191, 255, 1); /* More intense glow */
+        }
+
+        .lightbox-close, .lightbox-nav {
+            position: absolute;
+            color: #FFF;
+            font-size: 3rem; /* Larger icons */
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.6); /* Slightly more opaque background */
+            border-radius: 50%;
+            padding: 0.6rem 1.1rem; /* More padding */
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); /* Added shadow to buttons */
+        }
+
+        .lightbox-close:hover, .lightbox-nav:hover {
+            background-color: rgba(0, 191, 255, 0.8); /* Brighter hover background */
+            color: var(--color-gold);
+            transform: scale(1.1); /* Slightly enlarge buttons on hover */
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
+        }
+
+        .lightbox-close {
+            top: 25px;
+            right: 25px;
+            font-size: 3rem;
+            line-height: 1;
+            width: 60px; /* Larger button */
+            height: 60px; /* Larger button */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-nav.prev {
+            left: -80px; /* Further outside */
+        }
+
+        .lightbox-nav.next {
+            right: -80px; /* Further outside */
+        }
+
+        /* Footer Styles - coherence with other pages */
+        footer {
+            text-align: center;
+            padding: 3rem; /* More padding */
+            margin-top: 6rem; /* More margin */
+            color: #B0B0B0; /* Slightly lighter footer text */
+            background-color: var(--color-footer-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more visible border */
+            font-size: 1rem;
+        }
+        footer p {
+            margin: 0.8rem 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .main-container {
+                max-width: 900px;
+                padding: 3rem;
+            }
+            h1 {
+                font-size: 3.2rem;
+                letter-spacing: 4px;
+            }
+            .eportfolio-section h2 {
+                font-size: 2.2rem;
+            }
+            .eportfolio-section h3 {
+                font-size: 1.6rem;
+            }
+            .lightbox-nav.prev {
+                left: 15px;
+            }
+            .lightbox-nav.next {
+                right: 15px;
+            }
+            .lightbox-close {
+                top: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 2.5rem auto;
+                padding: 2.5rem;
+                border-radius: 20px;
+            }
+            h1 {
+                font-size: 2.6rem;
+                margin-bottom: 2.5rem;
+                letter-spacing: 3px;
+            }
+            .eportfolio-section {
+                padding: 2.5rem;
+                margin-bottom: 2.5rem;
+                border-radius: 15px;
+            }
+            .eportfolio-section h2 {
+                font-size: 2rem;
+                margin-bottom: 1.8rem;
+            }
+            .eportfolio-section h3 {
+                font-size: 1.4rem;
+            }
+            .eportfolio-section p, .eportfolio-section ul {
+                font-size: 1.05rem;
+                line-height: 1.8;
+            }
+            .eportfolio-section ul li {
+                padding-left: 35px;
+            }
+            .eportfolio-section ul li::before {
+                font-size: 1.8rem;
+                top: 0px;
+            }
+            .toggle-btn {
+                font-size: 1rem;
+                padding: 0.9rem 1.8rem;
+            }
+            .image-item img {
+                width: 240px;
+                height: 170px;
+            }
+            .lightbox-nav.prev, .lightbox-nav.next {
+                font-size: 2.5rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .lightbox-close {
+                font-size: 2.5rem;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                margin: 1.5rem auto;
+                padding: 1.8rem;
+                border-radius: 15px;
+            }
+            h1 {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+                margin-bottom: 2rem;
+            }
+            .eportfolio-section {
+                padding: 1.8rem;
+                margin-bottom: 1.8rem;
+            }
+            .eportfolio-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.2rem;
+            }
+            .eportfolio-section h3 {
+                font-size: 1.2rem;
+            }
+            .eportfolio-section p, .eportfolio-section ul {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+            .eportfolio-section ul li {
+                padding-left: 30px;
+                margin-bottom: 0.8rem;
+            }
+            .eportfolio-section ul li::before {
+                font-size: 1.6rem;
+                top: 0px;
+            }
+            .toggle-btn {
+                font-size: 0.95rem;
+                padding: 0.7rem 1.4rem;
+            }
+            .image-item {
+                gap: 1.2rem;
+            }
+            .image-item img {
+                width: 180px;
+                height: 130px;
+            }
+            .lightbox-nav.prev, .lightbox-nav.next {
+                font-size: 2.2rem;
+                padding: 0.3rem 0.6rem;
+                left: 10px;
+                right: 10px;
+            }
+            .lightbox-close {
+                font-size: 2.2rem;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+
+    <h1>Bienvenue sur la page de mon e-portfolio</h1>
+
+    {# Section Administrer #}
+    <div class="eportfolio-section">
+        <h2>Administrer</h2>
+        <p>
+            Consiste à gérer, configurer et superviser les infrastructures réseaux et systèmes informatiques afin d'assurer leur bon fonctionnement, leur sécurité et leur disponibilité pour les utilisateurs.
+        </p>
+
+        {# AC11.02 #}
+        <h3>Compétence AC11.02</h3>
+        <button class="toggle-btn" data-target="details-ac1102">Architecture d'une broadboard</button>
+        <div class="details" id="details-ac1102" style="display: none;">
+            <p class="description">
+                <li>Dans la compétence AC11.02 (Comprendre l’architecture et les fondements des systèmes numériques ...) en R1.06,<br>
+                    j'ai su cabler différents composants led, résistance etc sur une broadboard.</li>
+            </p>
+            <div class="image-item">
+                <img src="images/broadboard.png" alt="Schéma de cablage que nous avons à la suite réaliser en réel" data-full-src="images/broadboard.png">
+                <img src="images/coder r1.06.png" alt="Codage des différentes sorties de la carte arduino" data-full-src="images/coder r1.06.png">
+                <img src="images/téléverser programme.png" alt="Téléversement du programme" data-full-src="images/téléverser programme.png">
+            </div>
+        </div>
+
+        {# AC11.03, AC11.05, AC11.06 #}
+        <h3>Compétences AC11.03, AC11.05, AC11.06</h3>
+        <button class="toggle-btn" data-target="details-ac1103-05-06">Configurer un réseau local</button>
+        <div class="details" id="details-ac1103-05-06" style="display: none;">
+            <p>Dans les compétences AC11.03 (Configurer les fonctions de base du réseau local), AC11.05 (Savoir identifier les dysfonctionnements du réseau local) ainsi que dans<br>
+                la compétence AC11.06 (Installer un poste client, expliquer la procédure mise en place), j'ai su configurer et mettre en place un réseau local en simulation (R1.01b et SAE1.02)<br>
+                et en réel (R1.03 et SAE1.02).
+            </p>
+            <p>
+                <li>En R1.01b, on a appris en simulation à configurer un réseau à l'aide du logiciel Packet Tracer. Afin de le mettre pour notre projet en SAE1.02.</li>
+            </p>
+            <div class="image-item">
+                <img src="images/configuration packet tracer.png" alt="Configuration Packet Tracer" data-full-src="images/configuration packet tracer.png">
+            </div>
+            <br>
+            <p>
+                <li>En R1.03 et SAE1.02, on a utilisé de vrais outils comme les switchs, serveurs TFTP, Putty ...</li>
+            </p>
+            <div class="image-item">
+                <img src="images/cablage réseau1.png" alt="Câblage réseau 1" data-full-src="images/cablage réseau1.png">
+                <img src="images/cablage réseau2.png" alt="Câblage réseau 2" data-full-src="images/cablage réseau2.png">
+            </div>
+
+            <p>A l'aide de ces différentes compétences, où on a appris à configurer un réseau local afin que les équipements d'un même réseau puissent communiquer entre eux<br>(configuration pc et switch).
+                Dans cette nouvel matière R2.01, on a appris comment configurer un routeur afin de permettre que deux réseaux distincts puissent communiquer entre eux.
+            <p>
+                <li>Le routage statique</li>
+            </p>
+            <p>Ce type de routage ce configure manuellement en attribuant les routes sur les routeurs pour déterminer le chemin que les paquets de données doivent emprunter pour atteindre le réseau.</p>
+            <div class="image-item">
+                <img src="images/static 1.png" alt="static 1" data-full-src="images/static 1.png">
+                <img src="images/static 2.png" alt="static 2" data-full-src="images/static 2.png">
+            </div>
+            <p>
+                <li>Le routage inter-vlan</li>
+            </p>
+            <p>Ce type de routage est une technique permettant la connection ainsi que la communication entre différents VLAN.</p>
+            <div class="image-item">
+                <img src="images/inter-vlan.png" alt="inter-vlan" data-full-src="images/inter-vlan.png">
+            </div>
+                <p>
+                    <li>Configuration du NAT et du PAT</li>
+                </p>
+                <p>On a aussi appris à configurer le NAT et le PAT d'un réseau.<br>
+                    - Le PAT (Port Address Translation) est une version améliorée du NAT qui utilise aussi les<br>
+                      ports pour distinguer plusieurs connexions venant d’une même adresse IP publique.<br>
+                      Grâce au PAT, plusieurs appareils d’un réseau local peuvent partager une seule adresse IP<br>
+                      publique tout en gardant des connexions distinctes grâce aux numéros de port.
+                      <br>
+                    - Le NAT (Network Address Translation) sert à convertir des adresses IP privées en adresses<br>
+                      IP publiques pour permettre la communication avec Internet.
+                </p>
+                <div class="image-item">
+                <img src="images/nat 1.png" alt="nat 1" data-full-src="images/nat 1.png">
+                    <img src="images/nat 2.png" alt="nat 2" data-full-src="images/nat 2.png">
+            </div>
+                <p>
+                    <li>Les ACL</li>
+                </p>
+                <p> Les ACL (Listes de Contrôle d'Accès) sont des règles que l'on applique sur les routeurs permettant de contrôler l'accès
+                    à un réseau.</p>
+                <div class="image-item">
+                <img src="images/access liste 1.png" alt="access liste 1" data-full-src="images/access liste 1.png">
+                    <img src="images/access liste 2.png" alt="access liste 2" data-full-src="images/access liste 2.png">
+                </div>
+                <p>
+                    <li>Configuration du routage dynamique (RIP)</li>
+                </p>
+                <p> Le routage RIP (Routing Information Protocol) est un routage dynamique qui mesure le nombre de sauts pour déterminer le meilleur chemins entre différents réseaux.
+                    Nous avons appris ici à configurer le routage RIP version 2, qui permet une meilleure gestion des réseaux en prenant en charge le VLSM (Variable Length Subnet Mask) qui est une technique permettant de diviser un espace d'adresse IP en sous-réseaux.</p> 
+                <div class="image-item">
+                <img src="images/rip 1.png" alt="access liste 1" data-full-src="images/rip 1.png">
+                </div>
+        </div>
+    </div>
+
+    {# Section Connecter #}
+    <div class="eportfolio-section">
+        <h2>Connecter</h2>
+        <p>
+            Consiste à établir, configurer et maintenir les connexions entre les équipements et réseaux pour assurer une communication efficace et fiable.
+        </p>
+
+        {# AC12.01 #}
+        <h3>Compétence AC12.01</h3>
+        <button class="toggle-btn" data-target="details-ac1201">(Mesurer et analyser les signaux</button>
+        <div class="details" id="details-ac1201" style="display: none;">
+            <p>
+                <li>Dans la compétence AC12.01 (Mesurer et analyser les signaux) en R1.04, nous avons appris à utiliser des appareils comme l'oscilloscope, le multimètre etc ...<br>
+                    Afin de faire les mesures d'une résistance, d'une tension ...
+                </li>
+            </p>
+            <div class="image-item">
+                <img src="images/oscilloscope.jpg" alt="Oscilloscope" data-full-src="images/oscilloscope.jpg">
+                <img src="images/multimètre.jpg" alt="Multimètre" data-full-src="images/multimètre.jpg">
+            </div>
+        </div>
+    </div>
+
+    {# Section Communiquer #}
+    <div class="eportfolio-section">
+        <h2>Communiquer</h2>
+        <p>
+            Consiste à transmettre efficacement des informations techniques ou fonctionnelles, que ce soit à des équipes, des clients ou des partenaires, en utilisant des outils et supports adaptés.
+        </p>
+
+        {# AC13.01 #}
+        <h3>Compétence AC13.01</h3>
+        <button class="toggle-btn" data-target="details-ac1301">Configuration et utilisation d'une machine virtuelle</button>
+        <div class="details" id="details-ac1301" style="display: none;">
+            <p>
+                <li>Dans la compétence AC13.01, en R1.08 nous avons appris à créer et à utiliser une machine virtuelle à l'aide de VirtualBox.</li>
+            </p>
+            <p>
+                <li>Dans un premier temps, nous avons appris à installer une machine virtuelle sur notre ordinateur.</li>
+            </p>
+            <div class="image-item">
+                <img src="images/virtualbox.jpg" alt="VM" data-full-src="images/virtualbox.jpg">
+            </div>
+            <br><br>
+            <p>
+                <li>Ensuite, nous avons appris à utiliser l'environnement avec un jeu "Gameshell" pour apprendre les commandes.</li>
+            </p>
+            <div class="image-item">
+                <img src="images/Gameshell1.png" alt="Gameshell 1" data-full-src="images/Gameshell1.png">
+                <img src="images/gameshell.png" alt="Jeu Gameshell" data-full-src="images/gameshell.png">
+            </div>
+        </div>
+    </div>
+
+</div> {# /main-container #}
+
+{# Lightbox overlay (à la fin du body) #}
+<div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-content">
+        <img id="lightbox-image" src="" alt="Agrandissement">
+        <span class="lightbox-close" id="lightbox-close-btn"><i class="fas fa-times"></i></span>
+        <span class="lightbox-nav prev" id="lightbox-prev-btn"><i class="fas fa-chevron-left"></i></span>
+        <span class="lightbox-nav next" id="lightbox-next-btn"><i class="fas fa-chevron-right"></i></span>
+    </div>
+</div>
+
+<footer>
+    <p>E-portfolio mis à jour en juillet 2025</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Unifier la fonction toggleContent
+        document.querySelectorAll('.toggle-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.dataset.target; // Utilise data-target
+                const content = document.getElementById(targetId);
+
+                if (content) {
+                    if (content.style.display === 'none' || content.style.display === '') {
+                        content.style.display = 'block';
+                        this.textContent = 'Afficher moins';
+                    } else {
+                        content.style.display = 'none';
+                        this.textContent = 'Afficher plus';
+                    }
+                } else {
+                    console.error('Cible du bouton non trouvée : ' + targetId);
+                }
+            });
+        });
+
+        // Gérer la Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCloseBtn = document.getElementById('lightbox-close-btn');
+        const lightboxPrevBtn = document.getElementById('lightbox-prev-btn');
+        const lightboxNextBtn = document.getElementById('lightbox-next-btn');
+        let currentImageIndex = 0;
+        let currentImages = [];
+
+        document.querySelectorAll('.image-item img').forEach(image => {
+            image.addEventListener('click', function() {
+                // Collecte toutes les images du même groupe (même .image-item parent)
+                const parentImageItem = this.closest('.image-item');
+                if (parentImageItem) {
+                    currentImages = Array.from(parentImageItem.querySelectorAll('img'));
+                } else {
+                    // Si l'image n'est pas dans un .image-item, considère-la seule
+                    currentImages = [this];
+                }
+                
+                currentImageIndex = currentImages.indexOf(this);
+                
+                if (this.dataset.fullSrc) {
+                    lightboxImage.src = this.dataset.fullSrc;
+                } else {
+                    lightboxImage.src = this.src; // Fallback au src si data-full-src non défini
+                }
+                lightbox.classList.add('active'); // Rend la lightbox visible
+                document.body.style.overflow = 'hidden'; // Empêche le défilement du body
+            });
+        });
+
+        lightboxCloseBtn.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = ''; // Rétablit le défilement
+        });
+
+        lightboxPrevBtn.addEventListener('click', () => {
+            if (currentImages.length > 0) {
+                currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+                const newImage = currentImages[currentImageIndex];
+                if (newImage.dataset.fullSrc) {
+                    lightboxImage.src = newImage.dataset.fullSrc;
+                } else {
+                    lightboxImage.src = newImage.src;
+                }
+            }
+        });
+
+        lightboxNextBtn.addEventListener('click', () => {
+            if (currentImages.length > 0) {
+                currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+                const newImage = currentImages[currentImageIndex];
+                if (newImage.dataset.fullSrc) {
+                    lightboxImage.src = newImage.dataset.fullSrc;
+                } else {
+                    lightboxImage.src = newImage.src;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
