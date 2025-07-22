@@ -3,34 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Super Portfolio</title>
-    {# Stylesheets depuis base.html.twig + votre block stylesheets #}
+    <title>Mon Portfolio - Maxence Boyer</title>
+
+    {# Liens Google Fonts #}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    
+
+    {# Votre CSS intégré directement ici #}
     <style>
-        /* Votre CSS inline ici, copié de votre block stylesheets */
         body {
-            /* Dégradé linéaire de couleurs */
             background-image: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d); 
             background-attachment: fixed;
             background-size: cover; 
             background-position: center;
-            color: #E0E0E0; /* Couleur de texte principale claire */
-            font-family: 'Roboto', sans-serif; /* Police plus moderne */
+            color: #E0E0E0;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
         }
-        /* ... tout le reste de votre CSS ... */
+
+        .main-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background-color: rgba(25, 40, 55, 0.8); 
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #FFFFFF;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .content-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem; 
+            flex-wrap: wrap; 
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 4px solid #00BFFF; 
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+            transition: transform 0.3s ease;
+            cursor: pointer; 
+        }
+
+        .intro-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .personal-info p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-left: 3px solid #00BFFF;
+            border-radius: 5px;
+        }
+
+        .introduction p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        strong {
+            color: #00BFFF; 
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
-    {# Contenu de votre block body #}
     <div class="main-container">
         <h1 class="page-title">Bienvenue sur mon E-Portfolio</h1>
         <div class="content-flex">
-            <img src="images/image_page1.jpg" alt="Photo de Maxence Boyer" class="profile-image" id="profileImage">
+            {# Assurez-vous que l'image est bien dans le dossier 'images' à la racine de votre dépôt #}
+            <img src="images/image_page1.jpg" alt="Photo de Maxence Boyer" class="profile-image">
+
             <div class="intro-text">
                 <div class="personal-info">
                     <p><strong>Nom :</strong> Boyer</p>
@@ -46,46 +112,5 @@
             </div>
         </div>
     </div>
-
-    {# HTML pour la Lightbox (Modale) #}
-    <div id="lightboxOverlay" class="lightbox-overlay">
-        <span class="lightbox-close">&times;</span>
-        <div class="lightbox-content">
-            <img src="images/image_page1.jpg" alt="Photo de Maxence Boyer en grand" id="lightboxImage">
-        </div>
-    </div>
-
-    {# Contenu de votre block javascripts #}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const profileImage = document.getElementById('profileImage');
-            const lightboxOverlay = document.getElementById('lightboxOverlay');
-            const lightboxImage = document.getElementById('lightboxImage');
-            const lightboxClose = document.querySelector('.lightbox-close');
-
-            profileImage.addEventListener('click', function() {
-                lightboxImage.src = this.src; 
-                lightboxOverlay.classList.add('active');
-            });
-
-            function closeLightbox() {
-                lightboxOverlay.classList.remove('active');
-            }
-
-            lightboxClose.addEventListener('click', closeLightbox);
-
-            lightboxOverlay.addEventListener('click', function(event) {
-                if (event.target === lightboxOverlay) {
-                    closeLightbox();
-                }
-            });
-
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
-                    closeLightbox();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
