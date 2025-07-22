@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio - Maxence Boyer</title>
 
-    {# Liens Google Fonts #}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-    {# Votre CSS intégré directement ici #}
     <style>
         body {
             background-image: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d); 
@@ -33,6 +31,7 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.18);
+            text-align: center; /* Ajouté pour centrer le texte dans le conteneur principal */
         }
 
         .page-title {
@@ -48,9 +47,10 @@
         .content-flex {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center; /* Centrage horizontal des éléments flex */
             gap: 3rem; 
             flex-wrap: wrap; 
+            text-align: left; /* Pour que le texte à l'intérieur de content-flex soit aligné à gauche */
         }
 
         .profile-image {
@@ -60,13 +60,13 @@
             border: 4px solid #00BFFF; 
             object-fit: cover;
             box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
-            transition: transform 0.3s ease;
-            cursor: pointer; 
+            /* Retiré cursor: pointer et transition si vous ne voulez pas la lightbox pour l'instant */
         }
 
         .intro-text {
             flex: 1;
             max-width: 600px;
+            min-width: 300px; /* Ajouté pour éviter un rétrécissement excessif sur petits écrans */
         }
 
         .personal-info p {
@@ -88,13 +88,31 @@
             color: #00BFFF; 
             font-weight: 700;
         }
+
+        /* Media Queries pour les petits écrans - Si les éléments ne sont pas centrés */
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 2rem auto;
+                padding: 1rem;
+            }
+            .content-flex {
+                flex-direction: column; /* Empile les éléments verticalement sur petits écrans */
+                gap: 1.5rem;
+                text-align: center; /* Centre le texte dans ce cas */
+            }
+            .intro-text {
+                text-align: center; /* Centre le texte dans le bloc intro */
+            }
+            .personal-info p, .introduction p {
+                text-align: center; /* Force le centrage du texte des paragraphes */
+            }
+        }
     </style>
 </head>
 <body>
     <div class="main-container">
-        <h1 class="page-title">Bienvenue sur mon E-Portfolio</h1>
+        <h1 class="page-title">BIENVENUE SUR MON E-PORTFOLIO</h1>
         <div class="content-flex">
-            {# Assurez-vous que l'image est bien dans le dossier 'images' à la racine de votre dépôt #}
             <img src="images/image_page1.jpg" alt="Photo de Maxence Boyer" class="profile-image">
 
             <div class="intro-text">
