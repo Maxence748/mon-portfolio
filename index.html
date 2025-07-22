@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Super Portfolio</title>
+    {# Stylesheets depuis base.html.twig + votre block stylesheets #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Votre CSS inline ici, copié de votre block stylesheets */
+        body {
+            /* Dégradé linéaire de couleurs */
+            background-image: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d); 
+            background-attachment: fixed;
+            background-size: cover; 
+            background-position: center;
+            color: #E0E0E0; /* Couleur de texte principale claire */
+            font-family: 'Roboto', sans-serif; /* Police plus moderne */
+            margin: 0;
+            padding: 0;
+        }
+        /* ... tout le reste de votre CSS ... */
+    </style>
+</head>
+<body>
+    {# Contenu de votre block body #}
+    <div class="main-container">
+        <h1 class="page-title">Bienvenue sur mon E-Portfolio</h1>
+        <div class="content-flex">
+            <img src="images/image_page1.jpg" alt="Photo de Maxence Boyer" class="profile-image" id="profileImage">
+            <div class="intro-text">
+                <div class="personal-info">
+                    <p><strong>Nom :</strong> Boyer</p>
+                    <p><strong>Prénom :</strong> Maxence</p>
+                    <p><strong>Groupe:</strong> B2</p>
+                </div>
+                <br>
+                <div class="introduction">
+                    <p>
+                        Je m'appelle Maxence Boyer, j'habite en Haute-Loire à Sainte-Sigolène et je suis actuellement en première année de <strong>Réseaux et Télécommunications</strong> à l'IUT de Roanne. Passionné par l'informatique, je suis ravi de vous présenter mon parcours.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# HTML pour la Lightbox (Modale) #}
+    <div id="lightboxOverlay" class="lightbox-overlay">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img src="images/image_page1.jpg" alt="Photo de Maxence Boyer en grand" id="lightboxImage">
+        </div>
+    </div>
+
+    {# Contenu de votre block javascripts #}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileImage = document.getElementById('profileImage');
+            const lightboxOverlay = document.getElementById('lightboxOverlay');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxClose = document.querySelector('.lightbox-close');
+
+            profileImage.addEventListener('click', function() {
+                lightboxImage.src = this.src; 
+                lightboxOverlay.classList.add('active');
+            });
+
+            function closeLightbox() {
+                lightboxOverlay.classList.remove('active');
+            }
+
+            lightboxClose.addEventListener('click', closeLightbox);
+
+            lightboxOverlay.addEventListener('click', function(event) {
+                if (event.target === lightboxOverlay) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
