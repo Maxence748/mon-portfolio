@@ -490,47 +490,6 @@
             color: #f2994a;
             text-decoration: none;
         }
-
-        /* Styles for the new navigation buttons */
-        .navigation {
-            text-align: center;
-            margin-bottom: 3rem;
-            display: flex;
-            justify-content: center;
-            gap: 20px; /* Space between buttons */
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-        }
-
-        .navigation .nav-button {
-            display: inline-block;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.1); /* Subtle background */
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .navigation .nav-button:hover {
-            background: linear-gradient(to right, #c43c39, #f2994a); /* Gradient on hover */
-            border-color: #f2994a;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        @media (max-width: 600px) {
-            .navigation {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .navigation .nav-button {
-                width: 80%; /* Make buttons wider on small screens */
-                margin: 0 auto;
-            }
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -540,9 +499,9 @@
     <h1>Mon Portfolio</h1>
 
     <div class="navigation">
-        <a href="index.html" class="nav-button">Retour à l'accueil</a>
-        <a href="loisirs.html" class="nav-button">Loisirs</a>
-        <a href="cv.html" class="nav-button">CV</a>
+            <a href="index.html">Retour à l'accueil</a>
+            <a href="loisirs.html">loisirs</a>
+            <a href="cv.html">CV</a>
     </div>
 
     <h2><span class="icon">🚀</span> Projets Professionnels</h2>
@@ -733,7 +692,10 @@
             <div class="ranking-display">
                 <div class="team-rank">17<sup>ème</sup></div>
                 <div class="team-name">Équipe : CyberFraude2025</div>
-           
+            </div>
+            <img src="images/image_367629.png" alt="Classement final du CTF" class="ranking-image">
+    
+            </div>
 
         <div class="sponsor-section">
             <h4>Nos Sponsors</h4>
@@ -748,7 +710,7 @@
         </div>
         
         
-            <a href="https://maxence748.github.io/mon-portfolio/ctf.html" class="github-button" style="margin-top: 3rem;">
+            <a href="/ctf" class="github-button" style="margin-top: 3rem;">
             Aller à la page de notre classement
         </a>
 
