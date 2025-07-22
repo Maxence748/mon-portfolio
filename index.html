@@ -89,6 +89,27 @@
             font-weight: 700;
         }
 
+        /* Nouveau CSS pour le pied de page */
+        .footer-content {
+            text-align: center;
+            margin-top: 4rem; /* Pour espacer du contenu principal */
+            padding: 2rem;
+            background-color: rgba(25, 40, 55, 0.8); /* Même fond que le main-container */
+            color: #E0E0E0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.18); /* Bordure légère en haut */
+            border-radius: 15px; /* Arrondi les coins du footer */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Ombre légère */
+            max-width: 1200px; /* Aligné avec le main-container */
+            margin-left: auto; /* Centrage horizontal */
+            margin-right: auto; /* Centrage horizontal */
+        }
+
+        .footer-content p {
+            margin: 0.5rem 0; /* Espacement entre les lignes du pied de page */
+        }
+
+
         /* Media Queries pour les petits écrans - Si les éléments ne sont pas centrés */
         @media (max-width: 768px) {
             .main-container {
@@ -105,6 +126,10 @@
             }
             .personal-info p, .introduction p {
                 text-align: center; /* Force le centrage du texte des paragraphes */
+            }
+            .footer-content {
+                margin-top: 2rem;
+                padding: 1rem;
             }
         }
     </style>
@@ -130,5 +155,12 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer-content">
+        <p>© 2025 Maxence Boyer. Tous droits réservés.</p>
+        <p>Ce site est protégé par les lois sur le droit d'auteur. Toute reproduction, représentation ou modification du site web est interdit.</p>
+        <p>Les images de ce site sont protégés par creative commons.</p>
+    </footer>
+
 </body>
 </html>
