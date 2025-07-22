@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon CV - Maxence Boyer</title> {# Titre direct ici #}
+
+    {# Inclure la même police Google Fonts pour la cohérence #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            /* Exactement le même dégradé que la page d'accueil et loisirs */
+            background-image: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d); 
+            
+            background-attachment: fixed; /* Le fond reste fixe au défilement */
+            background-size: cover;
+            background-position: center;
+            color: #E0E0E0; /* Couleur de texte principale claire */
+            font-family: 'Roboto', sans-serif; /* Police moderne */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Empêche le défilement horizontal indésirable */
+        }
+
+        .main-container {
+            max-width: 950px; /* Légèrement plus large pour plus d'impact */
+            margin: 4rem auto; /* Marge pour centrer le conteneur */
+            padding: 3rem; /* Plus de padding pour un aspect plus grand */
+            background-color: rgba(25, 40, 55, 0.85); /* Un peu moins transparent */
+            border-radius: 20px; /* Bords plus arrondis */
+            box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.5); /* Ombre plus intense */
+            backdrop-filter: blur(10px); /* Flou plus prononcé */
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.25); /* Bordure plus visible */
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3.2rem; /* Taille légèrement réduite */
+            color: #FFFFFF !important; /* Force le blanc */
+            font-weight: 800; /* Moins gras que 900, mais toujours fort */
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 4px; /* Espacement légèrement réduit */
+            background: linear-gradient(to right, #00BFFF, #8A2BE2); /* Garde le dégradé de texte */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Animation de lueur atténuée */
+            text-shadow: 0 0 15px rgba(0, 191, 255, 0.6), 0 0 30px rgba(0, 191, 255, 0.3); /* Ombres plus douces */
+            animation: softNeonGlow 2s ease-in-out infinite alternate; /* Nouvelle animation plus douce */
+        }
+
+        @keyframes softNeonGlow {
+            from {
+                text-shadow: 0 0 10px rgba(0, 191, 255, 0.5), 0 0 20px rgba(0, 191, 255, 0.2);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(0, 191, 255, 0.7), 0 0 30px rgba(0, 191, 255, 0.4);
+            }
+        }
+
+        .cv-section {
+            background-color: rgba(30, 50, 70, 0.95); /* Un peu moins transparent */
+            border-radius: 15px; /* Bords plus arrondis */
+            padding: 2.5rem; /* Plus de padding */
+            margin-bottom: 2.5rem; /* Espacement entre les sections */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); /* Ombre plus prononcée */
+            border: 1px solid rgba(0, 191, 255, 0.4); /* Bordure lumineuse */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+            position: relative; /* Pour les pseudo-éléments ou effets */
+            overflow: hidden; /* Pour les effets d'ombre interne */
+        }
+
+        .cv-section:hover {
+            transform: translateY(-10px) scale(1.01); /* Léger soulèvement et agrandissement au survol */
+            box-shadow: 0 15px 45px rgba(0, 191, 255, 0.8); /* Ombre encore plus lumineuse */
+            border-color: #FF6347; /* Bordure rouge-orangé au survol */
+        }
+
+        .cv-section::before { /* Effet de lumière en coin */
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: transform 0.5s ease-out;
+            transform: scale(0);
+        }
+
+        .cv-section:hover::before {
+            transform: scale(10); /* Agrandit l'effet de lumière au survol */
+        }
+
+
+        .cv-section h2 {
+            color: #00BFFF; /* Cyan pour les sous-titres des sections */
+            font-size: 2.2rem; /* Taille plus grande */
+            font-weight: 900; /* Extra gras */
+            margin-top: 0;
+            margin-bottom: 1.8rem;
+            border-bottom: 3px solid rgba(0, 191, 255, 0.5); /* Ligne plus épaisse et lumineuse */
+            padding-bottom: 0.8rem;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5); /* Ombre lumineuse */
+            position: relative;
+            z-index: 2; /* S'assure que le texte est au-dessus de l'effet before */
+        }
+
+        .cv-section p, .cv-section ul {
+            font-size: 1.1rem; /* Texte légèrement plus grand */
+            line-height: 1.8; /* Plus d'espacement pour la lisibilité */
+            color: #D5D5D5; /* Texte un peu plus clair */
+            margin-bottom: 1.2rem;
+        }
+
+        .cv-section ul {
+            list-style: none; /* Supprime les puces par défaut */
+            padding-left: 0;
+        }
+
+        .cv-section ul li {
+            position: relative;
+            padding-left: 35px; /* Plus d'espace pour la puce personnalisée */
+            margin-bottom: 1rem;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .cv-section ul li:hover {
+            color: #FFFFFF; /* Texte blanc au survol du li */
+        }
+
+        .cv-section ul li::before {
+            content: '✨'; /* Puce scintillante */
+            color: #FFD700; /* Couleur or pour la puce */
+            position: absolute;
+            left: 0;
+            font-size: 1.8rem; /* Taille de la puce plus grande */
+            line-height: 1;
+            top: 0px; /* Ajuste la position verticale de la puce */
+            animation: pulseBullet 1.5s infinite alternate; /* Animation de pulsation */
+        }
+
+        @keyframes pulseBullet {
+            from { transform: scale(1); opacity: 0.8; }
+            to { transform: scale(1.1); opacity: 1; }
+        }
+
+        .cv-section strong {
+            color: #FFD700; /* Or pour les éléments importants */
+            font-weight: 900; /* Extra gras */
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.7); /* Petite ombre lumineuse */
+        }
+
+        /* Styles pour le formulaire de téléchargement du CV */
+        .download-section {
+            background-color: rgba(30, 50, 70, 0.95);
+            border-radius: 15px;
+            padding: 3rem; /* Plus de padding */
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            margin-top: 3.5rem; /* Espacement avec les sections CV */
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .download-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(0, 191, 255, 0.8);
+        }
+
+        .download-section p {
+            font-size: 1.2rem; /* Texte plus grand */
+            color: #E0E0E0;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+        }
+
+        #emailForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem; /* Plus d'espacement */
+            max-width: 450px; /* Plus large */
+            margin: 0 auto;
+        }
+
+        #emailForm label {
+            font-size: 1.1rem;
+            color: #00BFFF;
+            font-weight: 700;
+            text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+        }
+
+        #emailForm input[type="email"] {
+            width: 100%;
+            padding: 1rem 1.2rem; /* Plus de padding */
+            border: 3px solid #00BFFF; /* Bordure plus épaisse */
+            border-radius: 8px; /* Plus arrondi */
+            background-color: rgba(0, 0, 0, 0.4); /* Fond plus sombre */
+            color: #E0E0E0;
+            font-size: 1.1rem;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            box-shadow: inset 0 0 10px rgba(0, 191, 255, 0.3); /* Ombre interne */
+        }
+
+        #emailForm input[type="email"]::placeholder {
+            color: #A0A0A0;
+        }
+
+        #emailForm input[type="email"]:focus {
+            border-color: #FF6347; /* Bordure rouge-orangé au focus */
+            box-shadow: 0 0 15px rgba(255, 99, 71, 0.7), inset 0 0 10px rgba(255, 99, 71, 0.5);
+            background-color: rgba(0, 0, 0, 0.6); /* Plus sombre au focus */
+        }
+
+        #emailForm button[type="submit"] {
+            background-image: linear-gradient(to right, #00BFFF, #8A2BE2); /* Dégradé plus prononcé */
+            color: #FFFFFF;
+            padding: 1.2rem 2.5rem; /* Plus de padding */
+            border: none;
+            border-radius: 8px; /* Plus arrondi */
+            font-size: 1.3rem; /* Texte plus grand */
+            font-weight: 900; /* Extra gras */
+            cursor: pointer;
+            transition: background-image 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.6);
+            text-transform: uppercase; /* Texte en majuscules */
+            letter-spacing: 1px;
+        }
+
+        #emailForm button[type="submit"]:hover {
+            background-image: linear-gradient(to right, #8A2BE2, #00BFFF); /* Inverse le dégradé au survol */
+            transform: translateY(-3px) scale(1.02); /* Soulèvement et léger agrandissement */
+            box-shadow: 0 8px 25px rgba(0, 191, 255, 0.8), 0 0 30px rgba(138, 43, 226, 0.7); /* Ombre double */
+        }
+
+        #error-message {
+            color: #FF6347 !important; /* Rouge vif pour l'erreur */
+            font-weight: 700;
+            margin-top: 1.2rem;
+            font-size: 1rem;
+            text-shadow: 0 0 5px rgba(255, 99, 71, 0.5);
+        }
+
+        /* Styles pour le footer - cohérence avec les autres pages */
+        footer {
+            text-align: center;
+            padding: 2.5rem; /* Plus de padding */
+            margin-top: 5rem; /* Plus de marge */
+            color: #A0A0A0; 
+            background-color: rgba(10, 20, 30, 0.75); /* Un peu moins transparent */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+        }
+        footer p {
+            margin: 0.6rem 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .main-container {
+                max-width: 850px;
+                padding: 2.5rem;
+            }
+            h1 {
+                font-size: 2.8rem; /* Ajustement responsive */
+                letter-spacing: 3px;
+            }
+            .cv-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 2rem auto;
+                padding: 2rem;
+                border-radius: 15px;
+            }
+            h1 {
+                font-size: 2.2rem; /* Ajustement responsive */
+                margin-bottom: 2rem;
+                letter-spacing: 2px;
+            }
+            .cv-section {
+                padding: 2rem;
+                margin-bottom: 2rem;
+                border-radius: 10px;
+            }
+            .cv-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            .cv-section p, .cv-section ul {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+            .cv-section ul li {
+                padding-left: 30px;
+            }
+            .cv-section ul li::before {
+                font-size: 1.6rem;
+                top: 2px;
+            }
+            .download-section {
+                padding: 2rem;
+                margin-top: 2.5rem;
+            }
+            #emailForm input[type="email"],
+            #emailForm button[type="submit"] {
+                font-size: 1rem;
+                padding: 0.9rem 1.8rem;
+            }
+            #emailForm button[type="submit"] {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                margin: 1rem auto;
+                padding: 1.5rem;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.8rem; /* Ajustement responsive */
+                letter-spacing: 1px;
+                margin-bottom: 1.5rem;
+            }
+            .cv-section {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .cv-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .cv-section p, .cv-section ul {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            .cv-section ul li {
+                padding-left: 25px;
+                margin-bottom: 0.6rem;
+            }
+            .cv-section ul li::before {
+                font-size: 1.4rem;
+                top: 0px;
+            }
+            .download-section {
+                padding: 1.5rem;
+                margin-top: 2rem;
+            }
+            #emailForm {
+                gap: 1rem;
+            }
+            #emailForm input[type="email"],
+            #emailForm button[type="submit"] {
+                font-size: 0.9rem;
+                padding: 0.8rem 1.2rem;
+            }
+            #emailForm button[type="submit"] {
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+
+    <h1>Mon Curriculum Vitae</h1>
+
+    {# Ajout de la navigation pour rester cohérent #}
+    <div class="navigation" style="margin-bottom: 3rem;">
+        <a href="index.html">Retour à l'accueil</a>
+        <a href="loisirs.html">Mes Loisirs</a>
+    </div>
+
+    <div class="cv-section">
+        <section>
+            <h2>Informations Personnelles</h2>
+            <p><strong>Nom :</strong> Boyer</p>
+            <p><strong>Prénom :</strong> Maxence</p>
+            <p><strong>Email :</strong> maxence.boyer15112005@gmail.com</p>
+            <p><strong>Téléphone:</strong> 06 25 60 21 31</p>
+            <p><strong>Page Linkedin:</strong> <a href="https://www.linkedin.com/in/maxence-boyer-2887b6364/" target="_blank">https://www.linkedin.com/in/maxence-boyer-2887b6364/</a></p>
+            <p><strong>Adresse :</strong> 14 rue Charles Louis Picaud, 42300 Roanne</p>
+            <p><strong>Permis :</strong> B</p>
+        </section>
+    </div>
+
+    <div class="cv-section">
+        <section>
+            <h2>Formations</h2>
+            <ul>
+                <li><strong>Juin 2021:</strong> Obtention du Diplôme National du Brevet au Collège Sacré-Coeur à Sainte-Sigolène</li>
+                <li><strong>2022-2024:</strong> Première et Terminale STI2D au lycée Notre-Dame du Château à Monistrol-sur-Loire</li>
+                <li><strong>Juillet 2024:</strong> Obtention du Baccalauréat au lycée Notre-Dame du Château à Monistrol-sur-Loire</li>
+                <li><strong>2024 - :</strong> Étudiant en Réseaux et Télécommunications à l'université de Roanne</li>
+            </ul>
+        </section>
+    </div>
+
+    <div class="cv-section">
+        <section>
+            <h2>CTF et Certifications</h2>
+            <ul>
+                <li><strong>Novembre 2024:</strong> Obtention de l'attestation SecNum Academy</li>
+                <li><strong>Mai 2025:</strong> Participation au CTF de Vannes</li>
+            </ul>
+        </section>
+    </div>
+
+    <div class="cv-section">
+        <section>
+            <h2>Expériences professionnelles</h2>
+            <ul>
+                <li><strong>Juin 2021:</strong> Immersion d'une semaine au Syndicat des eaux à Sainte-Sigolène : Organisation chantiers (lieu, matériel, délais...)</li>
+                <li><strong>Mars 2023:</strong> Immersion d'une semaine chez JM Polymers Saint-Romain Lachalm : Comptabilité, vérification d'enregistrements d'impôts, découverte des autres secteurs.</li>
+                <li><strong>Août 2024 - :</strong> Agent de déchetterie à Monistrol-sur-Loire : Travail en tant que saisonnier pendant les périodes de vacances scolaires, accueille et coordonne les clients.</li>
+            </ul>
+        </section>
+    </div>
+
+    <div class="cv-section">
+        <section>
+            <h2>Compétences</h2>
+            <ul>
+                <li>Maîtrise de l'outil informatique</li>
+                <li>Saisie de factures</li>
+                <li>Rigueur</li>
+                <li>Sérieux</li>
+                <li>Appliqué</li>
+            </ul>
+        </section>
+    </div>
+
+    <div class="cv-section">
+        <section>
+            <h2>Divers</h2>
+            <ul>
+                <li>Pratique de la musique depuis 9 ans.</li>
+                <li>A pratiqué du tuba pendant 5 ans.</li>
+                <li>Pratique du saxophone depuis 4 ans.</li>
+                <li>Fait partie de l'harmonie de Sainte-Sigolène depuis 2020.</li>
+            </ul>
+        </section>
+    </div>
+
+    <div class="download-section">
+        <p>Téléchargez le CV complet ici :</p>
+        <form id="emailForm">
+            <label for="email">Entrez votre email :</label>
+            <input type="email" id="email" name="email" placeholder="exemple@domaine.com" required>
+            <button type="submit">Télécharger le CV</button>
+        </form>
+        <p id="error-message" style="color: red; display: none;">Veuillez entrer une adresse email valide.</p>
+    </div>
+
+</div> 
+
+<footer class="footer-content"> {# Ajout de la classe pour la cohérence des styles #}
+    <p>© 2025 Maxence Boyer. Tous droits réservés.</p>
+    <p>Ce site est protégé par les lois sur le droit d'auteur. Toute reproduction, représentation ou modification du site web est interdit.</p>
+    <p>Les images de ce site sont protégés par creative commons.</p>
+    <p>CV mis à jour en juin 2025</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const emailForm = document.getElementById('emailForm');
+        const emailInput = document.getElementById('email');
+        const errorMessage = document.getElementById('error-message');
+        
+        // MODIFIÉ : Chemin vers le fichier PDF sans Twig
+        const cvPath = "documents/CV1.pdf"; // Assurez-vous que ce chemin est correct par rapport à votre cv.html
+
+        if (emailForm) {
+            emailForm.addEventListener('submit', function(event) {
+                event.preventDefault(); 
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (emailRegex.test(emailInput.value)) {
+                    errorMessage.style.display = 'none';
+                    console.log('Email valide. Lancement du téléchargement du CV.');
+                    
+                    const link = document.createElement('a');
+                    link.href = cvPath;
+
+                    // MODIFIÉ : Nom du fichier proposé au téléchargement
+                    link.download = 'CV_Maxence_Boyer.pdf'; // Nom plus spécifique
+
+                    document.body.appendChild(link);
+                    link.click(); 
+                    document.body.removeChild(link);
+                    
+                    console.log('Le fichier CV_Maxence_Boyer.pdf a été téléchargé.');
+
+                } else {
+                    errorMessage.style.display = 'block';
+                    console.log('Email invalide. Affichage du message d\'erreur.');
+                }
+            });
+        } else {
+            console.error("Erreur : Le formulaire #emailForm n'a pas été trouvé.");
+        }
+    });
+</script>
+</body>
+</html>
