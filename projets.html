@@ -648,6 +648,22 @@
             <a href="#" class="cta-button" id="openResConfButton">Voir détail</a>
         </div>
 
+         <div class="project-card">
+            <h3>Certification Introduction à Packet Tracer</h3>
+            <p>
+                Obtention de la certification "Introduction à Packet Tracer", attestant l'acquisition des compétences de bases en simulation de réseaux informatiques.
+            </p>
+            <div class="project-tags">
+                <span class="tag">Packet Tracer</span>
+                <span class="tag">Simulation de réseaux</span>
+                <span class="tag">Internet des objets</span>
+                <span class="tag">Réseaux informatiques</span>
+                <span class="tag">Modélisation</span>
+            </div>
+            <a href="#" class="cta-button" id="openPacketTracerButton">Voir détail</a>
+        </div>
+
+
     </section>
 
 </div>
@@ -787,6 +803,27 @@
     </div>
 </div>
 
+<div id="PacketTracer" class="modal-overlay">
+    <div class="modal-content">
+        <button class="modal-close-button">&times;</button>
+        <h3>Certification introduction à Packet Tracer: Détails</h3>
+        <p>
+            L'obtention de la certification "introduction à Packet Tracer" atteste des connaissances sur l'utilisation de l'outil "Packet Tracer".
+        </p>
+        
+        <h4>Objectifs et Apprentissages</h4>
+        <ul>
+            <li>**Créer et gérer des réseaux**</li>
+            <li>**Utiliser des contrôleurs de réseau**</li>
+            <li>**Créer et modifier des objets connectés dans un réseau de maison intelligente simulé**</li>
+        </ul>
+
+        <a href="documents/IntrotoPacketTracerUpdate20250801-32-y9sq9r.pdf" target="_blank" class="cta-button" style="margin-top: 3rem; margin-bottom: 0;">
+            Voir ma certification
+        </a>
+    </div>
+</div>
+
 <div id="imageLightboxModal" class="lightbox-overlay" style="display: none;">
     <span class="close-lightbox">&times;</span>
     <img class="lightbox-content" id="lightbox-image-viewer" src="" alt="Image agrandie" />
@@ -801,10 +838,18 @@
         const openCTFButton = document.getElementById('openCTFModalButton');
         const ctfModal = document.getElementById('ctfModal');
         const closeCTFButton = ctfModal.querySelector('.modal-close-button');
+        
         const openSecNumButton = document.getElementById('openSecNumModalButton');
         const secNumModal = document.getElementById('secNumModal');
         const closeSecNumButton = secNumModal.querySelector('.modal-close-button');
+ 
+        const openResConfButton = document.getElementById('openResConfButton');
+        const ResConf = document.getElementById('ResConfModal');
+        const closeResConfButton = ResConfModal.querySelector('.modal-close-button');
 
+        const openPacketTracerButton = document.getElementById('openpacketTracerButton');
+        const packetTracer = document.getElementById('PacketTracerModal');
+        const closePacketTracerButton = PacketTracerModal.querySelector('.modal-close-button');
 
         const imageLightboxModal = document.getElementById('imageLightboxModal');
         const lightboxImageViewer = document.getElementById('lightbox-image-viewer');
