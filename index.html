@@ -7,200 +7,424 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            background-image: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d); 
-            background-attachment: fixed;
-            background-size: cover; 
-            background-position: center;
-            color: #E0E0E0;
-            font-family: 'Roboto', sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, #1a1035 0%, #2d1b4e 50%, #1a1035 100%);
+            min-height: 100vh;
+            color: #E0E0E0;
+            font-family: 'Rajdhani', sans-serif;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-circles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.3), transparent);
+            animation: float-around 20s infinite ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            width: 15px;
+            height: 15px;
+            top: 10%;
+            left: 15%;
+            animation-duration: 15s;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 12px;
+            height: 12px;
+            top: 60%;
+            left: 80%;
+            animation-duration: 20s;
+            animation-delay: 3s;
+        }
+
+        .circle:nth-child(3) {
+            width: 18px;
+            height: 18px;
+            top: 80%;
+            left: 10%;
+            animation-duration: 18s;
+            animation-delay: 5s;
+        }
+
+        .circle:nth-child(4) {
+            width: 14px;
+            height: 14px;
+            top: 30%;
+            left: 70%;
+            animation-duration: 22s;
+            animation-delay: 2s;
+        }
+
+        .circle:nth-child(5) {
+            width: 10px;
+            height: 10px;
+            top: 50%;
+            left: 40%;
+            animation-duration: 17s;
+            animation-delay: 7s;
+        }
+
+        @keyframes float-around {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(30px, -30px) scale(1.1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-20px, 40px) scale(0.9);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translate(40px, 20px) scale(1.05);
+                opacity: 0.6;
+            }
         }
 
         .main-container {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 2rem;
-            background-color: rgba(25, 40, 55, 0.8); 
-            border-radius: 15px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            text-align: center; /* Ajouté pour centrer le texte dans le conteneur principal */
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .page-title {
             text-align: center;
-            font-size: 2.5rem;
-            color: #FFFFFF;
-            font-weight: 700;
-            margin-bottom: 2rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: 8px;
             text-transform: uppercase;
+            background: linear-gradient(90deg, #a78bfa, #ec4899, #a78bfa);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #60a5fa;
+            margin-bottom: 3rem;
+            font-weight: 300;
             letter-spacing: 2px;
         }
 
-        /* Styles pour la navigation (bouton Loisirs) */
         .navigation {
-            margin-top: 2rem; /* Espace au-dessus du bouton */
-            margin-bottom: 2rem; /* Espace en dessous du bouton */
-            text-align: center; /* Centre le bouton */
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
         }
 
         .navigation a {
-            display: inline-block; /* Permet de définir padding, margin, width */
-            background-color: #00BFFF; /* Couleur de fond bleue */
-            color: #FFFFFF; /* Texte blanc */
-            padding: 10px 20px; /* Espacement interne */
-            text-decoration: none; /* Pas de soulignement */
-            border-radius: 5px; /* Coins arrondis */
-            transition: background-color 0.3s ease; /* Transition douce au survol */
+            background: transparent;
+            border: 2px solid #60a5fa;
+            color: #ffffff;
+            padding: 14px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .navigation a:hover {
-            background-color: #008CBA; /* Couleur plus foncée au survol */
+            background: rgba(96, 165, 250, 0.15);
+            transform: translateY(-2px);
         }
 
-        .content-flex {
+        .info-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 2px solid rgba(96, 165, 250, 0.4);
+            border-radius: 25px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-header {
             display: flex;
             align-items: center;
-            justify-content: center; /* Centrage horizontal des éléments flex */
-            gap: 3rem; 
-            flex-wrap: wrap; 
-            text-align: left; /* Pour que le texte à l'intérieur de content-flex soit aligné à gauche */
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card-header-icon {
+            font-size: 3rem;
+        }
+
+        .card-header-title {
+            font-size: 2.2rem;
+            color: #60a5fa;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .info-item {
+            margin: 1.3rem 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .info-label {
+            color: #fbbf24;
+            font-weight: 600;
+            display: inline-block;
+            min-width: 160px;
+        }
+
+        .info-value {
+            color: #e5e7eb;
+        }
+
+        .info-value a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .info-value a:hover {
+            color: #93c5fd;
+        }
+
+        .content-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(30, 41, 59, 0.6);
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            border-radius: 20px;
+        }
+
+        .section-title {
+            color: #a78bfa;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .section-content {
+            color: #e5e7eb;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .section-content strong {
+            color: #60a5fa;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .profile-image {
             width: 250px;
             height: 250px;
             border-radius: 50%;
-            border: 4px solid #00BFFF; 
+            border: 4px solid #60a5fa;
             object-fit: cover;
-            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
         }
 
-        .intro-text {
+        .profile-info {
             flex: 1;
-            max-width: 600px;
-            min-width: 300px; /* Ajouté pour éviter un rétrécissement excessif sur petits écrans */
+            min-width: 300px;
         }
 
-        .personal-info p {
-            font-size: 1.1rem;
-            margin: 0.5rem 0;
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 10px;
-            border-left: 3px solid #00BFFF;
-            border-radius: 5px;
-        }
-
-        .introduction p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            text-align: justify;
-        }
-
-        strong {
-            color: #00BFFF; 
-            font-weight: 700;
-        }
-
-        /* Nouveau CSS pour le pied de page */
         .footer-content {
             text-align: center;
-            margin-top: 4rem; /* Pour espacer du contenu principal */
-            padding: 2rem;
-            background-color: rgba(25, 40, 55, 0.8); /* Même fond que le main-container */
-            color: #E0E0E0;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.18); /* Bordure légère en haut */
-            border-radius: 15px; /* Arrondi les coins du footer */
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Ombre légère */
-            max-width: 1200px; /* Aligné avec le main-container */
-            margin-left: auto; /* Centrage horizontal */
-            margin-right: auto; /* Centrage horizontal */
+            border-top: 1px solid rgba(96, 165, 250, 0.3);
         }
 
         .footer-content p {
-            margin: 0.5rem 0; /* Espacement entre les lignes du pied de page */
+            margin: 0.5rem 0;
         }
 
-        /* Media Queries pour les petits écrans - Si les éléments ne sont pas centrés */
         @media (max-width: 768px) {
-            .main-container {
-                margin: 2rem auto;
-                padding: 1rem;
+            .page-title {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
             }
-            .page-title { /* Ajustement de la taille du titre */
-                font-size: 2rem;
+
+            .subtitle {
+                font-size: 1.1rem;
             }
-            .navigation a { /* Empile les liens verticalement sur petits écrans */
-                display: block;
-                margin: 10px auto; /* Centre et espace verticalement */
+
+            .navigation {
+                flex-direction: column;
+                align-items: center;
             }
-            .content-flex {
-                flex-direction: column; /* Empile les éléments verticalement sur petits écrans */
-                gap: 1.5rem;
-                text-align: center; /* Centre le texte dans ce cas */
+
+            .navigation a {
+                width: 90%;
+                justify-content: center;
             }
-            .intro-text {
-                text-align: center; /* Centre le texte dans le bloc intro */
+
+            .info-card {
+                padding: 2rem 1.5rem;
             }
-            .personal-info p, .introduction p {
-                text-align: center; /* Force le centrage du texte des paragraphes */
+
+            .card-header-title {
+                font-size: 1.8rem;
             }
-            .footer-content {
-                margin-top: 2rem;
-                padding: 1rem;
+
+            .info-item {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .info-label {
+                min-width: auto;
+            }
+
+            .profile-section {
+                flex-direction: column;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
             }
         }
 
         @media (max-width: 480px) {
             .page-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+
+            .profile-image {
+                width: 180px;
+                height: 180px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="floating-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
     <div class="main-container">
-        <h1 class="page-title">BIENVENUE SUR MON E-PORTFOLIO</h1>
+        <h1 class="page-title">MON CV</h1>
+        <p class="subtitle">Étudiant en Réseaux & Télécommunications</p>
 
         <div class="navigation">
-            <a href="loisirs.html">Mes Loisirs</a>
-            <a href="cv.html">CV</a>
-            <a href="projets">projets</a>
-            <a href="https://www.linkedin.com/in/maxence-boyer-2887b6364/"class="nav-button">Profil Linkedin</a>
+            <a href="index.html">🏠 Accueil</a>
+            <a href="loisirs.html">🎵 Loisirs</a>
+            <a href="projets.html">📁 Projets</a>
         </div>
-        
-        <div class="content-flex">
-            <img src="images/image_page1.jpg" alt="Photo de Maxence Boyer" class="profile-image">
 
-            <div class="intro-text">
-                <div class="personal-info">
-                    <p><strong>Nom :</strong> Boyer</p>
-                    <p><strong>Prénom :</strong> Maxence</p>
-                    <p><strong>Groupe:</strong> R2</p>
-                </div>
-                <br>
-                <div class="introduction">
-                    <p>
+        <div class="info-card">
+            <div class="card-header">
+                <span class="card-header-icon">📋</span>
+                <h2 class="card-header-title">Informations Personnelles</h2>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Nom :</span>
+                <span class="info-value">Boyer</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Prénom :</span>
+                <span class="info-value">Maxence</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Email :</span>
+                <span class="info-value">maxence.boyer15112005@gmail.com</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Téléphone :</span>
+                <span class="info-value">06 25 60 21 31</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Page Linkedin :</span>
+                <span class="info-value"><a href="https://www.linkedin.com/in/maxence-boyer-2887b6364/" target="_blank">linkedin.com/in/maxence-boyer</a></span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Adresse :</span>
+                <span class="info-value">Lotissement les 4 vents, 43600 Sainte-Sigolène</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Permis :</span>
+                <span class="info-value">B</span>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3 class="section-title">À propos de moi</h3>
+            <div class="profile-section">
+                <img src="images/image_page1.jpg" alt="Photo de Maxence Boyer" class="profile-image">
+                <div class="profile-info">
+                    <p class="section-content">
                         Je m'appelle Maxence Boyer, j'habite en Haute-Loire à Sainte-Sigolène et je suis actuellement en seconde année de <strong>Réseaux et Télécommunications</strong> à l'IUT de Roanne. Passionné par l'informatique, je suis ravi de vous présenter mon parcours.
                     </p>
                 </div>
             </div>
         </div>
+
+        <footer class="footer-content">
+            <p>© 2025 Maxence Boyer. Tous droits réservés.</p>
+            <p>Ce site est protégé par les lois sur le droit d'auteur.</p>
+        </footer>
     </div>
-
-    <footer class="footer-content">
-        <p>© 2025 Maxence Boyer. Tous droits réservés.</p>
-        <p>Ce site est protégé par les lois sur le droit d'auteur. Toute reproduction, représentation ou modification du site web est interdit.</p>
-        <p>Les images de ce site sont protégés par creative commons.</p>
-    </footer>
-
 </body>
 </html>

@@ -4,115 +4,298 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon CV - Maxence Boyer</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-image: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d); 
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a0b2e 25%, #2d1b4e 50%, #1a0b2e 75%, #0a0e27 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             color: #E0E0E0;
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Particules animées en arrière-plan */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.8), transparent);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+            25% { transform: translateY(-100px) translateX(50px) scale(1.2); opacity: 0.6; }
+            50% { transform: translateY(-200px) translateX(-30px) scale(0.8); opacity: 0.4; }
+            75% { transform: translateY(-100px) translateX(-80px) scale(1.1); opacity: 0.5; }
         }
 
         .main-container {
-            max-width: 950px;
+            max-width: 1000px;
             margin: 4rem auto;
-            padding: 3rem;
-            background-color: rgba(25, 40, 55, 0.85);
-            border-radius: 20px;
-            box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.25);
+            padding: 0;
             position: relative;
             z-index: 1;
         }
 
         h1 {
             text-align: center;
-            font-size: 3.2rem;
-            color: #FFFFFF !important;
-            font-weight: 800;
-            margin-bottom: 3rem;
+            font-size: 4rem;
+            font-family: 'Orbitron', sans-serif;
+            color: #FFFFFF;
+            font-weight: 900;
+            margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            background: linear-gradient(to right, #00BFFF, #8A2BE2);
-            -webkit-background-clip: text; /* Correction de l'espace insécable ici */
+            letter-spacing: 8px;
+            background: linear-gradient(45deg, #00BFFF, #FF1493, #8A2BE2, #00BFFF);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(0, 191, 255, 0.6), 0 0 30px rgba(0, 191, 255, 0.3);
-            animation: softNeonGlow 2s ease-in-out infinite alternate;
+            animation: gradientText 5s ease infinite, glowPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(0, 191, 255, 0.8));
         }
 
-        @keyframes softNeonGlow {
-            from {
-                text-shadow: 0 0 10px rgba(0, 191, 255, 0.5), 0 0 20px rgba(0, 191, 255, 0.2);
-            }
-            to {
-                text-shadow: 0 0 15px rgba(0, 191, 255, 0.7), 0 0 30px rgba(0, 191, 255, 0.4);
-            }
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
-        .cv-section {
-            background-color: rgba(30, 50, 70, 0.95);
-            border-radius: 15px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(0, 191, 255, 0.4);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 191, 255, 0.6)); }
+            50% { filter: drop-shadow(0 0 40px rgba(255, 20, 147, 0.8)); }
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #00BFFF;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .navigation {
+            margin-bottom: 3rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .button-link {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0, 191, 255, 0.2), rgba(138, 43, 226, 0.2));
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 191, 255, 0.5);
+            color: #FFFFFF;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 20px rgba(0, 191, 255, 0.3);
             position: relative;
             overflow: hidden;
         }
 
+        .button-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .button-link:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .button-link:hover {
+            transform: translateY(-5px) scale(1.05);
+            border-color: #FF1493;
+            box-shadow: 0 8px 30px rgba(255, 20, 147, 0.6), 0 0 40px rgba(0, 191, 255, 0.4);
+        }
+
+        .cv-section {
+            background: linear-gradient(135deg, rgba(30, 50, 70, 0.4), rgba(20, 30, 50, 0.6));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(0, 191, 255, 0.1);
+            border: 2px solid rgba(0, 191, 255, 0.3);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            animation: slideInLeft 0.8s ease-out backwards;
+        }
+
+        .cv-section:nth-child(even) {
+            animation: slideInRight 0.8s ease-out backwards;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
         .cv-section:hover {
-            transform: translateY(-10px) scale(1.01);
-            box-shadow: 0 15px 45px rgba(0, 191, 255, 0.8);
-            border-color: #FF6347;
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 191, 255, 0.4), 0 0 50px rgba(255, 20, 147, 0.3);
+            border-color: #FF1493;
         }
 
         .cv-section::before {
             content: '';
             position: absolute;
-            top: -50px;
-            left: -50px;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(0, 191, 255, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            transition: transform 0.5s ease-out;
-            transform: scale(0);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.1) 0%, transparent 70%);
+            transform: rotate(0deg);
+            transition: transform 0.8s ease-out;
         }
 
         .cv-section:hover::before {
-            transform: scale(10);
+            transform: rotate(180deg);
+        }
+
+        .cv-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00BFFF, #FF1493, transparent);
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .cv-section:hover::after {
+            transform: scaleX(1);
         }
 
         .cv-section h2 {
             color: #00BFFF;
-            font-size: 2.2rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
             font-weight: 900;
             margin-top: 0;
-            margin-bottom: 1.8rem;
-            border-bottom: 3px solid rgba(0, 191, 255, 0.5);
-            padding-bottom: 0.8rem;
-            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid transparent;
+            background: linear-gradient(90deg, #00BFFF, #FF1493) bottom / 0% 3px no-repeat;
+            transition: background-size 0.5s ease;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+        }
+
+        .cv-section:hover h2 {
+            background-size: 100% 3px;
+        }
+
+        .cv-section h3 {
+            color: #FF1493;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+        }
+
+        .cv-section p, .cv-section ul {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #D5D5D5;
+            margin-bottom: 1.2rem;
             position: relative;
             z-index: 2;
         }
 
-        .cv-section p, .cv-section ul {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #D5D5D5;
-            margin-bottom: 1.2rem;
+        .cv-section p {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .cv-section p:hover {
+            transform: translateX(10px);
+            color: #FFFFFF;
+        }
+
+        .cv-section a {
+            color: #00BFFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .cv-section a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FF1493;
+            transition: width 0.3s ease;
+        }
+
+        .cv-section a:hover::after {
+            width: 100%;
+        }
+
+        .cv-section a:hover {
+            color: #FF1493;
         }
 
         .cv-section ul {
@@ -122,303 +305,302 @@
 
         .cv-section ul li {
             position: relative;
-            padding-left: 35px;
-            margin-bottom: 1rem;
-            transition: color 0.2s ease-in-out;
+            padding-left: 40px;
+            margin-bottom: 1.2rem;
+            transition: all 0.3s ease;
         }
 
         .cv-section ul li:hover {
             color: #FFFFFF;
+            transform: translateX(10px);
         }
 
         .cv-section ul li::before {
-            content: '✨';
-            color: #FFD700;
+            content: '▶';
+            color: #00BFFF;
             position: absolute;
             left: 0;
-            font-size: 1.8rem;
-            line-height: 1;
-            top: 0px;
-            animation: pulseBullet 1.5s infinite alternate;
+            font-size: 1.2rem;
+            line-height: 1.9;
+            transition: all 0.3s ease;
         }
 
-        @keyframes pulseBullet {
-            from { transform: scale(1); opacity: 0.8; }
-            to { transform: scale(1.1); opacity: 1; }
+        .cv-section ul li:hover::before {
+            color: #FF1493;
+            transform: scale(1.3) translateX(5px);
         }
 
         .cv-section strong {
             color: #FFD700;
             font-weight: 900;
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+            transition: text-shadow 0.3s ease;
+        }
+
+        .cv-section:hover strong {
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
         }
 
         .download-section {
-            background-color: rgba(30, 50, 70, 0.95);
-            border-radius: 15px;
-            padding: 3rem;
+            background: linear-gradient(135deg, rgba(30, 50, 70, 0.6), rgba(20, 30, 50, 0.8));
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 3.5rem;
             text-align: center;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(0, 191, 255, 0.1);
             margin-top: 3.5rem;
-            border: 1px solid rgba(0, 191, 255, 0.4);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 2px solid rgba(0, 191, 255, 0.4);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.15) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .download-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 35px rgba(0, 191, 255, 0.8);
+            transform: scale(1.02);
+            box-shadow: 0 15px 50px rgba(0, 191, 255, 0.5), 0 0 60px rgba(255, 20, 147, 0.4);
         }
 
-        .download-section p {
-            font-size: 1.2rem;
-            color: #E0E0E0;
+        .download-section > p {
+            font-size: 1.5rem;
+            color: #FFFFFF;
             margin-bottom: 2rem;
             font-weight: 700;
-            text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
+            position: relative;
+            z-index: 2;
         }
 
         #emailForm {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
-            max-width: 450px;
+            gap: 2rem;
+            max-width: 500px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         #emailForm label {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #00BFFF;
             font-weight: 700;
-            text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+            text-shadow: 0 0 8px rgba(0, 191, 255, 0.6);
         }
 
         #emailForm input[type="email"] {
             width: 100%;
-            padding: 1rem 1.2rem;
+            padding: 1.2rem 1.5rem;
             border: 3px solid #00BFFF;
-            border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.4);
-            color: #E0E0E0;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            color: #FFFFFF;
             font-size: 1.1rem;
             outline: none;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            box-shadow: inset 0 0 10px rgba(0, 191, 255, 0.3);
+            transition: all 0.4s ease;
+            box-shadow: inset 0 0 15px rgba(0, 191, 255, 0.2);
         }
 
         #emailForm input[type="email"]::placeholder {
-            color: #A0A0A0;
+            color: #888;
         }
 
         #emailForm input[type="email"]:focus {
-            border-color: #FF6347;
-            box-shadow: 0 0 15px rgba(255, 99, 71, 0.7), inset 0 0 10px rgba(255, 99, 71, 0.5);
-            background-color: rgba(0, 0, 0, 0.6);
+            border-color: #FF1493;
+            box-shadow: 0 0 25px rgba(255, 20, 147, 0.6), inset 0 0 20px rgba(255, 20, 147, 0.3);
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.02);
         }
 
         #emailForm button[type="submit"] {
-            background-image: linear-gradient(to right, #00BFFF, #8A2BE2);
+            background: linear-gradient(135deg, #00BFFF, #FF1493, #8A2BE2);
+            background-size: 200% 200%;
             color: #FFFFFF;
-            padding: 1.2rem 2.5rem;
+            padding: 1.3rem 3rem;
             border: none;
-            border-radius: 8px;
-            font-size: 1.3rem;
+            border-radius: 50px;
+            font-size: 1.4rem;
             font-weight: 900;
             cursor: pointer;
-            transition: background-image 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
-            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.6);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(0, 191, 255, 0.5);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #emailForm button[type="submit"]::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        #emailForm button[type="submit"]:hover::before {
+            width: 400px;
+            height: 400px;
         }
 
         #emailForm button[type="submit"]:hover {
-            background-image: linear-gradient(to right, #8A2BE2, #00BFFF);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 191, 255, 0.8), 0 0 30px rgba(138, 43, 226, 0.7);
+            background-position: 100% 50%;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 20, 147, 0.7), 0 0 50px rgba(0, 191, 255, 0.5);
+        }
+
+        #emailForm button[type="submit"]:active {
+            transform: translateY(-2px) scale(1.02);
         }
 
         #error-message {
-            color: #FF6347 !important;
+            color: #FF6347;
             font-weight: 700;
             margin-top: 1.2rem;
-            font-size: 1rem;
-            text-shadow: 0 0 5px rgba(255, 99, 71, 0.5);
+            font-size: 1.1rem;
+            text-shadow: 0 0 8px rgba(255, 99, 71, 0.8);
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
         }
 
         .footer-content {
             text-align: center;
-            padding: 2.5rem;
+            padding: 3rem;
             margin-top: 5rem;
-            color: #A0A0A0; 
-            background-color: rgba(10, 20, 30, 0.75);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #A0A0A0;
+            background: linear-gradient(135deg, rgba(10, 20, 30, 0.8), rgba(20, 10, 30, 0.8));
+            backdrop-filter: blur(10px);
+            border-top: 2px solid rgba(0, 191, 255, 0.3);
             font-size: 0.95rem;
         }
+
         .footer-content p {
-            margin: 0.6rem 0;
+            margin: 0.8rem 0;
+            transition: color 0.3s ease;
         }
 
-        /* Styles for button links */
-        .button-link {
-            display: inline-block;
-            background-image: linear-gradient(to right, #00BFFF, #8A2BE2);
-            color: #FFFFFF;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-image 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.5);
-            margin: 0 10px; /* Space between buttons */
+        .footer-content p:hover {
+            color: #00BFFF;
         }
 
-        .button-link:hover {
-            background-image: linear-gradient(to right, #8A2BE2, #00BFFF);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.7);
-        }
-        
-        /* Responsive adjustments */
+        /* Responsive */
         @media (max-width: 992px) {
             .main-container {
                 max-width: 850px;
-                padding: 2.5rem;
+                padding: 0 2rem;
             }
             h1 {
-                font-size: 2.8rem;
-                letter-spacing: 3px;
+                font-size: 3rem;
+                letter-spacing: 5px;
             }
             .cv-section h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
         }
 
         @media (max-width: 768px) {
             .main-container {
                 margin: 2rem auto;
-                padding: 2rem;
-                border-radius: 15px;
+                padding: 0 1.5rem;
             }
             h1 {
-                font-size: 2.2rem;
-                margin-bottom: 2rem;
-                letter-spacing: 2px;
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+            .subtitle {
+                font-size: 1rem;
             }
             .cv-section {
                 padding: 2rem;
                 margin-bottom: 2rem;
-                border-radius: 10px;
             }
             .cv-section h2 {
-                font-size: 1.8rem;
-                margin-bottom: 1.5rem;
+                font-size: 1.9rem;
             }
-            .cv-section p, .cv-section ul {
-                font-size: 1rem;
-                line-height: 1.7;
-            }
-            .cv-section ul li {
-                padding-left: 30px;
-            }
-            .cv-section ul li::before {
-                font-size: 1.6rem;
-                top: 2px;
-            }
-            .download-section {
-                padding: 2rem;
-                margin-top: 2.5rem;
-            }
-            #emailForm input[type="email"],
-            #emailForm button[type="submit"] {
-                font-size: 1rem;
-                padding: 0.9rem 1.8rem;
-            }
-            #emailForm button[type="submit"] {
-                font-size: 1.1rem;
+            .navigation {
+                gap: 1rem;
             }
             .button-link {
-                padding: 0.8rem 1.5rem;
+                padding: 0.8rem 1.8rem;
                 font-size: 1rem;
             }
         }
 
         @media (max-width: 480px) {
-            .main-container {
-                margin: 1rem auto;
-                padding: 1.5rem;
-                border-radius: 10px;
-            }
             h1 {
-                font-size: 1.8rem;
-                letter-spacing: 1px;
-                margin-bottom: 1.5rem;
+                font-size: 2rem;
+                letter-spacing: 2px;
             }
             .cv-section {
                 padding: 1.5rem;
-                margin-bottom: 1.5rem;
             }
             .cv-section h2 {
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
-            }
-            .cv-section p, .cv-section ul {
-                font-size: 0.95rem;
-                line-height: 1.6;
-            }
-            .cv-section ul li {
-                padding-left: 25px;
-                margin-bottom: 0.6rem;
-            }
-            .cv-section ul li::before {
-                font-size: 1.4rem;
-                top: 0px;
-            }
-            .download-section {
-                padding: 1.5rem;
-                margin-top: 2rem;
-            }
-            #emailForm {
-                gap: 1rem;
-            }
-            #emailForm input[type="email"],
-            #emailForm button[type="submit"] {
-                font-size: 0.9rem;
-                padding: 0.8rem 1.2rem;
-            }
-            #emailForm button[type="submit"] {
-                font-size: 1rem;
+                font-size: 1.6rem;
             }
             .button-link {
-                padding: 0.7rem 1.2rem;
+                padding: 0.7rem 1.5rem;
                 font-size: 0.9rem;
-                margin: 0 5px;
             }
         }
     </style>
 </head>
 <body>
 
+<div class="particles">
+    <div class="particle" style="width: 4px; height: 4px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="width: 6px; height: 6px; top: 20%; left: 80%; animation-delay: 2s;"></div>
+    <div class="particle" style="width: 3px; height: 3px; top: 60%; left: 15%; animation-delay: 4s;"></div>
+    <div class="particle" style="width: 5px; height: 5px; top: 80%; left: 70%; animation-delay: 1s;"></div>
+    <div class="particle" style="width: 4px; height: 4px; top: 40%; left: 90%; animation-delay: 3s;"></div>
+    <div class="particle" style="width: 7px; height: 7px; top: 30%; left: 40%; animation-delay: 5s;"></div>
+</div>
+
 <div class="main-container">
 
     <h1>Mon CV</h1>
+    <p class="subtitle">Étudiant en Réseaux & Télécommunications</p>
 
-    <div class="navigation" style="margin-bottom: 3rem; text-align: center;">
-        <a href="index.html" class="button-link">Retour à l'accueil</a>
-        <a href="loisirs.html" class="button-link">Mes Loisirs</a>
-        <a href="projets.html" class="button-link">Projets</a>
+    <div class="navigation">
+        <a href="index.html" class="button-link">🏠 Accueil</a>
+        <a href="loisirs.html" class="button-link">🎵 Loisirs</a>
+        <a href="projets.html" class="button-link">💻 Projets</a>
     </div>
 
     <div class="cv-section">
         <section>
-            <h2>Informations Personnelles</h2>
+            <h2>📋 Informations Personnelles</h2>
             <p><strong>Nom :</strong> Boyer</p>
             <p><strong>Prénom :</strong> Maxence</p>
             <p><strong>Email :</strong> maxence.boyer15112005@gmail.com</p>
             <p><strong>Téléphone:</strong> 06 25 60 21 31</p>
-            <p><strong>Page Linkedin:</strong> <a href="https://www.linkedin.com/in/maxence-boyer-2887b6364/" target="_blank">https://www.linkedin.com/in/maxence-boyer-2887b6364/</a></p>
+            <p><strong>Page Linkedin:</strong> <a href="https://www.linkedin.com/in/maxence-boyer-2887b6364/" target="_blank">linkedin.com/in/maxence-boyer</a></p>
             <p><strong>Adresse :</strong> Lotissement les 4 vents, 43600 Sainte-Sigolène</p>
             <p><strong>Permis :</strong> B</p>
         </section>
@@ -426,7 +608,7 @@
 
     <div class="cv-section">
         <section>
-            <h2>Formations</h2>
+            <h2>🎓 Formations</h2>
             <ul>
                 <li><strong>Juin 2021:</strong> Obtention du Diplôme National du Brevet au Collège Sacré-Coeur à Sainte-Sigolène</li>
                 <li><strong>2022-2024:</strong> Première et Terminale STI2D au lycée Notre-Dame du Château à Monistrol-sur-Loire</li>
@@ -438,7 +620,7 @@
 
     <div class="cv-section">
         <section>
-            <h2>CTF et Certifications</h2>
+            <h2>🏆 CTF et Certifications</h2>
             <ul>
                 <li><strong>Novembre 2024:</strong> Obtention de l'attestation SecNum Academy</li>
                 <li><strong>Mai 2025:</strong> Participation au CTF de Vannes</li>
@@ -451,7 +633,7 @@
 
     <div class="cv-section">
         <section>
-            <h2>Expériences professionnelles</h2>
+            <h2>💼 Expériences professionnelles</h2>
             <ul>
                 <li><strong>Juin 2021:</strong> Immersion d'une semaine au Syndicat des eaux à Sainte-Sigolène : Organisation chantiers (lieu, matériel, délais...)</li>
                 <li><strong>Mars 2023:</strong> Immersion d'une semaine chez JM Polymers Saint-Romain Lachalm : Comptabilité, vérification d'enregistrements d'impôts, découverte des autres secteurs.</li>
@@ -462,8 +644,8 @@
 
     <div class="cv-section">
         <section>
-            <h2>Compétences</h2>
-            <h3>Techniques:</h3>
+            <h2>⚡ Compétences</h2>
+            <h3>Techniques</h3>
             <ul>
                 <li>Configuration et administration de réseaux</li>
                 <li>Surveillance et maintenance des infrastructures réseaux</li>
@@ -473,7 +655,7 @@
             <ul>
                 <li>Travail en équipe</li>
                 <li>Rédaction de documents techniques et procédures</li>
-                <li>Sens du service et écooute active</li>
+                <li>Sens du service et écoute active</li>
                 <li>Respect des objectifs</li>
                 <li>Esprit d'amélioration continue</li>
                 <li>Rigueur</li>
@@ -485,7 +667,7 @@
 
     <div class="cv-section">
         <section>
-            <h2>Divers</h2>
+            <h2>🎼 Divers</h2>
             <ul>
                 <li>Pratique de la musique depuis 9 ans.</li>
                 <li>A pratiqué du tuba pendant 5 ans.</li>
@@ -496,13 +678,13 @@
     </div>
 
     <div class="download-section">
-        <p>Téléchargez le CV complet ici :</p>
+        <p>📥 Téléchargez le CV complet ici :</p>
         <form id="emailForm">
             <label for="email">Entrez votre email :</label>
             <input type="email" id="email" name="email" placeholder="exemple@domaine.com" required>
             <button type="submit">Télécharger le CV</button>
         </form>
-        <p id="error-message" style="color: red; display: none;">Veuillez entrer une adresse email valide.</p>
+        <p id="error-message" style="display: none;">⚠️ Veuillez entrer une adresse email valide.</p>
     </div>
 
 </div>
@@ -522,6 +704,25 @@
         
         const cvPath = "documents/CV_Maxence_Boyer (1).pdf";
 
+        // Animation au scroll
+        const sections = document.querySelectorAll('.cv-section');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
         if (emailForm) {
             emailForm.addEventListener('submit', function(event) {
                 event.preventDefault(); 
@@ -529,27 +730,11 @@
 
                 if (emailRegex.test(emailInput.value)) {
                     errorMessage.style.display = 'none';
-                    console.log('Email valide. Lancement du téléchargement du CV.');
                     
-                    const link = document.createElement('a');
-                    link.href = cvPath;
-                    link.download = 'CV_Maxence_Boyer.pdf';
-
-                    document.body.appendChild(link);
-                    link.click(); 
-                    document.body.removeChild(link);
+                    // Animation de succès
+                    const button = emailForm.querySelector('button[type="submit"]');
+                    button.textContent = '✓ Téléchargement...';
+                    button.style.background = 'linear-gradient(135deg, #00FF00, #00CC00)';
                     
-                    console.log('Le fichier CV_Maxence_Boyer.pdf a été téléchargé.');
-
-                } else {
-                    errorMessage.style.display = 'block';
-                    console.log('Email invalide. Affichage du message d\'erreur.');
-                }
-            });
-        } else {
-            console.error("Erreur : Le formulaire #emailForm n'a pas été trouvé.");
-        }
-    });
-</script>
-</body>
-</html>
+                    setTimeout(() => {
+                        const link = document.createElement('
