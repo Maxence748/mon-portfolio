@@ -3,203 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
-    
+    <title>Mes Projets - Maxence Boyer</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            background-color: #f2994a;
-            background-image: linear-gradient(to bottom, #1a1a4a, #5f2c4f, #c43c39, #f2994a);
-            background-attachment: fixed;
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, #1a1035 0%, #2d1b4e 50%, #1a1035 100%);
+            min-height: 100vh;
+            color: #E0E0E0;
+            font-family: 'Rajdhani', sans-serif;
+            padding: 1rem 0.5rem;
+            position: relative;
             overflow-x: hidden;
         }
 
-        .portfolio-container {
-            max-width: 1300px;
-            margin: 3rem auto;
-            padding: 2rem;
+        .floating-circles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.3), transparent);
+            animation: float-around 20s infinite ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            width: 15px;
+            height: 15px;
+            top: 10%;
+            left: 15%;
+            animation-duration: 15s;
+        }
+
+        .circle:nth-child(2) {
+            width: 12px;
+            height: 12px;
+            top: 60%;
+            left: 80%;
+            animation-duration: 20s;
+            animation-delay: 3s;
+        }
+
+        .circle:nth-child(3) {
+            width: 18px;
+            height: 18px;
+            top: 80%;
+            left: 10%;
+            animation-duration: 18s;
+            animation-delay: 5s;
+        }
+
+        .circle:nth-child(4) {
+            width: 14px;
+            height: 14px;
+            top: 30%;
+            left: 70%;
+            animation-duration: 22s;
+            animation-delay: 2s;
+        }
+
+        .circle:nth-child(5) {
+            width: 10px;
+            height: 10px;
+            top: 50%;
+            left: 40%;
+            animation-duration: 17s;
+            animation-delay: 7s;
+        }
+
+        @keyframes float-around {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(30px, -30px) scale(1.1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-20px, 40px) scale(0.9);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translate(40px, 20px) scale(1.05);
+                opacity: 0.6;
+            }
+        }
+
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        .portfolio-container h1 {
+        .page-title {
             text-align: center;
-            font-weight: 700;
-            font-size: 3.5rem;
-            color: #fff;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            margin-bottom: 3rem;
-            position: relative;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #a78bfa, #ec4899, #a78bfa);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: #60a5fa;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1.5px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .navigation a {
+            background: transparent;
+            border: 2px solid #60a5fa;
+            color: #ffffff;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .navigation a:hover {
+            background: rgba(96, 165, 250, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .section-header {
+            text-align: center;
+            font-size: 1.6rem;
+            color: #a78bfa;
+            margin: 2.5rem 0 1.5rem;
+            font-weight: 600;
             letter-spacing: 2px;
-        }
-
-        .portfolio-container h1::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, #c43c39, #f2994a);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        .portfolio-container h2 {
-            text-align: center;
-            font-weight: 400;
-            font-size: 2.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-        }
-
-        .portfolio-container h2 .icon {
-            font-size: 1.8rem;
-            color: #f2994a;
+            gap: 10px;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(30, 41, 59, 0.8);
+            border: 2px solid rgba(96, 165, 250, 0.4);
+            border-radius: 20px;
+            overflow: hidden;
             backdrop-filter: blur(10px);
-            border-radius: 18px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            padding: 2rem;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            overflow: hidden;
         }
 
         .project-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            border-color: #60a5fa;
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.3);
         }
 
-        .project-card h3 {
-            margin-top: 0;
-            font-size: 1.8rem;
-            color: #f0f0f0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            margin-bottom: 1rem;
-            line-height: 1.3;
+        .project-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid #60a5fa;
         }
 
-        .project-card p {
+        .project-content {
+            padding: 1.5rem;
             flex-grow: 1;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
         }
 
-        .project-card .project-tags {
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
+        .project-content h3 {
+            color: #60a5fa;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .project-content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #e5e7eb;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            margin-bottom: 1rem;
         }
 
         .tag {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: #ffe066;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            background: rgba(96, 165, 250, 0.2);
+            color: #fbbf24;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
             font-weight: 500;
         }
 
         .cta-button {
             display: inline-block;
-            text-decoration: none;
-            background: linear-gradient(to right, #c43c39, #f2994a);
+            background: linear-gradient(90deg, #a78bfa, #ec4899);
             color: #fff;
-            padding: 12px 25px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
             text-align: center;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
-            margin-top: auto;
             align-self: flex-start;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .cta-button:hover {
-            background: linear-gradient(to right, #f2994a, #c43c39);
+            background: linear-gradient(90deg, #ec4899, #a78bfa);
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-image {
-            width: calc(100% + 4rem);
-            margin: -2rem -2rem 1.5rem -2rem;
-            height: 220px;
-            object-fit: cover;
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.03);
-        }
-
-        @media (max-width: 768px) {
-            .portfolio-container {
-                padding: 1rem;
-                margin: 1.5rem auto;
-            }
-
-            .portfolio-container h1 {
-                font-size: 2.5rem;
-            }
-
-            .portfolio-container h2 {
-                font-size: 1.8rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .project-card {
-                padding: 1.5rem;
-                border-radius: 12px;
-            }
-
-            .project-card h3 {
-                font-size: 1.5rem;
-            }
-
-            .project-card p {
-                font-size: 1rem;
-            }
-
-            .project-image {
-                margin: -1.5rem -1.5rem 1rem -1.5rem;
-                height: 180px;
-            }
+            box-shadow: 0 5px 15px rgba(167, 139, 250, 0.4);
         }
 
         .modal-overlay {
@@ -208,14 +284,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.95);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 9999;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 1rem;
         }
 
         .modal-overlay.active {
@@ -224,20 +301,19 @@
         }
 
         .modal-content {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
+            background: rgba(30, 41, 59, 0.95);
+            border: 2px solid rgba(96, 165, 250, 0.5);
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 2rem;
             max-width: 700px;
-            width: 90%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            backdrop-filter: blur(15px);
             position: relative;
             transform: translateY(20px);
             opacity: 0;
             transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-            color: #fff;
-            overflow-y: auto;
-            max-height: 85vh;
         }
 
         .modal-overlay.active .modal-content {
@@ -258,43 +334,46 @@
         }
 
         .modal-close-button:hover {
-            color: #f2994a;
+            color: #ec4899;
         }
 
         .modal-content h3 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-top: 0;
-            margin-bottom: 1.5rem;
-            color: #fff;
+            margin-bottom: 1rem;
+            color: #60a5fa;
             text-align: center;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
         }
 
         .modal-content h4 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-top: 1.5rem;
             margin-bottom: 0.8rem;
-            color: #ffe066;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: #a78bfa;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.3);
             padding-bottom: 5px;
         }
 
-        .modal-content p, .modal-content ul {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
+        .modal-content p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #e5e7eb;
             margin-bottom: 1rem;
         }
 
         .modal-content ul {
             list-style: none;
             padding-left: 0;
+            margin-bottom: 1rem;
         }
 
         .modal-content ul li {
             position: relative;
             padding-left: 25px;
             margin-bottom: 0.7rem;
+            line-height: 1.6;
+            color: #e5e7eb;
         }
 
         .modal-content ul li::before {
@@ -311,85 +390,65 @@
             color: #ff6666;
         }
 
-        .modal-content .github-button {
+        .github-button {
             display: block;
             width: fit-content;
-            margin: 2rem auto 0;
-            padding: 14px 30px;
-            font-size: 1.1rem;
+            margin: 1.5rem auto 0;
+            padding: 12px 25px;
+            font-size: 1rem;
             font-weight: 600;
-            background: linear-gradient(to right, #f2994a, #c43c39);
-            border-radius: 8px;
+            background: linear-gradient(90deg, #a78bfa, #ec4899);
+            border-radius: 25px;
             color: #fff;
             text-decoration: none;
             text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .modal-content .github-button:hover {
-            background: linear-gradient(to right, #c43c39, #f2994a);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        .github-button:hover {
+            background: linear-gradient(90deg, #ec4899, #a78bfa);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(167, 139, 250, 0.4);
         }
 
-        .sponsor-section {
+        .sponsor-section, .ranking-section {
             text-align: center;
-            margin-top: 2.5rem;
-            margin-bottom: 3rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(96, 165, 250, 0.1);
             border-radius: 15px;
+            border: 1px solid rgba(96, 165, 250, 0.3);
         }
 
-        .sponsor-section h4 {
-            font-size: 1.8rem;
-            color: #f2994a;
-            margin-bottom: 1.5rem;
-            border-bottom: none;
-            padding-bottom: 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        .sponsor-section h4, .ranking-section h4 {
+            font-size: 1.5rem;
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            border: none;
+            padding: 0;
         }
 
         .sponsor-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             padding: 10px;
         }
 
         .sponsor-grid img {
-            max-height: 80px;
+            max-height: 70px;
             width: auto;
             object-fit: contain;
             filter: grayscale(80%) brightness(120%);
-            transition: filter 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
+            border-radius: 8px;
         }
 
         .sponsor-grid img:hover {
             filter: grayscale(0%) brightness(100%);
             transform: scale(1.05);
-        }
-
-        .ranking-section {
-            text-align: center;
-            margin-top: 3rem;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .ranking-section h4 {
-            font-size: 1.8rem;
-            color: #ffe066;
-            margin-bottom: 1.5rem;
-            border-bottom: none;
-            padding-bottom: 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .ranking-display {
@@ -398,11 +457,11 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            height: 150px;
+            height: 120px;
         }
 
         .team-rank {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
             color: #66ff99;
             text-shadow: 0 0 15px rgba(102, 255, 153, 0.7);
@@ -413,10 +472,10 @@
         }
 
         .team-name {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 500;
             color: #fff;
-            margin-top: 4rem;
+            margin-top: 3.5rem;
             opacity: 0;
             animation: fadeInBottom 1.5s ease-out forwards;
             animation-delay: 1s;
@@ -424,7 +483,7 @@
 
         @keyframes fadeInTop {
             from {
-                transform: translateY(-50px);
+                transform: translateY(-30px);
                 opacity: 0;
             }
             to {
@@ -435,7 +494,7 @@
 
         @keyframes fadeInBottom {
             from {
-                transform: translateY(50px);
+                transform: translateY(30px);
                 opacity: 0;
             }
             to {
@@ -447,30 +506,30 @@
         .ranking-image {
             max-width: 100%;
             height: auto;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(96, 165, 250, 0.4);
         }
-        
+
         .lightbox-overlay {
-            display: none;
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
+            background-color: rgba(0, 0, 0, 0.95);
+            display: none;
             justify-content: center;
             align-items: center;
+            z-index: 10000;
         }
 
         .lightbox-content {
-            max-width: 95%;
-            max-height: 95vh;
+            max-width: 90vw;
+            max-height: 90vh;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            border: 4px solid #60a5fa;
+            border-radius: 10px;
         }
 
         .close-lightbox {
@@ -480,602 +539,603 @@
             color: #fff;
             font-size: 40px;
             font-weight: bold;
-            transition: 0.3s;
             cursor: pointer;
-            z-index: 1001;
+            transition: color 0.3s;
         }
 
-        .close-lightbox:hover,
-        .close-lightbox:focus {
-            color: #f2994a;
-            text-decoration: none;
+        .close-lightbox:hover {
+            color: #ec4899;
         }
 
-        /* Styles for the navigation buttons */
-        .navigation {
+        .footer-content {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(96, 165, 250, 0.3);
         }
 
-        .navigation .nav-button {
-            display: inline-block;
-            background: linear-gradient(to right, #c43c39, #f2994a);
-            color: #fff;
-            padding: 12px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            margin: 0 10px;
+        .footer-content p {
+            margin: 0.3rem 0;
         }
 
-        .navigation .nav-button:hover {
-            background: linear-gradient(to right, #f2994a, #c43c39);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navigation a {
+                width: 90%;
+                justify-content: center;
+            }
+
+            .section-header {
+                font-size: 1.4rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image {
+                height: 150px;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-content h3 {
+                font-size: 1.6rem;
+            }
+
+            .team-rank {
+                font-size: 2.5rem;
+            }
+
+            .team-name {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.7rem;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="portfolio-container">
-
-    <h1>Mon Portfolio</h1>
-
-    <div class="navigation">
-            <a href="index.html" class="nav-button">Retour à l'accueil</a>
-            <a href="loisirs.html" class="nav-button">Loisirs</a>
-            <a href="cv.html" class="nav-button">CV</a>
-            <a href="https://www.linkedin.com/in/maxence-boyer-2887b6364/"class="nav-button">Profil Linkedin</a>
+    <div class="floating-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
     </div>
 
-    <h2><span class="icon">🚀</span> Projets Professionnels</h2>
-    <section class="projects-grid">
+    <div class="main-container">
+        <h1 class="page-title">MES PROJETS</h1>
+        <p class="subtitle">Portfolio Professionnel & Personnel</p>
 
-        <div class="project-card campus-project-card">
-            <img src="images/Réseau 1.png" alt="Schéma d'architecture réseau d'un campus universitaire" class="project-image">
-            <h3>Infrastructure Réseau d'un Campus</h3>
-            <p>
-           Conception et déploiement d'une architecture réseau complexe pour un campus universitaire multi-sites. Le projet a couvert l'optimisation de l'adressage (VLSM), la segmentation (VLANs), le routage dynamique (RIP) et la mise en place de politiques de sécurité avancées (ACL, NAT). </p>
-            <div class="project-tags">
-                <span class="tag">Réseaux</span>
-                <span class="tag">Cisco Packet Tracer</span>
-                <span class="tag">VLSM</span>
-                <span class="tag">VLAN</span>
-                <span class="tag">RIP</span>
-                <span class="tag">ACL</span>
-                <span class="tag">NAT</span>
-            </div>
-            <a href="#" class="cta-button" id="openCampusModalButton">Voir détail</a>
+        <div class="navigation">
+            <a href="index.html">🏠 Accueil</a>
+            <a href="loisirs.html">🎵 Loisirs</a>
+            <a href="cv.html">📋 CV</a>
+            <a href="https://www.linkedin.com/in/maxence-boyer-2887b6364/">💼 LinkedIn</a>
         </div>
 
-        <div class="project-card">
-            <img src="images/tel.png" alt="téléphone ip" class="project-image">
-            <h3>Téléphonie sur IP</h3>
-            <p>
-                Mise en place d'une solution IPBX complète pour un atelier d'artistes, intégrant un serveur vocal interactif (IVR), la gestion des appels basées sur conditions temporelles, et des messageries vocales individuelles. </p>
-            <div class="project-tags">
-                <span class="tag">VoIP</span>
-                <span class="tag">IPBX</span>
-                <span class="tag">IVR</span>
-                <span class="tag">Téléphonie</span>
+        <h2 class="section-header">🚀 Projets Professionnels</h2>
+        <section class="projects-grid">
+            <div class="project-card">
+                <img src="images/Réseau 1.png" alt="Schéma d'architecture réseau" class="project-image">
+                <div class="project-content">
+                    <h3>Infrastructure Réseau d'un Campus</h3>
+                    <p>Conception et déploiement d'une architecture réseau complexe pour un campus universitaire multi-sites. Le projet a couvert l'optimisation de l'adressage (VLSM), la segmentation (VLANs), le routage dynamique (RIP) et la mise en place de politiques de sécurité avancées (ACL, NAT).</p>
+                    <div class="project-tags">
+                        <span class="tag">Réseaux</span>
+                        <span class="tag">Cisco Packet Tracer</span>
+                        <span class="tag">VLSM</span>
+                        <span class="tag">VLAN</span>
+                        <span class="tag">RIP</span>
+                        <span class="tag">ACL</span>
+                        <span class="tag">NAT</span>
+                    </div>
+                    <a href="#" class="cta-button" id="openCampusModalButton">Voir détail</a>
+                </div>
             </div>
-            <a href="https://github.com/Maxence748/telephone/tree/main" class="cta-button" target="_blank">Détails sur GitHub</a>
-        </div>
-        
-        <div class="project-card">
-            <h3>Serveur Web sur Debian</h3>
-            <p>
-                Déploiement et configuration sécurisée d'un serveur web LAMP (Linux, Apache, MySQL, PHP) sur Debian 11, incluant la gestion réseau et la mise 
-            en production d'une application web. </p>
-            <div class="project-tags">
-                <span class="tag">Linux</span>
-                <span class="tag">Debian</span>
-                <span class="tag">Apache</span>
-                <span class="tag">MySQL</span>
-                <span class="tag">PHP</span>
-                <span class="tag">Déploiement</span>
+
+            <div class="project-card">
+                <img src="images/tel.png" alt="téléphone IP" class="project-image">
+                <div class="project-content">
+                    <h3>Téléphonie sur IP</h3>
+                    <p>Mise en place d'une solution IPBX complète pour un atelier d'artistes, intégrant un serveur vocal interactif (IVR), la gestion des appels basées sur conditions temporelles, et des messageries vocales individuelles.</p>
+                    <div class="project-tags">
+                        <span class="tag">VoIP</span>
+                        <span class="tag">IPBX</span>
+                        <span class="tag">IVR</span>
+                        <span class="tag">Téléphonie</span>
+                    </div>
+                    <a href="https://github.com/Maxence748/telephone/tree/main" class="cta-button" target="_blank">Détails sur GitHub</a>
+                </div>
             </div>
-            <a href="#" class="cta-button" id="openDebianModalButton">Voir le Code</a>
-        </div>
 
-        <div class="project-card">
-            <h3>Active Directory avec Samba4</h3>
-            <p>
-            Implémentation d'un contrôleur de domaine Active Directory sur Linux avec Samba4, permettant une gestion centralisée des utilisateurs, groupes et politiques de sécurité comme alternative robuste à Windows Server. </p>
-            <div class="project-tags">
-                <span class="tag">Linux Server</span>
-                <span class="tag">Samba4</span>
-                <span class="tag">Active Directory</span>
-                <span class="tag">Gestion Utilisateurs</span>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Serveur Web sur Debian</h3>
+                    <p>Déploiement et configuration sécurisée d'un serveur web LAMP (Linux, Apache, MySQL, PHP) sur Debian 11, incluant la gestion réseau et la mise en production d'une application web.</p>
+                    <div class="project-tags">
+                        <span class="tag">Linux</span>
+                        <span class="tag">Debian</span>
+                        <span class="tag">Apache</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">Déploiement</span>
+                    </div>
+                    <a href="#" class="cta-button" id="openDebianModalButton">Voir le Code</a>
+                </div>
             </div>
-            <a href="#" class="cta-button" id="openSambaModalButton">Consulter le Projet</a>
-        </div>
 
-    </section>
-
-    <h2><span class="icon">✨</span> Projets Personnels</h2>
-    <section class="projects-grid">
-
-        <div class="project-card">
-            <h3>Certification SecNumAcadémie</h3>
-            <p>
-                Obtention de la certification ANSSI "SecNumAcadémie", attestant de solides connaissances fondamentales en cybersécurité, 
-                de la protection des données à la gestion des risques numériques. </p>
-            <div class="project-tags">
-                <span class="tag">Cybersécurité</span>
-                <span class="tag">ANSSI</span>
-                <span class="tag">Formation</span>
-                <span class="tag">Certification</span>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Active Directory avec Samba4</h3>
+                    <p>Implémentation d'un contrôleur de domaine Active Directory sur Linux avec Samba4, permettant une gestion centralisée des utilisateurs, groupes et politiques de sécurité comme alternative robuste à Windows Server.</p>
+                    <div class="project-tags">
+                        <span class="tag">Linux Server</span>
+                        <span class="tag">Samba4</span>
+                        <span class="tag">Active Directory</span>
+                        <span class="tag">Gestion Utilisateurs</span>
+                    </div>
+                    <a href="#" class="cta-button" id="openSambaModalButton">Consulter le Projet</a>
+                </div>
             </div>
-            <a href="#" class="cta-button" id="openSecNumModalButton">Voir détail</a>
-        </div>
+        </section>
 
-        <div class="project-card">
-            <h3>Participation CTF Vannes</h3>
-            <p>
-                Participation active à la compétition "Capture The Flag" de Vannes, mettant en pratique des compétences en sécurité offensive et défensive (cryptographie, stéganographie, exploitation de binaires). </p>
-            <div class="project-tags">
-                <span class="tag">CTF</span>
-                <span class="tag">Cybersécurité</span>
-                <span class="tag">Hacking</span>
-                <span class="tag">Challenge</span>
+        <h2 class="section-header">✨ Projets Personnels</h2>
+        <section class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Certification SecNumAcadémie</h3>
+                    <p>Obtention de la certification ANSSI "SecNumAcadémie", attestant de solides connaissances fondamentales en cybersécurité, de la protection des données à la gestion des risques numériques.</p>
+                    <div class="project-tags">
+                        <span class="tag">Cybersécurité</span>
+                        <span class="tag">ANSSI</span>
+                        <span class="tag">Formation</span>
+                        <span class="tag">Certification</span>
+                    </div>
+                    <a href="#" class="cta-button" id="openSecNumModalButton">Voir détail</a>
+                </div>
             </div>
-            <a href="#" class="cta-button" id="openCTFModalButton">Voir détail</a>
-        </div>
 
-        <div class="project-card">
-            <h3>Certification Equipements réseau et configuration de base</h3>
-            <p>
-                Obtention de la certification "Equipements réseau et configuration de base", attestant l'acquisition des compétences de bases pour explorer les composants d'un réseau hiérachique,
-                configurer les périphéries des réseaux et les services cloud. C'est essentiels dans le domaine des technologies et de l'informations. </p>
-            <div class="project-tags">
-                <span class="tag">Périphériques réseau</span>
-                <span class="tag">Cloud</span>
-                <span class="tag">Configuration</span>
-                <span class="tag">Dépannage</span>
-                <span class="tag">Conception 
-réseau</span>
-                <span class="tag">Cisco Networking Academy</span>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Participation CTF Vannes</h3>
+                    <p>Participation active à la compétition "Capture The Flag" de Vannes, mettant en pratique des compétences en sécurité offensive et défensive (cryptographie, stéganographie, exploitation de binaires).</p>
+                    <div class="project-tags">
+                        <span class="tag">CTF</span>
+                        <span class="tag">Cybersécurité</span>
+                        <span class="tag">Hacking</span>
+                        <span class="tag">Challenge</span>
+                    </div>
+                    <a href="#" class="cta-button" id="openCTFModalButton">Voir détail</a>
+                </div>
             </div>
-            <a href="#" class="cta-button" id="openResConfButton">Voir détail</a>
-        </div>
 
-         <div class="project-card">
-            <h3>Certification Introduction à Packet Tracer</h3>
-            <p>
-                Obtention de la certification "Introduction à Packet Tracer", attestant l'acquisition des compétences de bases en simulation de réseaux informatiques. </p>
-            <div class="project-tags">
-                <span class="tag">Packet Tracer</span>
-                <span class="tag">Simulation de réseaux</span>
-                <span class="tag">Internet des objets</span>
-                <span class="tag">Réseaux informatiques</span>
-                <span class="tag">Modélisation</span>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Certification Équipements réseau et configuration de base</h3>
+                    <p>Obtention de la certification "Équipements réseau et configuration de base", attestant l'acquisition des compétences de bases pour explorer les composants d'un réseau hiérarchique, configurer les périphériques des réseaux et les services cloud.</p>
+                    <div class="project-tags">
+                        <span class="tag">Périphériques réseau</span>
+                        <span class="tag">Cloud</span>
+                        <span class="tag">Configuration</span>
+                        <span class="tag">Dépannage</span>
+                        <span class="tag">Conception réseau</span>
+                        <span class="tag">Cisco Networking Academy</span>
+                    </div>
+                    <a href="#" class="cta-button" id="openResConfButton">Voir détail</a>
+                </div>
             </div>
-            <a href="#" class="cta-button" id="openPacketTracerButton">Voir détail</a>
-        </div>
 
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Certification Introduction à Packet Tracer</h3>
+                    <p>Obtention de la certification "Introduction à Packet Tracer", attestant l'acquisition des compétences de bases en simulation de réseaux informatiques.</p>
+                    <div class="project-tags">
+                        <span class="tag">Packet Tracer</span>
+                        <span class="tag">Simulation de réseaux</span>
+                        <span class="tag">Internet des objets</span>
+                        <span class="tag">Réseaux informatiques</span>
+                        <span class="tag">Modélisation</span>
+                    </div>
+                    <a href="#" class="cta-button" id="openPacketTracerButton">Voir détail</a>
+                </div>
+            </div>
+        </section>
 
-    </section>
-
-</div>
-
-<div id="campusNetworkModal" class="modal-overlay">
-    <div class="modal-content">
-        <button class="modal-close-button">&times;</button>
-        <h3>Infrastructure Réseau d'un Campus Universitaire</h3>
-
-        <p>
-            Ce projet de 
-            SAE2.01 a consisté à concevoir, implémenter et sécuriser une infrastructure réseau complexe pour un campus universitaire multi-sites. Il a abordé des aspects clés comme la planification de l'adressage IP, la segmentation du réseau, le routage dynamique, la traduction d'adresses (NAT) et la mise en place de politiques de sécurité (ACLs), ainsi que le déploiement de serveurs essentiels. </p>
-
-        <h4>Succès du Projet</h4>
-        <ul>
-            <li>**Plan d'Adressage Optimisé :** Mise en œuvre réussie d'un plan VLSM efficace pour quatre sites, permettant une allocation optimale des adresses IP et une gestion structurée du réseau.</li>
-            <li>**Segmentation Réseau Robuste :** Configuration de 5 VLANs par site pour une isolation logique des services (administration, formations A/B, enseignants), améliorant la sécurité et la gestion du trafic.</li>
-            <li>**Interconnexion Fluide :** Implémentation fonctionnelle du protocole RIP assurant une communication transparente et dynamique entre tous les sites du campus.</li>
-            <li>**Accès WAN Sécurisé :** Configuration réussie du NAT statique et dynamique, permettant aux utilisateurs internes d'accéder au WAN et exposant les services web internes de manière contrôlée.</li>
-            <li>**Haute Disponibilité :** Mise en place d'une topologie redondante avec le protocole STP (Spanning Tree Protocol) pour prévenir les boucles et garantir la 
-            continuité de service en cas de défaillance de lien.</li>
-            <li>**Services Fonctionnels :** Validation de l'accès aux serveurs TFTP et Web depuis différents VLANs, confirmant la bonne connectivité et la configuration des services.</li>
-        </ul>
-
-        <h4>Challenges et Points d'Amélioration</h4>
-        <ul class="challenges">
-            <li>**Complexité du Filtrage par ACL :** Bien que des ACLs aient été implémentées pour gérer les flux inter-VLAN 
-            et WAN, leur configuration s'est avérée particulièrement délicate. L'affinement des règles de sécurité pour des communications complexes a nécessité une compréhension approfondie et des tests rigoureux.</li>
-            <li>**Limitations avec TFTP :** Des difficultés persistantes ont été rencontrées lors de la tentative de sauvegarde des configurations des équipements via TFTP (`copy running-config tftp`). Les fichiers générés sur le serveur TFTP apparaissaient sans contenues à l'intérieur, suggérant un problème de droits d'accès ou de permissions non identifié ou non résolu dans l'environnement de simulation.</li>
-            <li>**Affinement des règles de sécurité :** Malgré les efforts, certaines règles d'ACL n'ont pas permis le filtrage désiré pour toutes les communications complexes, indiquant la nécessité d'une compréhension plus approfondie et de tests plus rigoureux des règles de filtrage.</li>
-        </ul>
-
-        <a href="https://github.com/Maxence748/Projet_Reseau_Campus" target="_blank" class="github-button">Voir le
-            Projet sur GitHub</a>
+        <footer class="footer-content">
+            <p>© 2025 Maxence Boyer. Tous droits réservés.</p>
+            <p>Ce site est protégé par les lois sur le droit d'auteur.</p>
+        </footer>
     </div>
-</div>
 
-<div id="ctfModal" class="modal-overlay">
-    <div class="modal-content">
-        <button class="modal-close-button">&times;</button>
-        <h3>Participation CTF Vannes : Détails</h3>
+    <!-- Modals -->
+    <div id="campusNetworkModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <h3>Infrastructure Réseau d'un Campus Universitaire</h3>
+            <p>Ce projet de SAE2.01 a consisté à concevoir, implémenter et sécuriser une infrastructure réseau complexe pour un campus universitaire multi-sites. Il a abordé des aspects clés comme la planification de l'adressage IP, la segmentation du réseau, le routage dynamique, la traduction d'adresses (NAT) et la mise en place de politiques de sécurité (ACLs), ainsi que le déploiement de serveurs essentiels.</p>
+            <h4>Succès du Projet</h4>
+            <ul>
+                <li>**Plan d'Adressage Optimisé :** Mise en œuvre réussie d'un plan VLSM efficace pour quatre sites, permettant une allocation optimale des adresses IP et une gestion structurée du réseau.</li>
+                <li>**Segmentation Réseau Robuste :** Configuration de 5 VLANs par site pour une isolation logique des services (administration, formations A/B, enseignants), améliorant la sécurité et la gestion du trafic.</li>
+                <li>**Interconnexion Fluide :** Implémentation fonctionnelle du protocole RIP assurant une communication transparente et dynamique entre tous les sites du campus.</li>
+                <li>**Accès WAN Sécurisé :** Configuration réussie du NAT statique et dynamique, permettant aux utilisateurs internes d'accéder au WAN et exposant les services web internes de manière contrôlée.</li>
+                <li>**Haute Disponibilité :** Mise en place d'une topologie redondante avec le protocole STP (Spanning Tree Protocol) pour prévenir les boucles et garantir la continuité de service en cas de défaillance de lien.</li>
+                <li>**Services Fonctionnels :** Validation de l'accès aux serveurs TFTP et Web depuis différents VLANs, confirmant la bonne connectivité et la configuration des services.</li>
+            </ul>
+            <h4>Challenges et Points d'Amélioration</h4>
+            <ul class="challenges">
+                <li>**Complexité du Filtrage par ACL :** Bien que des ACLs aient été implémentées pour gérer les flux inter-VLAN et WAN, leur configuration s'est avérée particulièrement délicate. L'affinement des règles de sécurité pour des communications complexes a nécessité une compréhension approfondie et des tests rigoureux.</li>
+                <li>**Limitations avec TFTP :** Des difficultés persistantes ont été rencontrées lors de la tentative de sauvegarde des configurations des équipements via TFTP (`copy running-config tftp`). Les fichiers générés sur le serveur TFTP apparaissaient sans contenues à l'intérieur, suggérant un problème de droits d'accès ou de permissions non identifié ou non résolu dans l'environnement de simulation.</li>
+                <li>**Affinement des règles de sécurité :** Malgré les efforts, certaines règles d'ACL n'ont pas permis le filtrage désiré pour toutes les communications complexes, indiquant la nécessité d'une compréhension plus approfondie et de tests plus rigoureux des règles de filtrage.</li>
+            </ul>
+            <a href="https://github.com/Maxence748/Projet_Reseau_Campus" target="_blank" class="github-button">Voir le Projet sur GitHub</a>
+        </div>
+    </div>
 
-        <p>
-            Ma participation à la compétition "Capture The Flag" de Vannes a été une expérience enrichissante, me permettant de mettre en pratique et d'approfondir mes compétences en cybersécurité offensive et défensive. Ce type de challenge simule des scénarios réels de sécurité informatique, où l'objectif est de trouver des "flags" (des chaînes de caractères cachées) en exploitant des vulnérabilités. </p>
-
-        <h4>Compétences Mises en Œuvre</h4>
-        <ul>
-            <li>**Cryptographie :** Résolution d'énigmes basées sur différents algorithmes de chiffrement (RSA, AES, chiffre de César, etc.) et identification de faiblesses cryptographiques.</li>
-            <li>**Stéganographie :** Extraction d'informations cachées dans des fichiers multimédias (images, audio, vidéo) ou d'autres types de fichiers.</li>
-            <li>**Exploitation de Binaires (Pwn) :** Analyse et exploitation de
-            programmes compilés pour prendre le contrôle ou obtenir des informations sensibles, notamment via des techniques de buffer overflow, format string bugs.</li>
-            <li>**Web Hacking :** Identification et exploitation de vulnérabilités web courantes (SQL Injection, XSS, SSRF, LFI/RFI) sur des applications web.</li>
-            <li>**Analyse Forensique :** Examen de disques, de mémoire ou de paquets réseau pour récupérer des preuves ou des informations cachées.</li>
-            <li>**Reverse Engineering :** Décompilation et analyse de
-            programmes pour comprendre leur logique interne et découvrir des secrets.</li>
-            <li>**Scripting :** Développement de scripts (Python, Bash) pour automatiser des tâches, déchiffrer des données ou faciliter l'exploitation.</li>
-        </ul>
-
-        <h4>Objectifs et Apprentissages</h4>
-        <ul class="challenges">
-            <li>**Pensée Critique 
-et Résolution de Problèmes :** Les CTF exigent une approche méthodique et créative pour résoudre des problèmes complexes et non conventionnels.</li>
-            <li>**Travail d'Équipe :** Collaboration avec d'autres participants pour combiner les compétences et accélérer la résolution des défis.</li>
-            <li>**Gestion du Temps et Pression :** Apprendre à travailler efficacement sous contrainte de temps pour maximiser le nombre de flags trouvés.</li>
-            <li>**Veille Technologique :** Nécessité de se tenir constamment 
-informé des nouvelles vulnérabilités et techniques d'attaque/défense.</li>
-        </ul>
-
+    <div id="ctfModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <h3>Participation CTF Vannes : Détails</h3>
+            <p>Ma participation à la compétition "Capture The Flag" de Vannes a été une expérience enrichissante, me permettant de mettre en pratique et d'approfondir mes compétences en cybersécurité offensive et défensive. Ce type de challenge simule des scénarios réels de sécurité informatique, où l'objectif est de trouver des "flags" (des chaînes de caractères cachées) en exploitant des vulnérabilités.</p>
+            <h4>Compétences Mises en Œuvre</h4>
+            <ul>
+                <li>**Cryptographie :** Résolution d'énigmes basées sur différents algorithmes de chiffrement (RSA, AES, chiffre de César, etc.) et identification de faiblesses cryptographiques.</li>
+                <li>**Stéganographie :** Extraction d'informations cachées dans des fichiers multimédias (images, audio, vidéo) ou d'autres types de fichiers.</li>
+                <li>**Exploitation de Binaires (Pwn) :** Analyse et exploitation de programmes compilés pour prendre le contrôle ou obtenir des informations sensibles, notamment via des techniques de buffer overflow, format string bugs.</li>
+                <li>**Web Hacking :** Identification et exploitation de vulnérabilités web courantes (SQL Injection, XSS, SSRF, LFI/RFI) sur des applications web.</li>
+                <li>**Analyse Forensique :** Examen de disques, de mémoire ou de paquets réseau pour récupérer des preuves ou des informations cachées.</li>
+                <li>**Reverse Engineering :** Décompilation et analyse de programmes pour comprendre leur logique interne et découvrir des secrets.</li>
+                <li>**Scripting :** Développement de scripts (Python, Bash) pour automatiser des tâches, déchiffrer des données ou faciliter l'exploitation.</li>
+            </ul>
+            <h4>Objectifs et Apprentissages</h4>
+            <ul class="challenges">
+                <li>**Pensée Critique et Résolution de Problèmes :** Les CTF exigent une approche méthodique et créative pour résoudre des problèmes complexes et non conventionnels.</li>
+                <li>**Travail d'Équipe :** Collaboration avec d'autres participants pour combiner les compétences et accélérer la résolution des défis.</li>
+                <li>**Gestion du Temps et Pression :** Apprendre à travailler efficacement sous contrainte de temps pour maximiser le nombre de flags trouvés.</li>
+                <li>**Veille Technologique :** Nécessité de se tenir constamment informé des nouvelles vulnérabilités et techniques d'attaque/défense.</li>
+            </ul>
             <div class="ranking-section">
-            <h4>Notre Classement Final</h4>
-            <div class="ranking-display">
-                <div class="team-rank">17<sup>ème</sup></div>
-                <div class="team-name">Équipe CyberFraude2025</div>
+                <h4>Notre Classement Final</h4>
+                <div class="ranking-display">
+                    <div class="team-rank">17<sup>ème</sup></div>
+                    <div class="team-name">Équipe CyberFraude2025</div>
+                </div>
+                <img src="images/image_367629.png" alt="Classement final du CTF" class="ranking-image">
             </div>
-            <img src="images/image_367629.png" alt="Classement final du CTF" class="ranking-image">
+            <div class="sponsor-section">
+                <h4>Nos Sponsors</h4>
+                <div class="sponsor-grid">
+                    <img src="images/sponsor1.jpg" alt="Sponsor 1" data-full-src="images/sponsor1.jpg" />
+                    <img src="images/sponsor2.jpg" alt="Sponsor 2" data-full-src="images/sponsor2.jpg" />
+                    <img src="images/sponsor3.jpg" alt="Sponsor 3" data-full-src="images/sponsor3.jpg" />
+                    <img src="images/sponsor4.jpg" alt="Sponsor 4" data-full-src="images/sponsor4.jpg" />
+                    <img src="images/sponsor5.jpg" alt="Sponsor 5" data-full-src="images/sponsor5.jpg" />
+                </div>
             </div>
-
-        <div class="sponsor-section">
-            <h4>Nos Sponsors</h4>
-            <div class="sponsor-grid">
-                <img src="images/sponsor1.jpg" alt="Sponsor 1" data-full-src="images/sponsor1.jpg" />
-                <img src="images/sponsor2.jpg" alt="Sponsor 2" data-full-src="images/sponsor2.jpg" />
-                <img src="images/sponsor3.jpg" alt="Sponsor 3" data-full-src="images/sponsor3.jpg" />
-                <img src="images/sponsor4.jpg" alt="Sponsor 4" data-full-src="images/sponsor4.jpg" />
-                <img src="images/sponsor5.jpg" alt="Sponsor 5" data-full-src="images/sponsor5.jpg" />
-            </div>
+            <a href="https://maxence748.github.io/mon-portfolio/ctf.html" class="github-button">Aller à la page de notre classement</a>
         </div>
-        
-            <a href="https://maxence748.github.io/mon-portfolio/ctf.html" class="github-button" style="margin-top: 3rem;">
-            Aller à la page de notre classement
-        </a>
-
     </div>
-</div>
 
-<div id="secNumModal" class="modal-overlay">
-    <div class="modal-content">
-        <button class="modal-close-button">&times;</button>
-        <h3>Certification SecNumAcadémie : Détails</h3>
-        <p>
-            L'obtention de la certification ANSSI "SecNumAcadémie" atteste de solides connaissances fondamentales en cybersécurité, couvrant un large éventail de sujets allant de la protection des données à la gestion des risques numériques. Ce programme de formation a permis de renforcer mes compétences dans des domaines cruciaux pour la sécurité informatique. </p>
-        
-        <h4>Objectifs et Apprentissages</h4>
-        <ul>
-            <li>**Fondamentaux de la Sécurité :** Compréhension des principes de base de la sécurité de l'information (confidentialité, intégrité, disponibilité).</li>
-            <li>**Gestion des Risques Numériques :** Apprentissage des méthodologies d'évaluation et de gestion des risques liés aux systèmes d'information.</li>
-            <li>**Sécurité des Données et 
-des Communications :** Techniques de chiffrement, authentification et protection des réseaux.</li>
-            <li>**Aspects Juridiques et Éthiques :** Sensibilisation aux réglementations (RGPD) et à l'éthique dans le domaine de la cybersécurité.</li>
-        </ul>
-
-        <a href="documents/Attestation secnumacadémie.pdf" target="_blank" class="cta-button" style="margin-top: 3rem; margin-bottom: 0;">
-            Voir ma certification
-        </a>
+    <div id="secNumModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <h3>Certification SecNumAcadémie : Détails</h3>
+            <p>L'obtention de la certification ANSSI "SecNumAcadémie" atteste de solides connaissances fondamentales en cybersécurité, couvrant un large éventail de sujets allant de la protection des données à la gestion des risques numériques. Ce programme de formation a permis de renforcer mes compétences dans des domaines cruciaux pour la sécurité informatique.</p>
+            <h4>Objectifs et Apprentissages</h4>
+            <ul>
+                <li>**Fondamentaux de la Sécurité :** Compréhension des principes de base de la sécurité de l'information (confidentialité, intégrité, disponibilité).</li>
+                <li>**Gestion des Risques Numériques :** Apprentissage des méthodologies d'évaluation et de gestion des risques liés aux systèmes d'information.</li>
+                <li>**Sécurité des Données et des Communications :** Techniques de chiffrement, authentification et protection des réseaux.</li>
+                <li>**Aspects Juridiques et Éthiques :** Sensibilisation aux réglementations (RGPD) et à l'éthique dans le domaine de la cybersécurité.</li>
+            </ul>
+            <a href="documents/Attestation secnumacadémie.pdf" target="_blank" class="github-button">Voir ma certification</a>
+        </div>
     </div>
-</div>
 
-<div id="ResConfModal" class="modal-overlay">
-    <div class="modal-content">
-        <button class="modal-close-button">&times;</button>
-        <h3>Certification Equipements réseau et configuration de base: Détails</h3>
-        <p>
-            L'obtention de la certification "Equipements réseau et configuration de base" atteste des connaissances de bases en matières d'équipements réseau et de configuration, incluant la capacité à comprendre, installer et à configurer des périphériques réseau. </p>
-        
-        <h4>Objectifs et Apprentissages</h4>
-        <ul>
-            <li>**Conception et concepts de réseau :** Explorer et expliquer les concepts fondamentaux de la conception de réseau.</li>
-            <li>**Configuration et administration des périphériques :** Configurer des périphériques réseau, des services et des clients.</li>
-            <li>**Dépannage et services réseau :** Dépanner la connectivité 
-réseau.</li>
-        </ul>
-
-        <a href="documents/NetworkingDevicesandBasicConfigUpdate20250731-31-abj9xw.pdf" target="_blank" class="cta-button" style="margin-top: 3rem; margin-bottom: 0;">
-            Voir ma certification
-        </a>
+    <div id="ResConfModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <h3>Certification Équipements réseau et configuration de base: Détails</h3>
+            <p>L'obtention de la certification "Équipements réseau et configuration de base" atteste des connaissances de bases en matières d'équipements réseau et de configuration, incluant la capacité à comprendre, installer et à configurer des périphériques réseau.</p>
+            <h4>Objectifs et Apprentissages</h4>
+            <ul>
+                <li>**Conception et concepts de réseau :** Explorer et expliquer les concepts fondamentaux de la conception de réseau.</li>
+                <li>**Configuration et administration des périphériques :** Configurer des périphériques réseau, des services et des clients.</li>
+                <li>**Dépannage et services réseau :** Dépanner la connectivité réseau.</li>
+            </ul>
+            <a href="documents/NetworkingDevicesandBasicConfigUpdate20250731-31-abj9xw.pdf" target="_blank" class="github-button">Voir ma certification</a>
+        </div>
     </div>
-</div>
 
-<div id="PacketTracerModal" class="modal-overlay">
-    <div class="modal-content">
-        <button class="modal-close-button">&times;</button>
-        <h3>Certification introduction à Packet Tracer: Détails</h3>
-        <p>
-            L'obtention de la certification "introduction à Packet Tracer" atteste des connaissances sur l'utilisation de l'outil "Packet Tracer". </p>
-        
-        <h4>Objectifs et Apprentissages</h4>
-        <ul>
-            <li>**Créer et gérer des réseaux**</li>
-            <li>**Utiliser des contrôleurs de réseau**</li>
-            <li>**Créer et modifier des objets connectés dans un réseau de maison intelligente simulé**</li>
-        </ul>
-
-        <a href="documents/IntrotoPacketTracerUpdate20250801-32-y9sq9r.pdf" 
-target="_blank" class="cta-button" style="margin-top: 3rem; margin-bottom: 0;">
-            Voir ma certification
-        </a>
+    <div id="PacketTracerModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <h3>Certification introduction à Packet Tracer: Détails</h3>
+            <p>L'obtention de la certification "introduction à Packet Tracer" atteste des connaissances sur l'utilisation de l'outil "Packet Tracer".</p>
+            <h4>Objectifs et Apprentissages</h4>
+            <ul>
+                <li>**Créer et gérer des réseaux**</li>
+                <li>**Utiliser des contrôleurs de réseau**</li>
+                <li>**Créer et modifier des objets connectés dans un réseau de maison intelligente simulé**</li>
+            </ul>
+            <a href="documents/IntrotoPacketTracerUpdate20250801-32-y9sq9r.pdf" target="_blank" class="github-button">Voir ma certification</a>
+        </div>
     </div>
-</div>
 
-<div id="DebianModal" class="modal-overlay">
-    <div class="modal-content">
-        <button class="modal-close-button">&times;</button>
-        <h3>Serveur Web sur Debian: Détails</h3>
-        <p>
-            Déploiement et configuration sécurisée d'un serveur web LAMP (Linux, Apache, MySQL, PHP) sur Debian 11, incluant la gestion réseau et la mise en production d'une application web.
-        </p>
-        <h4>Objectifs et Apprentissages</h4>
-        <ul>
-            <li>**Déploiement LAMP :** Maîtrise de l'installation et de la configuration des composants (Apache, MySQL, PHP).</li>
-            <li>**Sécurité :** Mise en place de règles de sécurité (pare-feu, protections).</li>
-            <li>**Gestion de services :** Utilisation de l'outil Linux pour la gestion des services.</li>
-        </ul>
-        <a href="https://github.com/Maxence748/Debian_server" class="github-button" target="_blank">
-            Voir le Projet sur GitHub
-        </a>
+    <div id="DebianModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <h3>Serveur Web sur Debian: Détails</h3>
+            <p>Déploiement et configuration sécurisée d'un serveur web LAMP (Linux, Apache, MySQL, PHP) sur Debian 11, incluant la gestion réseau et la mise en production d'une application web.</p>
+            <h4>Objectifs et Apprentissages</h4>
+            <ul>
+                <li>**Déploiement LAMP :** Maîtrise de l'installation et de la configuration des composants (Apache, MySQL, PHP).</li>
+                <li>**Sécurité :** Mise en place de règles de sécurité (pare-feu, protections).</li>
+                <li>**Gestion de services :** Utilisation de l'outil Linux pour la gestion des services.</li>
+            </ul>
+            <a href="https://github.com/Maxence748/Debian_server" class="github-button" target="_blank">Voir le Projet sur GitHub</a>
+        </div>
     </div>
-</div>
 
-<div id="SambaModal" class="modal-overlay">
-    <div class="modal-content">
-        <button class="modal-close-button">&times;</button>
-        <h3>Active Directory avec Samba4: Détails</h3>
-        <p>
-            Implémentation d'un contrôleur de domaine Active Directory sur Linux avec Samba4, permettant une gestion centralisée des utilisateurs, groupes et politiques de sécurité comme alternative robuste à Windows Server.
-        </p>
-        <h4>Objectifs et Apprentissages</h4>
-        <ul>
-            <li>**Gestion Utilisateurs :** Création et gestion des utilisateurs et des groupes.</li>
-            <li>**Politiques de Sécurité :** Mise en place de politiques de sécurité (mots de passe, accès aux ressources).</li>
-            <li>**Administration :** Administration à distance via les outils Windows (RSAT).</li>
-        </ul>
-        <a href="https://github.com/Maxence748/Active_Directory_avec_Samba4" class="github-button" target="_blank">
-            Voir le Projet sur GitHub
-        </a>
+    <div id="SambaModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <h3>Active Directory avec Samba4: Détails</h3>
+            <p>Implémentation d'un contrôleur de domaine Active Directory sur Linux avec Samba4, permettant une gestion centralisée des utilisateurs, groupes et politiques de sécurité comme alternative robuste à Windows Server.</p>
+            <h4>Objectifs et Apprentissages</h4>
+            <ul>
+                <li>**Gestion Utilisateurs :** Création et gestion des utilisateurs et des groupes.</li>
+                <li>**Politiques de Sécurité :** Mise en place de politiques de sécurité (mots de passe, accès aux ressources).</li>
+                <li>**Administration :** Administration à distance via les outils Windows (RSAT).</li>
+            </ul>
+            <a href="https://github.com/Maxence748/Active_Directory_avec_Samba4" class="github-button" target="_blank">Voir le Projet sur GitHub</a>
+        </div>
     </div>
-</div>
-<div id="imageLightboxModal" class="lightbox-overlay" style="display: none;">
-    <span class="close-lightbox">&times;</span>
-    <img class="lightbox-content" id="lightbox-image-viewer" src="" alt="Image agrandie" />
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const openCampusButton = document.getElementById('openCampusModalButton');
-        const campusModal = document.getElementById('campusNetworkModal');
-        const closeCampusButton = campusModal.querySelector('.modal-close-button');
+    <div id="imageLightboxModal" class="lightbox-overlay">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-image-viewer" src="" alt="Image agrandie" />
+    </div>
 
-        const openCTFButton = document.getElementById('openCTFModalButton');
-        const ctfModal = document.getElementById('ctfModal');
-        const closeCTFButton = ctfModal.querySelector('.modal-close-button');
-        
-        const openSecNumButton = document.getElementById('openSecNumModalButton');
-        const secNumModal = document.getElementById('secNumModal');
-        const closeSecNumButton = secNumModal.querySelector('.modal-close-button');
- 
-        // Ajout des nouveaux sélecteurs pour les boutons et les modaux
-        const openResConfButton = document.getElementById('openResConfButton');
-        const ResConfModal = document.getElementById('ResConfModal');
-        const closeResConfButton = ResConfModal.querySelector('.modal-close-button');
-        
-        const openPacketTracerButton = document.getElementById('openPacketTracerButton');
-        const PacketTracerModal = document.getElementById('PacketTracerModal');
-        const closePacketTracerButton = PacketTracerModal.querySelector('.modal-close-button');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const openCampusButton = document.getElementById('openCampusModalButton');
+            const campusModal = document.getElementById('campusNetworkModal');
+            const closeCampusButton = campusModal.querySelector('.modal-close-button');
 
-        const openDebianButton = document.getElementById('openDebianModalButton');
-        const DebianModal = document.getElementById('DebianModal');
-        const closeDebianButton = DebianModal.querySelector('.modal-close-button');
-
-        const openSambaButton = document.getElementById('openSambaModalButton');
-        const SambaModal = document.getElementById('SambaModal');
-        const closeSambaButton = SambaModal.querySelector('.modal-close-button');
-
-        const imageLightboxModal = document.getElementById('imageLightboxModal');
-        const lightboxImageViewer = document.getElementById('lightbox-image-viewer');
-        const closeLightboxButton = imageLightboxModal.querySelector('.close-lightbox');
-        const sponsorImages = document.querySelectorAll('.sponsor-grid img');
-        
-        function openModal(modalElement) {
-            modalElement.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modalElement) {
-            modalElement.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        if (openCampusButton) {
-            openCampusButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                openModal(campusModal);
-            });
-        }
-        if (closeCampusButton) {
-            closeCampusButton.addEventListener('click', function() {
-                closeModal(campusModal);
-            });
-        }
-        if (campusModal) {
-            campusModal.addEventListener('click', function(e) {
-                if (e.target === campusModal) {
-                    closeModal(campusModal);
-                }
-            });
-        }
-
-        if (openCTFButton) {
-            openCTFButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                openModal(ctfModal);
-            });
-        }
-        if (closeCTFButton) {
-            closeCTFButton.addEventListener('click', function() {
-                closeModal(ctfModal);
-            });
-        }
-        if (ctfModal) {
-            ctfModal.addEventListener('click', function(e) {
-                if (e.target === ctfModal) {
-                    closeModal(ctfModal);
-                }
-            });
-        }
-
-        if (openSecNumButton) {
-            openSecNumButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                openModal(secNumModal);
-            });
-        }
-        if (closeSecNumButton) {
-            closeSecNumButton.addEventListener('click', function() {
-                closeModal(secNumModal);
-            });
-        }
-        if (secNumModal) {
-            secNumModal.addEventListener('click', function(e) {
-                if (e.target === secNumModal) {
-                    closeModal(secNumModal);
-                }
-            });
-        }
-
-        // Ajout des événements pour les nouveaux modaux
-        if (openResConfButton) {
-            openResConfButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                openModal(ResConfModal);
-            });
-        }
-        if (closeResConfButton) {
-            closeResConfButton.addEventListener('click', function() {
-                closeModal(ResConfModal);
-            });
-        }
-        if (ResConfModal) {
-            ResConfModal.addEventListener('click', function(e) {
-                if (e.target === ResConfModal) {
-                    closeModal(ResConfModal);
-                }
-            });
-        }
-
-        if (openPacketTracerButton) {
-            openPacketTracerButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                openModal(PacketTracerModal);
-            });
-        }
-        if (closePacketTracerButton) {
-            closePacketTracerButton.addEventListener('click', function() {
-                closeModal(PacketTracerModal);
-            });
-        }
-        if (PacketTracerModal) {
-            PacketTracerModal.addEventListener('click', function(e) {
-                if (e.target === PacketTracerModal) {
-                    closeModal(PacketTracerModal);
-                }
-            });
-        }
-
-        if (openDebianButton) {
-            openDebianButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                openModal(DebianModal);
-            });
-        }
-        if (closeDebianButton) {
-            closeDebianButton.addEventListener('click', function() {
-                closeModal(DebianModal);
-            });
-        }
-        if (DebianModal) {
-            DebianModal.addEventListener('click', function(e) {
-                if (e.target === DebianModal) {
-                    closeModal(DebianModal);
-                }
-            });
-        }
-
-        if (openSambaButton) {
-            openSambaButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                openModal(SambaModal);
-            });
-        }
-        if (closeSambaButton) {
-            closeSambaButton.addEventListener('click', function() {
-                closeModal(SambaModal);
-            });
-        }
-        if (SambaModal) {
-            SambaModal.addEventListener('click', function(e) {
-                if (e.target === SambaModal) {
-                    closeModal(SambaModal);
-                }
-            });
-        }
-
-
-        function openImageLightbox(src) {
-            lightboxImageViewer.src = src;
-            imageLightboxModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeImageLightbox() {
-            imageLightboxModal.style.display = 'none';
-            document.body.style.overflow = '';
-        }
+            const openCTFButton = document.getElementById('openCTFModalButton');
+            const ctfModal = document.getElementById('ctfModal');
+            const closeCTFButton = ctfModal.querySelector('.modal-close-button');
             
-        sponsorImages.forEach(img => {
-            img.addEventListener('click', (event) => {
-                const fullSrc = img.getAttribute('data-full-src');
-                if (fullSrc) {
-                    openImageLightbox(fullSrc);
-                }
-            });
-        });
-        if (closeLightboxButton) {
-            closeLightboxButton.addEventListener('click', closeImageLightbox);
-        }
+            const openSecNumButton = document.getElementById('openSecNumModalButton');
+            const secNumModal = document.getElementById('secNumModal');
+            const closeSecNumButton = secNumModal.querySelector('.modal-close-button');
+     
+            const openResConfButton = document.getElementById('openResConfButton');
+            const ResConfModal = document.getElementById('ResConfModal');
+            const closeResConfButton = ResConfModal.querySelector('.modal-close-button');
+            
+            const openPacketTracerButton = document.getElementById('openPacketTracerButton');
+            const PacketTracerModal = document.getElementById('PacketTracerModal');
+            const closePacketTracerButton = PacketTracerModal.querySelector('.modal-close-button');
 
-        if (imageLightboxModal) {
-            imageLightboxModal.addEventListener('click', (event) => {
-                if (event.target === imageLightboxModal) {
+            const openDebianButton = document.getElementById('openDebianModalButton');
+            const DebianModal = document.getElementById('DebianModal');
+            const closeDebianButton = DebianModal.querySelector('.modal-close-button');
+
+            const openSambaButton = document.getElementById('openSambaModalButton');
+            const SambaModal = document.getElementById('SambaModal');
+            const closeSambaButton = SambaModal.querySelector('.modal-close-button');
+
+            const imageLightboxModal = document.getElementById('imageLightboxModal');
+            const lightboxImageViewer = document.getElementById('lightbox-image-viewer');
+            const closeLightboxButton = imageLightboxModal.querySelector('.close-lightbox');
+            const sponsorImages = document.querySelectorAll('.sponsor-grid img');
+            
+            function openModal(modalElement) {
+                modalElement.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal(modalElement) {
+                modalElement.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (openCampusButton) {
+                openCampusButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal(campusModal);
+                });
+            }
+            if (closeCampusButton) {
+                closeCampusButton.addEventListener('click', function() {
+                    closeModal(campusModal);
+                });
+            }
+            if (campusModal) {
+                campusModal.addEventListener('click', function(e) {
+                    if (e.target === campusModal) {
+                        closeModal(campusModal);
+                    }
+                });
+            }
+
+            if (openCTFButton) {
+                openCTFButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal(ctfModal);
+                });
+            }
+            if (closeCTFButton) {
+                closeCTFButton.addEventListener('click', function() {
+                    closeModal(ctfModal);
+                });
+            }
+            if (ctfModal) {
+                ctfModal.addEventListener('click', function(e) {
+                    if (e.target === ctfModal) {
+                        closeModal(ctfModal);
+                    }
+                });
+            }
+
+            if (openSecNumButton) {
+                openSecNumButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal(secNumModal);
+                });
+            }
+            if (closeSecNumButton) {
+                closeSecNumButton.addEventListener('click', function() {
+                    closeModal(secNumModal);
+                });
+            }
+            if (secNumModal) {
+                secNumModal.addEventListener('click', function(e) {
+                    if (e.target === secNumModal) {
+                        closeModal(secNumModal);
+                    }
+                });
+            }
+
+            if (openResConfButton) {
+                openResConfButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal(ResConfModal);
+                });
+            }
+            if (closeResConfButton) {
+                closeResConfButton.addEventListener('click', function() {
+                    closeModal(ResConfModal);
+                });
+            }
+            if (ResConfModal) {
+                ResConfModal.addEventListener('click', function(e) {
+                    if (e.target === ResConfModal) {
+                        closeModal(ResConfModal);
+                    }
+                });
+            }
+
+            if (openPacketTracerButton) {
+                openPacketTracerButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal(PacketTracerModal);
+                });
+            }
+            if (closePacketTracerButton) {
+                closePacketTracerButton.addEventListener('click', function() {
+                    closeModal(PacketTracerModal);
+                });
+            }
+            if (PacketTracerModal) {
+                PacketTracerModal.addEventListener('click', function(e) {
+                    if (e.target === PacketTracerModal) {
+                        closeModal(PacketTracerModal);
+                    }
+                });
+            }
+
+            if (openDebianButton) {
+                openDebianButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal(DebianModal);
+                });
+            }
+            if (closeDebianButton) {
+                closeDebianButton.addEventListener('click', function() {
+                    closeModal(DebianModal);
+                });
+            }
+            if (DebianModal) {
+                DebianModal.addEventListener('click', function(e) {
+                    if (e.target === DebianModal) {
+                        closeModal(DebianModal);
+                    }
+                });
+            }
+
+            if (openSambaButton) {
+                openSambaButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal(SambaModal);
+                });
+            }
+            if (closeSambaButton) {
+                closeSambaButton.addEventListener('click', function() {
+                    closeModal(SambaModal);
+                });
+            }
+            if (SambaModal) {
+                SambaModal.addEventListener('click', function(e) {
+                    if (e.target === SambaModal) {
+                        closeModal(SambaModal);
+                    }
+                });
+            }
+
+            function openImageLightbox(src) {
+                lightboxImageViewer.src = src;
+                imageLightboxModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeImageLightbox() {
+                imageLightboxModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+                
+            sponsorImages.forEach(img => {
+                img.addEventListener('click', (event) => {
+                    const fullSrc = img.getAttribute('data-full-src');
+                    if (fullSrc) {
+                        openImageLightbox(fullSrc);
+                    }
+                });
+            });
+
+            if (closeLightboxButton) {
+                closeLightboxButton.addEventListener('click', closeImageLightbox);
+            }
+
+            if (imageLightboxModal) {
+                imageLightboxModal.addEventListener('click', (event) => {
+                    if (event.target === imageLightboxModal) {
+                        closeImageLightbox();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === "Escape" && imageLightboxModal.style.display === 'flex') {
                     closeImageLightbox();
                 }
             });
-        }
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === "Escape" && imageLightboxModal.style.display === 'flex') {
-                closeImageLightbox();
-            }
         });
-    });
-</script>
+    </script>
 </body>
 </html>
